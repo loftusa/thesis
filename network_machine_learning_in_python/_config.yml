@@ -4,8 +4,6 @@
 
 # Book settings
 title: Hands-on Network Machine Learning with Scikit-Learn and Graspologic
-author: Joshua Vogelstein, Alex Loftus, and Eric Bridgeford
-copyright: "2021" # to be placed in the footer
 logo: logo.png
 parse:
   myst_enable_extensions:
@@ -16,18 +14,10 @@ repository:
   path_to_book: network_machine_learning_in_python
 sphinx:
   extra_extensions:
-    # - jupyterbook_latex
-    - sphinx_jupyterbook_latex
+    # - sphinx_jupyterbook_latex
 bibtex_bibfiles:
   - references.bib
 # HTML-specific settings
-html:
-  navbar_number_sections: true # Add a number to each section in your left navbar
-  use_edit_page_button: true
-  use_repository_button: true
-  use_issues_button: true
-  comments:
-    hypothesis: true # to allow comments on pages. https://jupyterbook.org/interactive/comments/hypothesis.html
 
 # latex settings
 latex:
