@@ -1,4 +1,0 @@
-dependencies:
-    - pip:
-        -r requirements.txt
-    
