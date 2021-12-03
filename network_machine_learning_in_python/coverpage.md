@@ -20,9 +20,8 @@ Baltimore, Maryland
 December 2021
 </div>
 
+<br><br><br><br>
 <div align="center">
-<span style='position:absolute; bottom:0px'>
 © 2021 Alexander Loftus <br>
 All rights reserved
-</span>
 </div>
