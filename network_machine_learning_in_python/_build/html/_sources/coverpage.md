@@ -1,9 +1,24 @@
-# Hands-on Network Machine Learning with Scikit-Learn and Graspologic
+# HANDS-ON NETWORK MACHINE LEARNING WITH GRASPOLOGIC AND SCIKIT-LEARN
 
-```{figure} Images/umap_pedigo_small.jpg
----
-height: 700px
-name: maggot-connectome
----
-2D representation of a *Drosophila* larva brain connectome network. Credit to Ben Pedigo, PhD student at Johns Hopkins University.
-```
+<div align="center">
+by
+Alexander Russell Loftus
+</div>
+
+<br><br>
+
+<div align="center">
+A dissertation submitted to Johns Hopkins University in conformity with the requirements for the degree of Master of Science</div>
+
+<br><br><br><br>
+
+<div align="center">
+Baltimore, Maryland
+December 2021
+</div>
+
+<br><br><br><br>
+<div align="center">
+© 2021 Alexander Loftus <br>
+All rights reserved
+</div>
