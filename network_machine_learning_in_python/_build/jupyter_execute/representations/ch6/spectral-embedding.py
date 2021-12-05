@@ -110,7 +110,7 @@ fig.suptitle("The Spectral Embedding Algorithm", fontsize=32, x=1.5);
 # 
 # Let's scale down and make a simple network, with only six nodes. We'll take its Laplacian just to show what that optional step looks like, and then we'll find its singular vectors with a technique we'll explore called Singular Value Decomposition. Then, we'll explore why we can use the first $k$ singular values and vectors to find an embedding. Let's start with creating the simple network.
 
-# ## A Simple Network
+# ## Data Generation
 
 # Say we have the simple network below. There are six nodes total, numbered 0 through 5, and there are two distinct connected groups (called "connected components" in network theory land). Nodes 0 through 2 are all connected to each other, and nodes 3 through 5 are also all connected to each other. 
 
@@ -222,7 +222,7 @@ fig.colorbar(im, ax=axs, shrink=0.8, aspect=10);
 fig.suptitle("The Laplacian is just a function of the adjacency matrix", fontsize=24);
 
 
-# ## Finding Singular Vectors With Singular Value Decomposition
+# ## Singular Vectors and Singular Value Decomposition
 
 # Now that we have a Laplacian matrix, we'll want to find its singular vectors. To do this, we'll need to use a technique called *Singular Value Decomposition*, or SVD. 
 # 
@@ -267,7 +267,7 @@ fig.suptitle("The Laplacian is just a function of the adjacency matrix", fontsiz
 #     \end{bmatrix}
 # \end{align*}
 
-# ## Breaking Down Our Network's Laplacian matrix
+# ## Breaking Down the Laplacian
 
 # Now we know how to break down any random matrix into singular vectors and values with SVD, so let's apply it to our toy network. We'll break down our Laplacian matrix into $U$, $S$, and $V^\top$. The Laplacian is a special case where the singular values and singular vectors are the same as the eigenvalues and eigenvectors, so we'll just refer to them as eigenvalues and eigenvectors from here on, since those terms are more common. For similar (actually the same) reasons, in this case $V^\top = U^\top$.
 # 
@@ -324,7 +324,7 @@ fig.suptitle("Decomposing our simple Laplacian into eigenvectors and eigenvalues
 # 
 # Let's dive into it!
 
-# ## Why We Care About Taking Eigenvectors: Matrix Rank
+# ## Matrix Rank
 
 # When we embed anything to create a new representation, we're essentially trying to find a simpler version of that thing which preserves as much information as possible. This leads us to the concept of **matrix rank**.
 # 
@@ -336,7 +336,7 @@ fig.suptitle("Decomposing our simple Laplacian into eigenvectors and eigenvalues
 # 
 # We'll be using the Laplacian as our examples, which has the distinctive quality of having its eigenvectors be the same as its singular vectors. For the adjacency matrix, this theory all still works, but you'd just have to replace $\vec u_i \vec u_i^\top$ with $\vec u_i \vec v_i^\top$ throughout (the adjacency matrices' SVD is $A = U S V^\top$, since the right singular vectors might be different than the left singular vectors).
 
-# ### Summing Rank 1 Matrices Recreates The Original Matrix
+# ### Sums of Rank One Matrices
 
 # You can actually create an $n \times n$ matrix using any one of the original Laplacian's eigenvectors $\vec u_i$ by taking its outer product $\vec{u_i} \vec{u_i}^T$. This creates a rank one matrix which only contains the information stored in the first eigenvector. Scale it by its eigenvalue $\sigma_i$ and you have something that feels suspiciously similar to how we take the first few singular vectors of $U$ and scale them in the spectral embedding algorithm. 
 # 
@@ -414,7 +414,7 @@ with warnings.catch_warnings():
 
 # Next up, we'll estimate the Laplacian by only taking a few of these matrices. You can already kind of see in the figure above that this'll work - the last two matrices don't even have anything in them (they're just 0)!
 
-# ### We can approximate our simple Laplacian by only summing a few of the low-rank matrices
+# ### Laplacian Approximation Through Summation
 
 # When you sum the first few of these low-rank $\sigma_i u_i u_i^T$, you can *approximate* your original matrix.
 # 
@@ -438,7 +438,7 @@ fig.suptitle("Each of these is the sum of an \nincreasing number of low-rank mat
 plt.tight_layout()
 
 
-# ### Approximating becomes extremely useful when we have a bigger (now regularized) Laplacian
+# ### Increased Usefulness of Approximation with Larger Networks
 
 # This becomes even more useful when we have huge networks with thousands of nodes, but only a few communities. It turns out, especially in this situation, we can usually sum a very small number of low-rank matrices and get to an excellent approximation for our network that uses much less information.
 # 
@@ -484,7 +484,7 @@ plt.tight_layout()
 
 # This is where a lot of the power of an SVD comes from: you can approximate extremely complicated (high-rank) matrices with extremely simple (low-rank) matrices.
 
-# ## How This Matrix Rank Stuff Helps Us Understand Spectral Embedding
+# ## Matrix Rank and Spectral Embedding
 
 # Remember the actual spectral embedding algorithm: we take a network, decompose it with Singular Value Decomposition into its singular vectors and values, and then cut out everything but the top $k$ singular vector/value pairs. Once we scale the columns of singular vectors by their corresponding values, we have our embedding. That embedding is called the latent position matrix, and the locations in space for each of our nodes are called the latent positions.
 # 
@@ -616,7 +616,7 @@ sns.despine(bottom=False, top=False, right=False, left=False, ax=ax)
 
 # This helps gives an intuition for why our latent position matrix gives a representation of our network. You can take columns of it, turn those columns into matrices, and sum those matrices, and then estimate the Laplacian for the network. That means the columns of our embedding network contain all of the information necessary to estimate the network!
 
-# ## Figuring Out How Many Dimensions To Embed Your Network Into
+# ## Dimensionality Estimation
 
 # One thing we haven't addressed is how to figure out how many dimensions to embed down to. We've generally been embedding into two dimensions throughout this chapter (mainly because it's easier to visualize), but you can embed into as many dimensions as you want.
 # 
@@ -715,7 +715,7 @@ embedding = LSE(n_components=2).fit_transform(A)
 plot_latents(embedding, labels=labels, title="Laplacian Spectral Embedding")
 
 
-# ## When should you use ASE and when should you use LSE?
+# ## The Two-Truths Phenomenon
 
 # Throughout this article, we've primarily used LSE, since Laplacians have some nice properties (such as having singular values being the same as eigenvalues) that make stuff like SVD easier to explain. However, you can embed the same network with either ASE or LSE, and you'll get two different (but equally true) embeddings.
 # 

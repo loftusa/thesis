@@ -94,7 +94,7 @@
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../../introduction/preface.html">
-   Preface
+   Front Matter
   </a>
  </li>
  <li class="toctree-l1">
@@ -231,18 +231,18 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#we-often-embed-to-estimate-latent-positions">
-   We Often Embed To Estimate Latent Positions
+  <a class="reference internal nav-link" href="#latent-estimation">
+   Latent Estimation
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#what-the-heck-is-the-latent-position-matrix-anyway">
-   What The Heck Is The Latent Position Matrix, Anyway?
+  <a class="reference internal nav-link" href="#the-latent-position-matrix">
+   The Latent Position Matrix
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#the-latent-position-matrix-tells-you-about-edge-probabilities">
-     The Latent Position Matrix Tells You About Edge Probabilities
+    <a class="reference internal nav-link" href="#edge-probability-matrix-estimation">
+     Edge Probability Matrix Estimation
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
@@ -425,13 +425,13 @@
 </div>
 <p>This is where network embedding methods come into play. Because networks represented as adjacency matrices are extremely high-dimensional, they run into many of the issues described above. Embedding, much like traditional dimensionality reduction methods in machine learning like Principle Component Analysis (PCA), allows us to move down to a more manageable number of dimensions while still preserving useful information about the network.</p>
 </div>
-<div class="section" id="we-often-embed-to-estimate-latent-positions">
-<h2>We Often Embed To Estimate Latent Positions<a class="headerlink" href="#we-often-embed-to-estimate-latent-positions" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="latent-estimation">
+<h2>Latent Estimation<a class="headerlink" href="#latent-estimation" title="Permalink to this headline">¶</a></h2>
 <p>The embedding methods which we’ll explore the most in this book are the spectral methods. These methods pull heavily from linear algebra to keep only the information about our network which is useful - and use that information to place nodes in Euclidean space. We’ll explore other methods as well. It’s worth it to know a bit of linear algebra review here, particularly on concepts like eigenvectors and eigenvalues, as well as the properties of symmetric matrices. We’ll guide you as clearly as possible through the math in future sections.</p>
 <p>Spectral embedding methods in particular, which we’ll talk about in the next section, will estimate an embedding called the latent position matrix. This is an <span class="math notranslate nohighlight">\(n \times d\)</span> matrix (where this are <span class="math notranslate nohighlight">\(n\)</span> rows, one for each node, and <span class="math notranslate nohighlight">\(d\)</span> dimensions for each row). The latent position matrix is thus organized like a traditional data table, with nodes corresponding to observations, and you could plot the rows as points in Euclidean space.</p>
 </div>
-<div class="section" id="what-the-heck-is-the-latent-position-matrix-anyway">
-<h2>What The Heck Is The Latent Position Matrix, Anyway?<a class="headerlink" href="#what-the-heck-is-the-latent-position-matrix-anyway" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="the-latent-position-matrix">
+<h2>The Latent Position Matrix<a class="headerlink" href="#the-latent-position-matrix" title="Permalink to this headline">¶</a></h2>
 <p>What actually is a latent position? How can we interpret a latent position matrix?</p>
 <p>Well, assuming you’re viewing your network as some type of random dot product graph (remember that this can include SBMs, ER networks, and more), you can think of every node as being secretly associated with a position in Euclidean space. This position (relative to the positions associated with other nodes) tells you the probability that one node will have an edge with another node.</p>
 <p>Let’s call the latent position matrix, <span class="math notranslate nohighlight">\(X\)</span>. Remember that <span class="math notranslate nohighlight">\(X\)</span> has <span class="math notranslate nohighlight">\(n\)</span> rows (the number of nodes) and <span class="math notranslate nohighlight">\(d\)</span> columns (the number of dimensions). Although in practice you almost never know what the latent position matrix <em>actually</em> is, you can <em>estimate it</em> by embedding your network.</p>
@@ -480,8 +480,8 @@
 </div>
 </div>
 <p>It’s good to emphasize here that we’re modeling our networks as <em>random dot-product graphs</em> (RDPGs). One implication is that we can think of a network as having some underlying probability distribution, and any specific network is one of many possible realizations of that distribution. It also means that each edge in our network has some <em>probability</em> of existing: nodes 0 and 3, for instance, may or may not have an edge. The concept of a latent position only works under the assumption that the network is drawn from an RDPG.</p>
-<div class="section" id="the-latent-position-matrix-tells-you-about-edge-probabilities">
-<h3>The Latent Position Matrix Tells You About Edge Probabilities<a class="headerlink" href="#the-latent-position-matrix-tells-you-about-edge-probabilities" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="edge-probability-matrix-estimation">
+<h3>Edge Probability Matrix Estimation<a class="headerlink" href="#edge-probability-matrix-estimation" title="Permalink to this headline">¶</a></h3>
 <p>We mentioned before that the relative locations of latent positions tell you about edge probabilities, but it’s good to be a bit more specific. If you take the dot product (or the weighted sum) of row <span class="math notranslate nohighlight">\(i\)</span> of the latent position matrix <span class="math notranslate nohighlight">\(X\)</span> with row <span class="math notranslate nohighlight">\(j\)</span>, you’ll get the probability that nodes <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span> have an edge between them. Incidentally, this means that the dot product between any two rows of the latent position matrix has to be bound between 0 and 1.</p>
 <div class="section" id="making-a-block-probability-matrix-from-the-latent-positions">
 <h4>Making A Block Probability Matrix From The Latent Positions<a class="headerlink" href="#making-a-block-probability-matrix-from-the-latent-positions" title="Permalink to this headline">¶</a></h4>

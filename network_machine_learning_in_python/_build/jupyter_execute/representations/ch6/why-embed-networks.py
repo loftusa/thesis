@@ -146,13 +146,13 @@ axs = draw_multiplot(A, labels=labels, title="A Network With Two Groups")
 # 
 # This is where network embedding methods come into play. Because networks represented as adjacency matrices are extremely high-dimensional, they run into many of the issues described above. Embedding, much like traditional dimensionality reduction methods in machine learning like Principle Component Analysis (PCA), allows us to move down to a more manageable number of dimensions while still preserving useful information about the network.
 
-# ## We Often Embed To Estimate Latent Positions
+# ## Latent Estimation
 
 # The embedding methods which we'll explore the most in this book are the spectral methods. These methods pull heavily from linear algebra to keep only the information about our network which is useful - and use that information to place nodes in Euclidean space. We'll explore other methods as well. It's worth it to know a bit of linear algebra review here, particularly on concepts like eigenvectors and eigenvalues, as well as the properties of symmetric matrices. We'll guide you as clearly as possible through the math in future sections.
 # 
 # Spectral embedding methods in particular, which we'll talk about in the next section, will estimate an embedding called the latent position matrix. This is an $n \times d$ matrix (where this are $n$ rows, one for each node, and $d$ dimensions for each row). The latent position matrix is thus organized like a traditional data table, with nodes corresponding to observations, and you could plot the rows as points in Euclidean space.
 
-# ## What The Heck Is The Latent Position Matrix, Anyway?
+# ## The Latent Position Matrix
 
 # What actually is a latent position? How can we interpret a latent position matrix?
 # 
@@ -203,7 +203,7 @@ plot_latents(X, labels=labels, title="A Set of Estimated Latent Positions $\hat{
 
 # It's good to emphasize here that we're modeling our networks as *random dot-product graphs* (RDPGs). One implication is that we can think of a network as having some underlying probability distribution, and any specific network is one of many possible realizations of that distribution. It also means that each edge in our network has some *probability* of existing: nodes 0 and 3, for instance, may or may not have an edge. The concept of a latent position only works under the assumption that the network is drawn from an RDPG.
 
-# ### The Latent Position Matrix Tells You About Edge Probabilities
+# ### Edge Probability Matrix Estimation
 
 # We mentioned before that the relative locations of latent positions tell you about edge probabilities, but it's good to be a bit more specific. If you take the dot product (or the weighted sum) of row $i$ of the latent position matrix $X$ with row $j$, you'll get the probability that nodes $i$ and $j$ have an edge between them. Incidentally, this means that the dot product between any two rows of the latent position matrix has to be bound between 0 and 1.
 
