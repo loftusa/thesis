@@ -1,6 +1,6 @@
-# Network Machine Learning in Python
+# Alex Loftus Master's Thesis
 
-This book provides an introduction to graph statistics, with a focus on useful representations of graphs and their applications on real data.
+This repository provides the code involved in writing my master's thesis. It is based on my contributions to our textbook, the full version of which you can see below.
 
 [Google Drive Brainstorm](https://drive.google.com/drive/folders/1mcMQWv0WfydQSdgchhla7XHj2PBPD-b9?usp=sharing)
 [Book Proposal](https://docs.google.com/document/d/1VTlNaogB-WPyex9LYVh7PvmED9S8rNqHoTXlTre_ASA/edit?usp=sharing)
