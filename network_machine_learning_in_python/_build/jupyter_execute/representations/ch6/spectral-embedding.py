@@ -95,6 +95,7 @@ plot_latents(latents, ax=ax, labels=labels)
 ax.set_title("Latent Positions (Euclidean representation)", loc="left")
 ax.set_xlabel("Plotting the rows of U as points in space")
 
+plt.figtext(2, -1, "Figure 3.1")
 fig.suptitle("The Spectral Embedding Algorithm", fontsize=32, x=1.5);
 
 
@@ -146,7 +147,10 @@ for edge in combinations([3, 4, 5], 2):
 from graphbook_code import draw_multiplot
 import networkx as nx
 
-draw_multiplot(A, pos=nx.kamada_kawai_layout, title="Our Simple Network");
+draw_multiplot(A, pos=nx.kamada_kawai_layout);
+
+plt.suptitle("A Simple Network", fontsize=24, y=1.05)
+plt.figtext(0.5, -.05, "Figure 3.2")
 
 
 # ## The Laplacian Matrix
@@ -219,7 +223,8 @@ norm = Normalize(vmin=vmin, vmax=vmax)
 im = cm.ScalarMappable(cmap=GraphColormap("sequential").color, norm=norm)
 fig.colorbar(im, ax=axs, shrink=0.8, aspect=10);
 
-fig.suptitle("The Laplacian is just a function of the adjacency matrix", fontsize=24);
+fig.suptitle("The Laplacian is Just a Function of the Adjacency Matrix", fontsize=24);
+plt.figtext(0.5, .1, "Figure 3.3");
 
 
 # ## Singular Vectors and Singular Value Decomposition
@@ -313,7 +318,8 @@ norm = Normalize(vmin=vmin, vmax=vmax)
 im = cm.ScalarMappable(cmap=GraphColormap("sequential").color, norm=norm)
 fig.colorbar(im, ax=axs, shrink=0.8, aspect=10);
 
-fig.suptitle("Decomposing our simple Laplacian into eigenvectors and eigenvalues with SVD", fontsize=24);
+fig.suptitle("Decomposing our Simple Laplacian into Eigenvectors and Eigenvalues with SVD", fontsize=24);
+plt.figtext(0.5, .1, "Figure 3.4")
 
 
 # So now we have a collection of eigenvectors organized into a matrix with $U$, and a collection of their corresponding eigenvalues organized into a matrix with $S$. Remember that with Spectral Embedding, we keep only the largest eigenvalues/vectors and "clip" columns off of $U$. 
@@ -405,7 +411,8 @@ im = cm.ScalarMappable(cmap=GraphColormap("sequential").color, norm=norm)
 fig.colorbar(im, cax=cax, use_gridspec=False);
 
 
-fig.suptitle("We can recreate our simple Laplacian by summing all the low-rank matrices", fontsize=24)
+fig.suptitle("We can Recreate our Simple Laplacian by Summing all the Low-Rank Matrices", fontsize=24)
+plt.figtext(0.5, -.05, "Figure 3.5")
 
 with warnings.catch_warnings():
     warnings.simplefilter("ignore")
@@ -434,7 +441,8 @@ for i, ax in enumerate(axs.flat):
     heatmap(current, ax=ax, cbar=False, 
             title=f"$\sum_{{i = 1}}^{i+1} \sigma_i u_i u_i^T$")
     
-fig.suptitle("Each of these is the sum of an \nincreasing number of low-rank matrices", fontsize=16)
+fig.suptitle("The Sum of an \nIncreasing Number of Low-Rank Matrices", fontsize=16)
+plt.figtext(0.5, -.05, "Figure 3.6")
 plt.tight_layout()
 
 
@@ -477,8 +485,8 @@ l2approx_hm = heatmap(low_rank_approximation, ax=axs[1], cbar=False, title="$\su
 l2_hm.set_xlabel("Full-rank Laplacian for a 50-node matrix", fontdict={'size': 15})
 l2approx_hm.set_xlabel("Sum of only two low-rank matrices", fontdict={'size': 15});
 
-fig.suptitle("Summing only two low-rank matrices approximates the normalized Laplacian pretty well!", fontsize=24)
-
+fig.suptitle("Summing only two low-rank matrices approximates the normalized Laplacian", fontsize=24)
+plt.figtext(0.5, -.05, "Figure 3.7")
 plt.tight_layout()
 
 
@@ -511,6 +519,7 @@ ax.set_xlabel("Eigenvector")
 ax.set_ylabel("Node")
 
 ax.set_title("Latent Position Matrix", fontsize=22, y=1.01)
+plt.figtext(0.5, -.05, "Figure 3.8")
 plt.tight_layout();
 
 
@@ -556,7 +565,8 @@ norm = Normalize(vmin=vmin, vmax=vmax)
 im = cm.ScalarMappable(cmap=GraphColormap("sequential").color, norm=norm)
 fig.colorbar(im, ax=axs, shrink=0.8, aspect=10);
 
-fig.suptitle("Our low-rank matrices contain the same information\n as the columns of the latent position matrix", fontsize=22, y=1.1);
+fig.suptitle("Low-Rank Matrices Contain the Same Information\n as the Columns of the Latent Position Matrix", fontsize=22, y=1.1);
+plt.figtext(0.5, -.05, "Figure 3.9")
 
 
 # In fact, you can express the sum we did earlier - our lower-rank estimation of L - with just our latent position matrix! Remember that $U_k$ is the first $k$ eigenvectors of our Laplacian, and $S_k$ is the diagonal matrix with the first $k$ eigenvalues (and that we named them $\sigma_1$ through $\sigma_k$).
@@ -613,6 +623,9 @@ ax.set_box_aspect(.5)
 ax.set_title("$U_k^T$", fontsize=12, y=1.01)
 sns.despine(bottom=False, top=False, right=False, left=False, ax=ax)
 
+fig.suptitle("Expressing the Sum With Columns of the Latent Position Matrix", fontsize=22, y=1.1);
+plt.figtext(0.5, -.05, "Figure 3.10")
+
 
 # This helps gives an intuition for why our latent position matrix gives a representation of our network. You can take columns of it, turn those columns into matrices, and sum those matrices, and then estimate the Laplacian for the network. That means the columns of our embedding network contain all of the information necessary to estimate the network!
 
@@ -662,6 +675,9 @@ def text(x, y, text):
     
 text(2, .19, "Elbow")
 
+fig.suptitle("Scree Plot", fontsize=22, y=1.1);
+plt.figtext(0.5, -.05, "Figure 3.11")
+
 
 # You'll notice that there's a marked area called the "elbow". This is an area where singular values stop changing in magnitude as much when they get smaller: before the elbow, singular values change rapidly, and after the elbow, singular values barely change at all. (It's called an elbow because the plot kind of looks like an arm, viewed from the side!)
 # 
@@ -696,7 +712,8 @@ embedding = ase.fit_transform(A)
 # In[19]:
 
 
-plot_latents(embedding, labels=labels, title="Adjacency Spectral Embedding");
+plot_latents(embedding, labels=labels, title="The Adjacency Spectral Embedding");
+plt.figtext(0.5, -.05, "Figure 3.12")
 
 
 # ### Laplacian Spectral Embedding
@@ -712,7 +729,8 @@ embedding = LSE(n_components=2).fit_transform(A)
 # In[21]:
 
 
-plot_latents(embedding, labels=labels, title="Laplacian Spectral Embedding")
+plot_latents(embedding, labels=labels, title="The Laplacian Spectral Embedding")
+plt.figtext(0.5, -.05, "Figure 3.13")
 
 
 # ## The Two-Truths Phenomenon

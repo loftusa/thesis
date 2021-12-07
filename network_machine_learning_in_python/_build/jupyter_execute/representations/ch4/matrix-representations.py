@@ -15,11 +15,12 @@
 # 
 # Let's see this in action. We'll make a network with only three nodes, since that's small and easy to understand, and then we'll show what it looks like as an adjacency matrix.
 
-# In[1]:
+# In[24]:
 
 
 import numpy as np
 import networkx as nx
+import matplotlib.pyplot as plt
 
 G = nx.DiGraph()
 G.add_node("0", pos=(1,1))
@@ -37,6 +38,9 @@ nx.draw_networkx(G, with_labels=True, node_color="tab:purple", pos=pos,
                 width=1)
 A = np.asarray(nx.to_numpy_matrix(G))
 
+plt.figtext(0.5, 0, "Figure 1.1")
+plt.suptitle("A Three-Node Network", fontsize=24, y=1.05);
+
 
 # Our network has three nodes, labeled $1$, $2$, and $3$. Each of these three nodes is either connected or not connected to each of the two other nodes. We'll make a square matrix $A$, with 3 rows and 3 columns, so that each node has its own row and column associated to it.
 # 
@@ -44,7 +48,7 @@ A = np.asarray(nx.to_numpy_matrix(G))
 # 
 # The end result looks like the matrix below. Since the second and third nodes aren't connected, there is a $0$ in locations $A_{2, 1}$ and $A_{1, 2}$. There are also zeroes along the diagonals, since nodes don't have edges with themselves.
 
-# In[23]:
+# In[25]:
 
 
 from graphbook_code import heatmap
@@ -78,6 +82,9 @@ ax2.text(.8, .2, s="Nodes 2 and 1 \naren't connected", color='black', fontsize=1
 ax2.set_title("Layout plot", fontsize=18)
 sns.despine(ax=ax2, left=True, bottom=True)
 
+plt.figtext(0.5, 0, "Figure 1.2")
+plt.suptitle("Adjacency Matrix and Layout Plot", fontsize=24, y=1.05)
+
 
 # Although the adjacency matrix is straightforward and easy to understand, it isn't the only way to represent networks.
 
@@ -87,7 +94,7 @@ sns.despine(ax=ax2, left=True, bottom=True)
 # 
 # You can see the incidence matrix for our network below. Notice that with incidence plots, edges are (generally arbitrarily) assigned indices as well as nodes.
 
-# In[39]:
+# In[26]:
 
 
 from networkx.linalg.graphmatrix import incidence_matrix
@@ -112,6 +119,8 @@ ax2.text(.24, 0.2, s="Edge 1", color='black', fontsize=11, rotation=65)
 ax2.text(.45, 0.01, s="Edge 0", color='black', fontsize=11)
 ax2.set_title("Layout plot", fontsize=18)
 sns.despine(ax=ax2, left=True, bottom=True)
+plt.figtext(0.5, 0, "Figure 1.3")
+plt.suptitle("Incidence Matrix and Layout Plot", fontsize=24, y=1.05)
 
 
 # When networks are large, incidence matrices tend to be extremely sparse -- meaning, their values are mostly 0's. This is because each column must have exactly two nonzero values along its rows: one value for the first node its edge is connected to, and another for the second. Because of this, incidence matrices are usually represented in Python computationally as scipy's *sparse matrices* rather than as numpy arrays, since this data type is much better-suited for matrices which contain mostly zeroes.
@@ -122,7 +131,7 @@ sns.despine(ax=ax2, left=True, bottom=True)
 
 # The oriented incidence matrix is extremely similar to the normal incidence matrix, except that you assign a direction or orientation to each edge: you define one of its nodes as being the head node, and the other as being the tail. For undirected networks, you can assign directionality arbitrarily. Then, for the column in the incidence matrix corresponding to a given edge, the tail node has a value of $-1$, and the head node has a value of $0$. Nodes who aren't a member of a particular edge are still assigned values of $0$.
 
-# In[66]:
+# In[27]:
 
 
 from networkx.linalg.graphmatrix import incidence_matrix
@@ -151,13 +160,15 @@ ax2.set_title("Layout plot", fontsize=18)
 sns.despine(ax=ax2, left=True, bottom=True)
 ax2.text(-.1, -.05, s="Tail Node", color='black', fontsize=11)
 ax2.text(.9, -.05, s="Head Node", color='black', fontsize=11)
+plt.figtext(0.5, 0, "Figure 1.4")
+plt.suptitle("Oriented Incidence Matrix and Layout Plot", fontsize=24, y=1.05)
 
 
 # Although we won't use incidence matrices, oriented or otherwise, in this book too much, we introduced them because there's a deep connection between incidence matrices, adjacency matrices, and a matrix representation that we haven't introduced yet called the Laplacian. Before we can explore that connection, we'll discuss one more representation: the degree matrix.
 
 # ## The Degree Matrix
 
-# The degree matrix isn't a full representation of our network, because you wouldn't be able to reconstruct an entire network from a degree matrix. 
+# The degree matrix isn't a full representation of our network, because you wouldn't be able to reconstruct an entire network from a degree matrix. However, the degree matrix 
 
 # ## The Laplacian Matrix
 

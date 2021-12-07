@@ -99,9 +99,12 @@ for i in range(time_points):
     if i == 5:
         ax.set_title("Two Perturbed Time Points", loc="left", fontsize=16)
     rm_ticks(ax, top=False, right=False)
+    
+plt.figtext(1, -.3, "Figure 8.1")
+fig.suptitle("Network Timeseries Data", fontsize=24, x=1);
 
 
-# ## How Do We Figure Out Which Time Points Are Anomalies?
+# ## Approaches for Anomaly Detection
 
 # It's time to start thinking about how we'd approach figuring out which of the time points are anomalies. 
 # 
@@ -176,7 +179,7 @@ glue("y", var, display=False)
 # 
 # Well, what if we could use our estimated latent positions $\hat{X}$ at time $t$ to generate a bunch of networks, then make test statistics from those new networks? We'd know for a fact that any pair of those networks are drawn from the same set of latent positions, and we could get a sense for what our test statistic should look like if the latent positions actually were the same. This technique is called *bootstrapping*, since you're using estimated parameters to "pull yourself up by your own bootstraps" and generate a bunch of artificial data. Bootstrapping pops up all over the place in machine learning and statistics contexts.
 
-# ### Using Bootstrapping to Figure out the Distribution of the Test Statistic
+# ### Bootstrapped Distribution Estimation
 
 # We don't have the true latent positions for a given time point, but we do have the estimated latent positions (we just used OMNI embedding to find them!)
 # 
@@ -219,10 +222,12 @@ plot.vlines(y, 0, 160, colors='r')
 plot.annotate("y = difference in norm \nbetween $\hat{X}$ and $\hat{Y}$", (y+.005, 145), c='r');
 plot.text(.50, 20, "Bootstrapped Distribution", color="blue", rotation=60)
 
+plt.figtext(.5, 0, "Figure 8.2")
+
 
 # Fortunately, {glue:}`y` is well within a reasonable range under the assumption that the time-points share latent positions. However, we can't always eyeball stuff, and we need a way to formalize what it means for a test statistic to be "within a reasonable range". Our test statistic is  $y = ||X^{(t)} - X^{(t-1)}||$, we're trying to figure out if $X^{(t)} = X^{(t-1)}$, and we have a bunch of bootstrapped test statistics that we know were drawn from the same distribution (and are thus examples of the case where the null hypothesis is true).
 
-# ## Using our test statistic to find p-values
+# ## P-Value Estimation
 
 # Since we have a range of examples of $y$ values in which the null hypothesis is true, we have an estimate for the distribution of the null hypothesis. So, to find the probability that any new value drawn from this bootstrapped distribution is greater than a particular value $c$, we can just find the proportion of our bootstrapped values that are greater than $c$.
 # 
@@ -244,7 +249,7 @@ print(p)
 
 # Our $p$ value is much larger than 0.05, so we don't reject the null hypothesis, and we can conclude that we haven't found an anomaly time. Since this is all synthetic data, we know how the data generation process worked, so we actually know for a fact that this is the right result -- the adjacency matrix at time $t$ actually *was* drawn from the same distribution as the adjacency matrix at time $t-1$.
 
-# ## Testing the Rest of the Time Points For Anomalies
+# ## Testing the Remaining Time Points
 
 # Now that we've gone through this for one time point, we can do it for the rest. The process is exactly the same, except that you're comparing different pairs of timepoints and you're generating the bootstrapped test statistics with different estimated latent positions.
 # 
@@ -274,6 +279,8 @@ plot.axes.yaxis.set_ticklabels([]);
 plot.axes.xaxis.set_ticklabels(list(ys_true.keys()));
 plot.set_xlabel("Timeseries Pairs");
 
+plt.figtext(.5, -.7, "Figure 8.3")
+
 
 # If we were to plot a distribution of bootstrapped test statistics with each of our estimated y-values, it would look like the histogram below. Notice that two test statistics are clearly anomalous: the one comparing times five and six, and the one comparing times seven and eight. We know by design that networks six and seven actually are anomolous, and so we can see that our test managed to correctly determine the anomaly times.
 
@@ -299,6 +306,7 @@ plot.annotate("Anomalous \nTimeseries", xy=(x_max, 140), xytext=(x_max-.12, 140)
               arrowprops={"arrowstyle": "->", "color":"k"});
 
 plot.text(.49, 20, "Bootstrapped Distribution", color="blue", rotation=70);
+plt.figtext(.5, 0, "Figure 8.4")
 
 
 # ## The Distribution of the Bootstrapped Test Statistic
@@ -354,6 +362,8 @@ sns.histplot(ys_true, label="true distribution of y", color="blue")
 sns.histplot(ys_bootstrap, label="distribution of bootstrapped y values", color="red")
 
 plt.gca().legend()
+
+plt.figtext(.5, 0, "Figure 8.5")
 
 
 # ## 

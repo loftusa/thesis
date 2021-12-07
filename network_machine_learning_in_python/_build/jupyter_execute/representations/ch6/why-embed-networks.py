@@ -67,7 +67,8 @@ lim = (-max_, max_)
 plot.set(xlim=lim, ylim=lim)
 
 # title, etc
-plt.suptitle("Euclidean data represented as a data matrix and represented in Euclidean space", fontsize=16)
+plt.figtext(0.5, 0, "Figure 2.1")
+plt.suptitle("Euclidean data represented as a data matrix and represented in Euclidean space", fontsize=24)
 plt.tight_layout()
 
 
@@ -101,7 +102,8 @@ plot.xaxis.set_major_locator(plt.MaxNLocator(3))
 plot.yaxis.set_major_locator(plt.MaxNLocator(3))
 
 # title
-plot.set_title("Clustered data after K-Means", fontsize=16);
+plt.suptitle("Clustered data after K-Means", fontsize=24)
+plt.figtext(0.5, 0, "Figure 2.2")
 
 
 # Network-valued data are different. Take the Stochastic Block Model below, shown as both a layout plot and an adjacency matrix. Say your goal is to view the nodes as particular observations, and you'd like to cluster the data in the same way you clustered the Euclidean data above. Intuitively, you'd expect to find two groups: one for the first set of heavily connected nodes, and one for the second set. Unfortunately, traditional machine learning algorithms won't work on data represented as a network: it doesn't live in the traditional rows-as-observations, columns-as-features format.
@@ -125,7 +127,10 @@ get_ipython().run_line_magic('aimport', 'graphbook_code')
 get_ipython().run_line_magic('autoreload', '2')
 
 from graphbook_code import draw_multiplot
-axs = draw_multiplot(A, labels=labels, title="A Network With Two Groups")
+axs = draw_multiplot(A, labels=labels)
+
+plt.suptitle("A Network With Two Groups", fontsize=24, y=1.05)
+plt.figtext(0.5, -.05, "Figure 2.3")
 
 
 # You, of course, *can* make up methods which work directly on networks - algorithms which run by traversing along edges, for instance, or which use network statistics like node degree to learn, and so on - and data scientists have developed many algorithms like this. But to be able to use the entire toolbox that machine learning offers, you'd like to be able to figure out a way to *represent* networks in Euclidean space as tabular data. This is why having good embedding methods, like Spectral Embedding (which we'll learn about soon), is useful. There's another problem with networks that make embedding into lower-dimensional space useful.
@@ -200,6 +205,9 @@ ax_eucl = fig.add_axes([1.2, 0, 2, 1])
 plot_latents(X, labels=labels, title="A Set of Estimated Latent Positions $\hat{X}$ (Euclidean Representation)", 
              fontdict={"fontsize": 20}, s=200);
 
+plt.suptitle("Latent Position Estimation", fontsize=24, y=1.15, x=1)
+plt.figtext(1, -.05, "Figure 2.4", fontsize=18)
+
 
 # It's good to emphasize here that we're modeling our networks as *random dot-product graphs* (RDPGs). One implication is that we can think of a network as having some underlying probability distribution, and any specific network is one of many possible realizations of that distribution. It also means that each edge in our network has some *probability* of existing: nodes 0 and 3, for instance, may or may not have an edge. The concept of a latent position only works under the assumption that the network is drawn from an RDPG.
 
@@ -241,6 +249,9 @@ text(".8", .25, .75)
 text(".8", .75, .25)
 text(".1", .25, .25)
 text(".1", .75, .75);
+
+plt.suptitle("Estimated and True Block Probability Matrices", fontsize=24, y=1.1)
+plt.figtext(0.5, 0, "Figure 2.5")
 
 
 # ### Thinking About Latent Positions Geometrically
@@ -333,6 +344,9 @@ ax.text(0.22, 0.07, txt)
 ax.add_patch(text_arrow)
 
 ax.set_title("Latent Positions In The Same Community \nHave A Higher Dot Product", y=1.05, fontsize=22);
+
+plt.suptitle("Geometry of Latent Positions", fontsize=24, y=1.05)
+plt.figtext(0.5, -.05, "Figure 2.6")
 
 
 # If you have an *estimate* for the latent positions, there's math that shows that you get a pretty good estimate for the block probability matrix as well. In practice, that's what you're actually doing: getting an estimate of the latent positions with spectral embedding, then using those to do more downstream tasks or estimating block probability matrices.

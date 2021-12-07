@@ -72,6 +72,7 @@ def plot_heatmap(A, ax, title="A Stochastic Block Model With 3 Communities", sho
             
         
 plot_heatmap(A, ax)
+plt.figtext(0.5, -.05, "Figure 5.1")
 
 
 # If we wanted to embed this graph using our Laplacian or Adjacency Spectral Embedding methods, we'd find the first and second communities layered on top of each other (though we wouldn't be able to figure that out from our embedding if we didn't cheat by knowing in advance which community each node is supposed to belong to). The python code below embeds our latent positions all the way down to two dimensions. Below it, you can see a plot of the latent positions, with each node color-coded by its true community.
@@ -92,8 +93,9 @@ L_latents = LSE(n_components=2).fit_transform(L)
 import seaborn as sns
 from graphbook_code import plot_latents
 
-plot = plot_latents(L_latents, title="Latent positions when we\n only embed the Laplacian", 
+plot = plot_latents(L_latents, title="Laplacian-Embedded Latent Positions", 
                     labels=labels)
+plt.figtext(0.5, -.05, "Figure 5.2")
 
 
 # As you can see, we'd have a tough time clustering this - the first and second community are completely indistinguishable. It would be nice if we could use extra information to more clearly distinguish between them. We don't have this information in our adjacency matrix: it needs to come from somewhere else.
@@ -136,9 +138,11 @@ from graphbook_code import GraphColormap
 cmap = GraphColormap("sequential", discrete=False).palette
 fig, ax = plt.subplots(figsize=(5, 8))
 ax = sns.heatmap(Y, ax=ax, cmap=cmap, yticklabels=500)
-ax.set(title="Visualization of the covariates", xticks=[], 
+ax.set(title="Covariate Visualization", xticks=[], 
        ylabel="Nodes (each row is a node)",
        xlabel="Covariates for each node (each column is a covariate)");
+
+plt.figtext(0.5, 0.05, "Figure 5.3")
 
 
 # We can play almost the same game here as we did with the Laplacian. If we embed the information contained in this matrix of covariates into lower dimensions, we can see the reverse situation as before - the first community is separate, but the last two are overlayed on top of each other.
@@ -203,6 +207,9 @@ fig, axs = plt.subplots(nrows=1, ncols=2, figsize=(10,5), constrained_layout=Tru
 L_ax = plot_heatmap(L, title=r"Regularized Laplacian", ax=axs[0], show_cbar=False)
 X_ax = heatmap(YYt, title=r"Covariate matrix times its transpose ($YY^\top$)", ax=axs[1]);
 
+plt.suptitle("Laplacian and Covariates", fontsize=24)
+plt.figtext(0.5, 0, "Figure 5.4")
+
 
 # The way we'll combine the two matrices will simply be a weighted sum of these two matrices - this is what CASE is doing under the hood. The weight (here called $\alpha$) is multiplied by $YY^\top$ - that way, both matrices contribute an equal amount of useful information to the embedding. 
 # 
@@ -210,7 +217,7 @@ X_ax = heatmap(YYt, title=r"Covariate matrix times its transpose ($YY^\top$)", a
 # L + \alpha YY^\top
 # $$
 
-# ### Exploring Possible Weights
+# ### Weight Exploration
 
 # An obvious question here is how to weight the covariates. If we simply summed the two matrices by themselves, we'd unfortunately be in a situation where whichever matrix contained larger numbers would dominate over the other. In our current setup, without a weight on $YY^\top$, the covariates of our network would dominate over its topology.
 
@@ -221,6 +228,9 @@ fig, axs = plt.subplots(1, 2, figsize=(10, 5))
 heatmap(L + Y@Y.T, title="Summing the two matrices \nwithout a weight", ax=axs[0], context='notebook');
 plot_latents(embed(L + Y@Y.T, dimension=2), title="Embedding the summed \nmatrix without a weight", 
              ax=axs[1], labels=labels);
+
+plt.suptitle("Summing Without Weights", fontsize=24, y=1.1)
+plt.figtext(0.5, 0, "Figure 5.5")
 
 
 # What do different potential weights look like? Let's do a comparison. Below you can see the embeddings for 9 possible weights on $YY^\top$, ranging between $10^{-5}$ and 100.
@@ -235,12 +245,13 @@ for a, ax in zip(np.geomspace(10e-5, 100, num=9), axs.flat):
     ax.get_legend().remove()
 
 fig.suptitle(r"Comparison of embeddings for different weights on $YY^\top$", y=1, fontsize=25);
+plt.figtext(0.5, 0, "Figure 5.6")
 plt.tight_layout()
 
 
 # It looks like we'd probably want a weight somewhere between 0.01 and 0.5  - then, we'll have three communities which are fairly distinct from each other, implying that we're pulling good information from both our network's topology and its covariates. We could just pick our weight manually, but it would be nice to have some kind of algorithm or equation which lets us pick a reasonable weight automatically.
 
-# ### Finding a Reasonable Weight Automatically
+# ### Weight Estimation
 
 # In general, we'd like to embed in a way that lets us distinguish between communities. This means that if we knew which community each node belonged to, we'd like to be able to correctly retrieve the correct commmunities for each node as possible with a clustering algorithm after embedding. This also implies that the communities will be as distinct as possible.
 # 
@@ -285,6 +296,9 @@ plot_latents(latents_,
 
 plt.tight_layout()
 
+plt.suptitle("Embedding With Weights", fontsize=24, y=1.1)
+plt.figtext(0.5, 0, "Figure 5.7")
+
 
 # Success! We've managed to achieve separation between all three communities. Below we can see (from left to right) a comparison of our network's latent position when we only use its topological information, when we only use the information contained in its covariates, and finally our embedding using the weight we found.
 
@@ -305,6 +319,9 @@ plot_latents(latents_, title="Latent positions when we combine\n our network and
 
 plt.tight_layout()
 
+plt.suptitle("The Benefit Of Using Two Types of Information", fontsize=24, y=1.1)
+plt.figtext(0.5, 0, "Figure 5.8")
+
 
 # ## Using Graspologic
 
@@ -322,6 +339,7 @@ from graspologic.embed import CovariateAssistedEmbed as CASE
 casc = CASE(assortative=True, n_components=2)
 latents = casc.fit_transform(A, covariates=Y)
 plot_latents(latents, title="Embedding our model using graspologic", labels=labels);
+plt.figtext(0.5, 0, "Figure 5.9")
 
 
 # ## Omnibus Joint Embedding
@@ -367,6 +385,9 @@ network_plot = plot_latents(joint_embedding[0], ax=axs[0], legend=None,
 covariates_plot = plot_latents(joint_embedding[1], ax=axs[1], 
                                labels=labels, title="Omni embedding for covariates")
 sns.move_legend(covariates_plot, loc="center right", bbox_to_anchor=(1.4, .5))
+
+plt.suptitle("Omni Embedding for Topology and Covariates", fontsize=24, y=1.1)
+plt.figtext(0.5, 0, "Figure 5.10")
 
 
 # There's a few things going on here. First, we had to normalize the covariates by dividing $YY^\top$ by its maximum. This is because if we didn't, the covariates and the adjacency matrix would contribute vastly different amounts of information to the omnibus matrix. You can see that by looking at the average value of $YY^\top$ compared to the average value of $A$:
@@ -416,9 +437,10 @@ joint_embedding = mase.fit_transform([A, YYt])
 
 # network
 plot = plot_latents(joint_embedding, labels=labels,
-                            title="MASE embedding")
+                            title="MASE Joint embedding")
 
 sns.move_legend(plot, loc="center right", bbox_to_anchor=(1.3, .5))
+plt.figtext(0.5, 0, "Figure 5.11")
 
 
 # As you can see, MASE lets us get fairly clear separation between communities. The covariates are still normalized, as with OMNI, so that they can contribute the same amount to the embedding as the adjacency matrix.

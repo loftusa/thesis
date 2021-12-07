@@ -13,7 +13,7 @@
 # 
 # Let's make a network from an SBM, and an additional node that should belong to the first community. Then, we'll embed the network and explore how to find the latent position for the additional node. 
 
-# ## A Network and an Out-of-Sample Node
+# ## Data Generation
 
 # In[1]:
 
@@ -65,6 +65,7 @@ plot.yaxis.set_label_position("right")
 
 # title
 fig.suptitle("Adjacency matrix (left) and vector for additional \nnode (right)", y=1.1, fontsize=16, x=.19, ha="left");
+plt.figtext(0.5, -.1, "Figure 7.1")
 
 
 # After embedding with ASE, we have an embedding for the original network. The rows of this embedding contain the latent position for each original node. We'll call the embedding $X$.
@@ -84,9 +85,10 @@ X = ase.transform(A)
 
 from graphbook_code import plot_latents
 plot_latents(X, title="Latent positions for our original network (X)");
+plt.figtext(0.5, 0, "Figure 7.2")
 
 
-# ## The Latent Position Matrix Can be used to Estimate Probability Vectors
+# ## Probability Vector Estimation
 
 # Everything up until now has just been pretty standard stuff. We still haven't done anything with our new node - all we have is a big vector that tells us which other nodes it's connected to, and our standard matrix of latent positions. However, it's time for a bit more exploration into the nature of the latent position matrix $X$, and what happens when you view it as a linear transformation. This will get us closer to understanding the out-of-sample embedding.
 # 
@@ -114,8 +116,10 @@ ax.set_ylabel("Node index")
 
 plt.title("Estimated probability\n vector" + r" for first node $X v_1$");
 
+plt.figtext(0.5, 0.1, "Figure 7.3")
 
-# ## Going in the Other Direction
+
+# ## Inversion of Probability Vector Estimation
 
 # Remember that our goal is to take the adjacency vector for a new node and use it to estimate that node's latent position without re-embedding the whole network. So far, we've essentially figured out how to use the node's latent position to get an estimated probability vector.
 # 
@@ -131,7 +135,7 @@ plt.title("Estimated probability\n vector" + r" for first node $X v_1$");
 # 
 # We'll take a brief break in the coming section to talk about the pseudoinverse for a bit, then we'll come back and use it to estimate the out-of-sample latent position.
 
-# ## The Pseudoinverse Gives Us our Best Guess For Inverting a Matrix
+# ## The Moore-Penrose Pseudoinverse
 
 # The Moore-Penrose Pseudoinverse is useful to know in general, since it pops up a lot in a lot of different places. Say you have a matrix which isn't invertible. Call it $T$.
 # 
@@ -198,6 +202,9 @@ ax.text(x=-2.2, y=-.6, s="$T v_2$ (-2, 0)", fontdict=dict(c="red"));
 ax.text(x=2.3, y=1, s="input vectors", fontdict=dict(c="black"))
 ax.text(x=-2.2, y=-1.2, s="output vectors", fontdict=dict(c="black"));
 
+plt.suptitle("A Noninvertible Linear Transformation", fontsize=18, y=1.1)
+plt.figtext(0.5, 0, "Figure 7.4")
+
 
 # Our goal is to reverse $T$ and bring $Tv_1$ and $Tv_2$ back to $v_1$ and $v_2$. Unfortunately, since both $v_1$ and $v_2$ get squished onto zero in the y-axis position after getting passed through $T$, we've lost all information about what was happening on the y-axis -- that's a lost cause. So it's impossible to get perfectly back to $v_1$ or $v_2$.
 # 
@@ -239,8 +246,11 @@ ax.text(x=2.2, y=1.9, s="$v_2$ (2, 2)", fontdict=dict(c="red"))
 ax.text(x=.2, y=-.4, s="$T^+ (X v_1$)", fontdict=dict(c="green"))
 ax.text(x=1.8, y=-.4, s="$T^+ (X v_2$)", fontdict=dict(c="red"));
 
+plt.suptitle("The Best Approximation the Pseudoinverse Can Do", fontsize=18, y=1.1)
+plt.figtext(0.5, 0, "Figure 7.5")
 
-# ## Using the Pseudoinverse to Estimate out-of-sample Latent Positions
+
+# ## Using the Pseudoinverse for Out-of-Sample Estimation
 
 # Let's get back to estimating our out-of-sample latent position.
 # 
@@ -305,6 +315,9 @@ plot.annotate(r"Estimated latent position for" + "\n" + " the first adjacency ve
 sns.move_legend(ax, "center right")
 fig.subplots_adjust(wspace=.5)
 
+plt.suptitle("Estimating the Out-of-Sample Latent Position", fontsize=18, y=1.1)
+plt.figtext(0.5, 0, "Figure 7.6")
+
 
 # ## Using Graspologic
 
@@ -347,7 +360,15 @@ fig, ax = plt.subplots(figsize=(7,7))
 plot = plot_latents(X, ax=ax, labels=labels, title="Latent positions with out-of-sample estimate")
 plot.scatter(x=v_1[0], y=v_1[1], marker='*', s=300, edgecolor="black")
 plot.annotate(r"Estimated latent position for" + "\n" + " the first adjacency vector: $X^+ a_0$", xy=(v_1[0]+.002, v_1[1]+.008), 
-            xytext=(v_1[0]-.1, v_1[1]-.3), arrowprops={"arrowstyle": "->", "color": "k"})
+            xytext=(v_1[0]-.1, v_1[1]+.3), arrowprops={"arrowstyle": "->", "color": "k"})
 sns.move_legend(ax, "center right")
 fig.subplots_adjust(wspace=.5)
+
+plt.figtext(0.5, 0, "Figure 7.7")
+
+
+# In[ ]:
+
+
+
 

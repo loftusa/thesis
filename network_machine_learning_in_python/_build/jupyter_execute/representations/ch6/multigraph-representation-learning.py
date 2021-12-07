@@ -3,7 +3,7 @@
 
 # # Multiple-Network Representation Learning
 
-# ## Aliens and Humans
+# ## Data Generation
 
 # Say you're a brain researcher, and you have a bunch of scans of brains - some are scans of people, and some are scans of aliens. You have some code that estimates networks from your scans, so you turn all your scans into networks. The nodes represent the brain regions which are common to both humans and aliens (isn't evolution amazing?), and the edges represent communication between these brain regions. You want to know if the human and alien networks share a common grouping of regions (your research topic is titled, "Do Alien Brains Have The Same Hemispheres That We Do?"). What do you do? How do you even deal with situations in which you have a lot of networks whose nodes all represent the same objects, but whose edges might come from totally different distributions?
 # 
@@ -80,8 +80,11 @@ add_legend(grid2.axes_all[2])
 
 plt.tight_layout(w_pad=3)
 
+plt.figtext(0.5, -.1, "Figure 4.1")
+plt.suptitle("Different Sets of Brain Networks", fontsize=24, y=1.1)
 
-# ## Different ways to Embed the Networks
+
+# ## Simple Embedding Methods on Multiple Networks
 
 # Remember, our goal is to find community structure common to both humans and aliens, and in our case that community structure is the brain hemispheres. We're going to try to to embed our brain networks into some lower-dimensional space - that way, we can use standard clustering methods from machine learning to figure out which regions are grouped. Try to think about how you might find a lower-dimensional embedding where the location of each node's latent positions uses information from all of the networks.
 
@@ -118,6 +121,9 @@ fig, axs = plt.subplots(ncols=2, figsize=(10, 5))
 plot_latents(human_latents, title="Embedding when we average the human \nnetworks", ax=axs[0]);
 plot_latents(alien_latents, title="Embedding when we average the alien \nnetworks", ax=axs[1]);
 
+plt.figtext(0.5, 0, "Figure 4.2")
+plt.suptitle("Averaged Embedded Networks", fontsize=24, y=1.05)
+
 
 # Both of these embeddings have clear clustering: there are two communities of nodes in both the human and the alien networks. We can recover the labels for these communities fairly easily using our pick of unsupervised clustering method. We know that the latent positions in each community of an Adjacency Spectral Embedding are normally distributed under this simulation setting, and we have two communities. That means that the above embeddings are distributed according to a Gaussian Mixture. Here, "Gaussian" just means "normal", and a gaussian mixture just means that we have groups of normally distributed data clusters. As a result, it makes sense to cluster these data using scikit-learn's GaussianMixture implementation.
 
@@ -146,6 +152,9 @@ plot_latents(alien_latents, title="Clustering our averaged alien network \nembed
 plt.legend(loc=(1.15, .4), fontsize="x-large", title="Community",
            title_fontsize=16);
 
+plt.figtext(0.5, 0, "Figure 4.3")
+plt.suptitle("Clustering with GMM", fontsize=24, y=1.05)
+
 
 # ### Averaging Together
 
@@ -162,6 +171,7 @@ all_latents = ase.fit_transform(total_mean_matrix)
 
 
 plot_latents(all_latents, title="Embedding when we average everything together");
+plt.figtext(0.5, 0, "Figure 4.4")
 
 
 # Nope, bummer. Our community separation into discrete hemispheres is gone - the human networks and the alien networks cancelled each other out. As far as anybody can tell, our latent positions have just become meaningless noise, so we can't cluster and find communities like we did before.
@@ -179,6 +189,9 @@ hma = lined_heatmap(aliens[0], ax=axs[1], legend=False, title="One Alien Brain N
 
 add_legend(humans[0])
 plt.tight_layout()
+
+plt.suptitle("Network Comparison", fontsize=24, y=1.1)
+plt.figtext(0.5, 0, "Figure 4.5")
 
 
 # The human network has more edges in the upper-left and lower-left quadrants of the heatmap. This implies that two regions in the same hemisphere are more likely to be connected for humans than two regions in opposite hemispheres.
@@ -210,6 +223,8 @@ hm.hlines(n, 0, n*2, colors="black", lw=.9, linestyle="dashed", alpha=.8)
 # # colorbar
 add_legend(hm, legend_labels=["Edge in no networks", "Edge in one network", "Edge in both networks"],
            colors=["white", "grey", "black"], bbox_to_anchor=(1.3, .5))
+
+plt.figtext(0.5, 0, "Figure 4.7")
 
 
 # By averaging, we've lost all of the community structure used to exist. That's why our big averaged embedding failed. 
@@ -291,7 +306,8 @@ mase_ax = fig.add_axes([3.05, -.02*3, .55, .8])
 plot_latents(human_latents, ax=mase_ax, title="Classification", 
              fontdict={'fontsize': 16}, labels=human_labels, legend=False);
 
-# plt.suptitle("Combining the Networks", x=2, y=1.1, fontsize=26);
+plt.suptitle("Combined Network Group Embedding", x=2, y=1.1, fontsize=26);
+plt.figtext(1.7, -.2, "Figure 4.7")
 
 
 # ### Combining The Networks Separately
@@ -352,6 +368,9 @@ for i, embedding in enumerate(latents_omni):
     plot = sns.scatterplot(embedding[:, 0], embedding[:, 1], 
                        s=10, ax=ax, color="black")
     rm_ticks(ax, top=False, right=False)
+    
+plt.suptitle("Separate Network Group Embedding", x=2, y=1.1, fontsize=26);
+plt.figtext(1.7, -.2, "Figure 4.8")
 
 
 # ### Combining the embeddings
@@ -411,7 +430,8 @@ mase_ax = fig.add_axes([2.27, -.03, .35, .5])
 plot_latents(latents_mase, ax=mase_ax, title="Classification", 
              labels=labels_normal, legend=False)
 
-plt.suptitle("Combining the Embeddings", x=1.4, y=.7, fontsize=20);
+plt.suptitle("Combined Embedding", x=1.4, y=.7, fontsize=20);
+plt.figtext(1.7, -.2, "Figure 4.9")
 
 
 # For the rest of this section, we'll explore the strengths and weaknesses of different particular techniques which use these approaches. The first we'll look at is combines the embeddings, like above. It's called Multiple Adjacency Spectral Embedding, or MASE for short.
@@ -438,13 +458,15 @@ latents_mase = mase.fit_transform(humans + aliens)
 
 
 plot_latents(latents_mase, 
-             title="Embedding when we use MASE on the group \nof all human and alien networks", 
+             title="MASE Embedding On Network Groups", 
              labels=labels);
+
+plt.figtext(0.5, 0, "Figure 4.10");
 
 
 # Unlike the disastrous results from simply averaging all of our networks together, MASE manages to keep the community structure that we found when we averaged our networks separately. Let's see what's under the hood.
 
-# ### How Does MASE Work?
+# ### Overview of MASE
 
 # Below, you can see how MASE works. We start with networks, drawn as nodes in space connected to each other. We turn them into adjacency matrices, and then we embed the adjacency matrices of a bunch of networks separately, using our standard Adjacency Spectral Embedding. Then, we take all of those embeddings, concatenate horizontally into a single matrix, and embed the entire concatenated matrix. The colors are the true communities each node belongs to: there's a red and an orange community. MASE is an unsupervised learning technique and so it doesn't need any information about the true communities to embed, but they're useful to see.
 
@@ -498,6 +520,7 @@ fig.subplots_adjust(hspace=.05, wspace=.05)
 add_legend(A1, bbox_to_anchor=(1.2, .5))
 
 plt.tight_layout()
+plt.figtext(0.5, 0, "Figure 4.11")
 
 
 # #### Embedding our networks
@@ -528,7 +551,7 @@ for i, ax in enumerate(axs.flat):
     plot_latents(latents_mase[i], title=f"Embedding for network {i+1}", 
                  labels=labels, ax=ax, legend=False)
     ax.yaxis.set_major_locator(plt.MaxNLocator(3))
-plt.suptitle("Adjacency Spectral Embedding for our four networks", fontsize=20);
+plt.suptitle("ASE on Four Networks", fontsize=20);
 
 h, l = ax.get_legend_handles_labels()
 fig.legend(h, l, loc='center right', bbox_to_anchor=(1.25, .5), 
@@ -538,6 +561,7 @@ fig.supxlabel("Dimension 1")
 fig.supylabel("Dimension 2");
 
 plt.tight_layout()
+plt.figtext(0.5, -.05, "Figure 4.13")
 
 
 # It's important to keep in mind that these embeddings don't live in the same *latent space*. What this means is that averaging these networks together would result in essentially meaningless noise. This is because of the rotational invariance of latent positions: you can only recover the latent positions of any network up to a rotation. 
@@ -572,6 +596,8 @@ norm = Normalize(vmin=vmin, vmax=vmax)
 im = cm.ScalarMappable(cmap=cmap, norm=norm)
 fig.colorbar(im, ax=axs);
 
+plt.figtext(0.4, -.05, "Figure 4.13")
+
 
 # Because the rows of these matrices are all aligned - meaning, row 0 corresponds to node 0 for all four matrices - we can actually think of each node as having (in this case) eight latent position dimensions: two for each of our four networks. Eight is a somewhat arbitrary number here: each network contributes two dimensions simply because we originally chose to embed all of our networks down to two dimensions with ASE, and the number of networks is of course even more arbitrary. You'll usually have more than four.
 # 
@@ -592,6 +618,8 @@ hm = sns.heatmap(concatenated, cmap=cmap, ax=ax, yticklabels=50);
 hm.set_title(f"Combined embedding for all four networks", fontdict={'fontsize': 20});
 hm.set_xlabel("Dimension", fontsize=16)
 hm.set_ylabel("Latent Position", fontsize=16);
+
+plt.figtext(0.5, 0, "Figure 4.14")
 
 
 # #### Embedding our Combination To Create a Joint Embedding
@@ -639,6 +667,8 @@ splot.legend(title='Community', handles=h, labels=["a", "b"])
 plt.suptitle("Two Visualizations For Our Joint Embedding", fontsize=20)
 plt.tight_layout()
 
+plt.figtext(0.5, 0, "Figure 4.15");
+
 
 # Looks like this idea worked well - Our nodes are clearly grouped into two distinct communities, and all of our networks were drawn from the same distribution! To reiterate, what we did was:
 # 1. Embed each of our four networks separately into two-dimensional space
@@ -663,6 +693,7 @@ latents = mase.fit_transform(networks)
 
 
 plot_latents(latents, title="MASE embedding", labels=labels);
+plt.figtext(0.5, 0, "Figure 4.16")
 
 
 # ### Score Matrices*
@@ -758,6 +789,8 @@ lined_heatmap(scores[0], binary=False, cbar=False, title="Score matrix for the f
 lined_heatmap(P_0, binary=False, cbar=False, title="Estimated edge probabilities \nfor the first network", ax=axs[2])
 
 plt.tight_layout()
+fig.suptitle("Score Matrices and Edge Probabilities", fontsize=32, y=1.2);
+plt.figtext(0.5, -.05, "Figure 4.17")
 
 
 # So we've learned that MASE is useful when you want a joint embedding that combines all of your networks together, and when you want to estimate edge probabilities for one of your networks. What if we wanted to keep our separate embeddings, but put them all in the same space? That's what the Omnibus Embedding gives, and what we'll explore now.
@@ -803,7 +836,7 @@ for i, ax in enumerate(axs.flat):
     _x, _y = np.array(latents_mase)[i, 0]
     ax.plot(_x, _y, 'ro', markersize=10)
     ax.yaxis.set_major_locator(plt.MaxNLocator(3))
-plt.suptitle("Adjacency Spectral Embedding for our four networks", fontsize=20);
+plt.suptitle("ASE for four networks", fontsize=20);
 
 h, l = ax.get_legend_handles_labels()
 fig.legend(h, l, loc='center right', bbox_to_anchor=(1.25, .5), 
@@ -813,6 +846,7 @@ fig.supxlabel("Dimension 1")
 fig.supylabel("Dimension 2");
 
 plt.tight_layout()
+plt.figtext(0.5, -.05, "Figure 4.18")
 
 
 # ### OMNI on our four heterogeneous networks
@@ -847,11 +881,12 @@ fig.supxlabel("Dimension 1")
 fig.supylabel("Dimension 2");
 
 plt.tight_layout()
+plt.figtext(0.5, -.05, "Figure 4.19")
 
 
 # Unlike when we embedded the four networks separately, the clusters created by the Omnibus Embedding *live in the same space*: you don't have to rotate or flip your points to line them up across embeddings. The cluster of blue points is always in the top left, and the cluster of red points is always in the bottom right. This means that we can compare points directly; the relative location of the node in your network corresponding to the red circle, for instance, now means something across the four networks, and we can do stuff like measure the distance of the red circle in network 1 to the red circle in network two to gain information.
 
-# ### How Does OMNI work?
+# ### Overview of OMNI
 
 # At a high level, the omnibus embedding is fairly simple. It:
 # 1. Combines the adjacency matrices for all of our networks into a single, giant matrix (the Omnibus Matrix)
@@ -928,6 +963,8 @@ omni_labels = np.unique(omni)
 add_legend(legend_labels=omni_labels, colors=omni_cmap)
 
 plt.tight_layout()
+fig.suptitle("The Omnibus Matrix for Two Networks", fontsize=24, y=1.1);
+plt.figtext(0.5, -.05, "Figure 4.20")
 
 
 # #### Creating the Omnibus Matrix For All Four Networks
@@ -961,6 +998,8 @@ hm.vlines(n*.75, n//2, n, colors="black", lw=.9, alpha=1)
 hm.hlines(n//4, 0, n//2, colors="black", lw=.9, alpha=1)
 hm.hlines(n//2, n*.25, n*.75, colors="black", lw=.9, alpha=1)
 hm.hlines(n*.75, n//2, n, colors="black", lw=.9, alpha=1);
+
+plt.figtext(0.5, 0.1, "Figure 4.21")
 
 
 # #### Embedding the Omnibus Matrix
@@ -1035,15 +1074,9 @@ im = cm.ScalarMappable(cmap=cmap, norm=norm)
 plt.tight_layout()
 fig.colorbar(im, ax=np.array([hm_ax, ax0, ax1, ax2, ax3]));
 
-glue("omnibus_latent_fig", fig, display=False)
+fig.suptitle("Latent Positions for the Omnibus Embedding in Matrix Form", fontsize=24, y=1.1);
+plt.figtext(0.5, 0, "Figure 4.22")
 
-
-# ```{glue:figure} omnibus_latent_fig
-# :figwidth: 300px
-# :name: "fig-omnibus"
-# 
-# This is a **caption**, with an embedded `{glue:text}` element: {glue:text}`boot_mean:.2f`!
-# ```
 
 # And finally, below is the above embeddings, plotted in Euclidean space. Each point is a row of the embedding above, and the dots are colored according to their class label. The big matrix on the left (the joint OMNI embedding) just contains every latent position we have, across all of our networks. This means that, on the lefthand plot, there will be four points for every node (remember that we're operating under the assumption that we have the same set of nodes across all of our networks).
 
@@ -1070,6 +1103,9 @@ plot_latents(joint_embedding, labels=np.tile(labels, 4),
 plt.tight_layout()
 fig.supxlabel("Dimension 1", y=-.03)
 fig.supylabel("Dimension 2", x=-.01);
+
+fig.suptitle("Latent Positions for the Omnibus Embedding in Euclidean Space", fontsize=24, y=1.1);
+plt.figtext(0.5, -.05, "Figure 4.23")
 
 
 # ## How Can You Use The Omnibus Embedding?
@@ -1215,6 +1251,7 @@ g.add_legend()
 plt.show()
 g.add_legend(title="Type of Mouse");
 sns.move_legend(g, "center right", frameon=True)
+plt.figtext(0.5, -.05, "Figure 4.24")
 
 
 # You can clearly see a difference between the genetically modified mice and the normal mice. The genetically modified mice are off in their own cluster; if you're familiar with classical statistics, you could do a MANOVA here and find that the genetically modified mice are significantly different from the rest - if we wanted to, we could figure out which mice are genetically modified, even without having that information in advance!
