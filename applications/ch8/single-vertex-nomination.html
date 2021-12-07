@@ -323,11 +323,75 @@
               <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mf">.52</span><span class="p">,</span> <span class="o">-</span><span class="mf">.15</span><span class="p">),</span> <span class="n">arrowprops</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;arrowstyle&quot;</span><span class="p">:</span> <span class="s2">&quot;-&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="p">});</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">figtext</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Figure 6.1&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;/Users/alex/Dropbox/thesis_pdf/figures/fig_6-1.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">transparent</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0, &#39;Figure 6.1&#39;)
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1851</span><span class="o">/</span><span class="mf">2951120953.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">11</span> 
+<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="n">plt</span><span class="o">.</span><span class="n">figtext</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Figure 6.1&quot;</span><span class="p">)</span>
+<span class="ne">---&gt; </span><span class="mi">13</span> <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;/Users/alex/Dropbox/thesis_pdf/figures/fig_6-1.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">transparent</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/matplotlib/pyplot.py</span> in <span class="ni">savefig</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">956</span> <span class="k">def</span> <span class="nf">savefig</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">957</span>     <span class="n">fig</span> <span class="o">=</span> <span class="n">gcf</span><span class="p">()</span>
+<span class="ne">--&gt; </span><span class="mi">958</span>     <span class="n">res</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">959</span>     <span class="n">fig</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">draw_idle</span><span class="p">()</span>   <span class="c1"># need this if &#39;transparent=True&#39; to reset colors</span>
+<span class="g g-Whitespace">    </span><span class="mi">960</span>     <span class="k">return</span> <span class="n">res</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/matplotlib/figure.py</span> in <span class="ni">savefig</span><span class="nt">(self, fname, transparent, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3010</span>                         <span class="n">ax</span><span class="o">.</span><span class="n">patch</span><span class="o">.</span><span class="n">_cm_set</span><span class="p">(</span><span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">))</span>
+<span class="g g-Whitespace">   </span><span class="mi">3011</span> 
+<span class="ne">-&gt; </span><span class="mi">3012</span>             <span class="bp">self</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">print_figure</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3013</span> 
+<span class="g g-Whitespace">   </span><span class="mi">3014</span>     <span class="k">def</span> <span class="nf">ginput</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">show_clicks</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/matplotlib/backend_bases.py</span> in <span class="ni">print_figure</span><span class="nt">(self, filename, dpi, facecolor, edgecolor, orientation, format, bbox_inches, pad_inches, bbox_extra_artists, backend, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2312</span>                 <span class="c1"># force the figure dpi to 72), so we need to set it again here.</span>
+<span class="g g-Whitespace">   </span><span class="mi">2313</span>                 <span class="k">with</span> <span class="n">cbook</span><span class="o">.</span><span class="n">_setattr_cm</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">figure</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="n">dpi</span><span class="p">):</span>
+<span class="ne">-&gt; </span><span class="mi">2314</span>                     <span class="n">result</span> <span class="o">=</span> <span class="n">print_method</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">2315</span>                         <span class="n">filename</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">2316</span>                         <span class="n">facecolor</span><span class="o">=</span><span class="n">facecolor</span><span class="p">,</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/matplotlib/backend_bases.py</span> in <span class="ni">wrapper</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1641</span>             <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1642</span> 
+<span class="ne">-&gt; </span><span class="mi">1643</span>         <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1644</span> 
+<span class="g g-Whitespace">   </span><span class="mi">1645</span>     <span class="k">return</span> <span class="n">wrapper</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/matplotlib/_api/deprecation.py</span> in <span class="ni">wrapper</span><span class="nt">(*inner_args, **inner_kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">410</span>                          <span class="k">else</span> <span class="n">deprecation_addendum</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">411</span>                 <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">412</span>         <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">inner_args</span><span class="p">,</span> <span class="o">**</span><span class="n">inner_kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">413</span> 
+<span class="g g-Whitespace">    </span><span class="mi">414</span>     <span class="n">DECORATORS</span><span class="p">[</span><span class="n">wrapper</span><span class="p">]</span> <span class="o">=</span> <span class="n">decorator</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/matplotlib/backends/backend_agg.py</span> in <span class="ni">print_png</span><span class="nt">(self, filename_or_obj, metadata, pil_kwargs, *args)</span>
+<span class="g g-Whitespace">    </span><span class="mi">539</span>         <span class="s2">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">540</span><span class="s2">         FigureCanvasAgg.draw(self)</span>
+<span class="ne">--&gt; </span><span class="mi">541</span><span class="s2">         mpl.image.imsave(</span>
+<span class="g g-Whitespace">    </span><span class="mi">542</span><span class="s2">             filename_or_obj, self.buffer_rgba(), format=&quot;png&quot;, origin=&quot;upper&quot;,</span>
+<span class="g g-Whitespace">    </span><span class="mi">543</span><span class="s2">             dpi=self.figure.dpi, metadata=metadata, pil_kwargs=pil_kwargs)</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/matplotlib/image.py</span> in <span class="ni">imsave</span><span class="nt">(fname, arr, vmin, vmax, cmap, format, origin, dpi, metadata, pil_kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1673</span><span class="s2">         pil_kwargs.setdefault(&quot;format&quot;, format)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1674</span><span class="s2">         pil_kwargs.setdefault(&quot;dpi&quot;, (dpi, dpi))</span>
+<span class="ne">-&gt; </span><span class="mi">1675</span><span class="s2">         image.save(fname, **pil_kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1676</span><span class="s2"> </span>
+<span class="g g-Whitespace">   </span><span class="mi">1677</span><span class="s2"> </span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/PIL/Image.py</span> in <span class="ni">save</span><span class="nt">(self, fp, format, **params)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2235</span><span class="s2">                 fp = builtins.open(filename, &quot;r+b&quot;)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2236</span><span class="s2">             else:</span>
+<span class="ne">-&gt; </span><span class="mi">2237</span><span class="s2">                 fp = builtins.open(filename, &quot;w+b&quot;)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2238</span><span class="s2"> </span>
+<span class="g g-Whitespace">   </span><span class="mi">2239</span><span class="s2">         try:</span>
+
+<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;/Users/alex/Dropbox/thesis_pdf/figures/fig_6-1.png&#39;
 </pre></div>
 </div>
 <img alt="../../_images/single-vertex-nomination_5_1.png" src="../../_images/single-vertex-nomination_5_1.png" />
@@ -358,14 +422,12 @@
               <span class="n">arrowprops</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;arrowstyle&quot;</span><span class="p">:</span> <span class="s2">&quot;-&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="p">});</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">figtext</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Figure 6.2&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;/Users/alex/Dropbox/thesis_pdf/figures/fig_6-2.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">transparent</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0, &#39;Figure 6.2&#39;)
-</pre></div>
-</div>
-<img alt="../../_images/single-vertex-nomination_10_1.png" src="../../_images/single-vertex-nomination_10_1.png" />
+<img alt="../../_images/single-vertex-nomination_10_0.png" src="../../_images/single-vertex-nomination_10_0.png" />
 </div>
 </div>
 <p>Now, all we do is order the rest of the latent positions (the blue dots in the figure above) by their distance to the centroid. The nodes corresponding to the closer latent positions will be higher up in our nomination list. Scikit-learn has a <code class="docutils literal notranslate"><span class="pre">NearestNeighbors</span></code> classifier, so we’ll just use that. Below, we fit the classifier to our latent positions matrix, then get our nominations using the <code class="docutils literal notranslate"><span class="pre">kneighbors</span></code> function. The latent positions closer to the centroid are more visible, and they get progressively less visible the further from the centroid they are.</p>
@@ -402,14 +464,12 @@
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Nomination List&quot;</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">);</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">figtext</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Figure 6.3&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;/Users/alex/Dropbox/thesis_pdf/figures/fig_6-3.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">transparent</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0, &#39;Figure 6.3&#39;)
-</pre></div>
-</div>
-<img alt="../../_images/single-vertex-nomination_13_1.png" src="../../_images/single-vertex-nomination_13_1.png" />
+<img alt="../../_images/single-vertex-nomination_13_0.png" src="../../_images/single-vertex-nomination_13_0.png" />
 </div>
 </div>
 <p>Let’s look at the network directly, and see where our nominations tend to be. Below is a network colored by nomination rank: nodes that are higher up in the nomination list are more purple, and nodes that are lower in the nomination list are more white. You can see that the higher up in the nomination list you get (more purple), the more well-connected nodes tend to be to the seed nodes.</p>
@@ -425,6 +485,7 @@
 
 <span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Nomination List: Network Plot&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">24</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figtext</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Figure 6.4&quot;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;/Users/alex/Dropbox/thesis_pdf/figures/fig_6-4.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">transparent</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
 <span class="c1"># TODO: add colorbar</span>
 </pre></div>
 </div>
@@ -461,10 +522,10 @@
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0,  1,  2,  3,  4],
-       [44, 18, 25, 32, 69],
-       [74, 62, 89, 60, 66],
-       [27, 85, 43, 92, 52],
-       [72, 39, 93, 65, 51]])
+       [97, 65, 62, 51, 57],
+       [ 2, 84,  0, 52, 58],
+       [51, 83,  8,  0, 45],
+       [98, 29, 94, 49, 32]])
 </pre></div>
 </div>
 </div>
@@ -485,15 +546,13 @@
     <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">seed_color</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
     
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Nominees for each seed node&quot;</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">);</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figtext</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Figure 6.4&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figtext</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Figure 6.5&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;/Users/alex/Dropbox/thesis_pdf/figures/fig_6-5.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">transparent</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0, &#39;Figure 6.4&#39;)
-</pre></div>
-</div>
-<img alt="../../_images/single-vertex-nomination_21_1.png" src="../../_images/single-vertex-nomination_21_1.png" />
+<img alt="../../_images/single-vertex-nomination_21_0.png" src="../../_images/single-vertex-nomination_21_0.png" />
 </div>
 </div>
 <p>These approaches are each useful in different situations.</p>

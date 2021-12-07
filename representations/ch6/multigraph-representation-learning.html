@@ -466,11 +466,75 @@
 
 <span class="n">plt</span><span class="o">.</span><span class="n">figtext</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">.1</span><span class="p">,</span> <span class="s2">&quot;Figure 4.1&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Different Sets of Brain Networks&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">24</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">1.1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;/Users/alex/Dropbox/thesis_pdf/figures/fig_4-1.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">transparent</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.1, &#39;Different Sets of Brain Networks&#39;)
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_2429</span><span class="o">/</span><span class="mf">728424567.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">30</span> <span class="n">plt</span><span class="o">.</span><span class="n">figtext</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">.1</span><span class="p">,</span> <span class="s2">&quot;Figure 4.1&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">31</span> <span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Different Sets of Brain Networks&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">24</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">1.1</span><span class="p">)</span>
+<span class="ne">---&gt; </span><span class="mi">32</span> <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;/Users/alex/Dropbox/thesis_pdf/figures/fig_4-1.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">transparent</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/matplotlib/pyplot.py</span> in <span class="ni">savefig</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">956</span> <span class="k">def</span> <span class="nf">savefig</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">957</span>     <span class="n">fig</span> <span class="o">=</span> <span class="n">gcf</span><span class="p">()</span>
+<span class="ne">--&gt; </span><span class="mi">958</span>     <span class="n">res</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">959</span>     <span class="n">fig</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">draw_idle</span><span class="p">()</span>   <span class="c1"># need this if &#39;transparent=True&#39; to reset colors</span>
+<span class="g g-Whitespace">    </span><span class="mi">960</span>     <span class="k">return</span> <span class="n">res</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/matplotlib/figure.py</span> in <span class="ni">savefig</span><span class="nt">(self, fname, transparent, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3010</span>                         <span class="n">ax</span><span class="o">.</span><span class="n">patch</span><span class="o">.</span><span class="n">_cm_set</span><span class="p">(</span><span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">))</span>
+<span class="g g-Whitespace">   </span><span class="mi">3011</span> 
+<span class="ne">-&gt; </span><span class="mi">3012</span>             <span class="bp">self</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">print_figure</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3013</span> 
+<span class="g g-Whitespace">   </span><span class="mi">3014</span>     <span class="k">def</span> <span class="nf">ginput</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">show_clicks</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/matplotlib/backend_bases.py</span> in <span class="ni">print_figure</span><span class="nt">(self, filename, dpi, facecolor, edgecolor, orientation, format, bbox_inches, pad_inches, bbox_extra_artists, backend, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2312</span>                 <span class="c1"># force the figure dpi to 72), so we need to set it again here.</span>
+<span class="g g-Whitespace">   </span><span class="mi">2313</span>                 <span class="k">with</span> <span class="n">cbook</span><span class="o">.</span><span class="n">_setattr_cm</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">figure</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="n">dpi</span><span class="p">):</span>
+<span class="ne">-&gt; </span><span class="mi">2314</span>                     <span class="n">result</span> <span class="o">=</span> <span class="n">print_method</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">2315</span>                         <span class="n">filename</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">2316</span>                         <span class="n">facecolor</span><span class="o">=</span><span class="n">facecolor</span><span class="p">,</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/matplotlib/backend_bases.py</span> in <span class="ni">wrapper</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1641</span>             <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1642</span> 
+<span class="ne">-&gt; </span><span class="mi">1643</span>         <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1644</span> 
+<span class="g g-Whitespace">   </span><span class="mi">1645</span>     <span class="k">return</span> <span class="n">wrapper</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/matplotlib/_api/deprecation.py</span> in <span class="ni">wrapper</span><span class="nt">(*inner_args, **inner_kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">410</span>                          <span class="k">else</span> <span class="n">deprecation_addendum</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">411</span>                 <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">412</span>         <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">inner_args</span><span class="p">,</span> <span class="o">**</span><span class="n">inner_kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">413</span> 
+<span class="g g-Whitespace">    </span><span class="mi">414</span>     <span class="n">DECORATORS</span><span class="p">[</span><span class="n">wrapper</span><span class="p">]</span> <span class="o">=</span> <span class="n">decorator</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/matplotlib/backends/backend_agg.py</span> in <span class="ni">print_png</span><span class="nt">(self, filename_or_obj, metadata, pil_kwargs, *args)</span>
+<span class="g g-Whitespace">    </span><span class="mi">539</span>         <span class="s2">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">540</span><span class="s2">         FigureCanvasAgg.draw(self)</span>
+<span class="ne">--&gt; </span><span class="mi">541</span><span class="s2">         mpl.image.imsave(</span>
+<span class="g g-Whitespace">    </span><span class="mi">542</span><span class="s2">             filename_or_obj, self.buffer_rgba(), format=&quot;png&quot;, origin=&quot;upper&quot;,</span>
+<span class="g g-Whitespace">    </span><span class="mi">543</span><span class="s2">             dpi=self.figure.dpi, metadata=metadata, pil_kwargs=pil_kwargs)</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/matplotlib/image.py</span> in <span class="ni">imsave</span><span class="nt">(fname, arr, vmin, vmax, cmap, format, origin, dpi, metadata, pil_kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1673</span><span class="s2">         pil_kwargs.setdefault(&quot;format&quot;, format)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1674</span><span class="s2">         pil_kwargs.setdefault(&quot;dpi&quot;, (dpi, dpi))</span>
+<span class="ne">-&gt; </span><span class="mi">1675</span><span class="s2">         image.save(fname, **pil_kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1676</span><span class="s2"> </span>
+<span class="g g-Whitespace">   </span><span class="mi">1677</span><span class="s2"> </span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/PIL/Image.py</span> in <span class="ni">save</span><span class="nt">(self, fp, format, **params)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2235</span><span class="s2">                 fp = builtins.open(filename, &quot;r+b&quot;)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2236</span><span class="s2">             else:</span>
+<span class="ne">-&gt; </span><span class="mi">2237</span><span class="s2">                 fp = builtins.open(filename, &quot;w+b&quot;)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2238</span><span class="s2"> </span>
+<span class="g g-Whitespace">   </span><span class="mi">2239</span><span class="s2">         try:</span>
+
+<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;/Users/alex/Dropbox/thesis_pdf/figures/fig_4-1.png&#39;
 </pre></div>
 </div>
 <img alt="../../_images/multigraph-representation-learning_6_1.png" src="../../_images/multigraph-representation-learning_6_1.png" />
@@ -513,14 +577,12 @@
 
 <span class="n">plt</span><span class="o">.</span><span class="n">figtext</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Figure 4.2&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Averaged Embedded Networks&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">24</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">1.05</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;/Users/alex/Dropbox/thesis_pdf/figures/fig_4-2.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">transparent</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.05, &#39;Averaged Embedded Networks&#39;)
-</pre></div>
-</div>
-<img alt="../../_images/multigraph-representation-learning_13_1.png" src="../../_images/multigraph-representation-learning_13_1.png" />
+<img alt="../../_images/multigraph-representation-learning_13_0.png" src="../../_images/multigraph-representation-learning_13_0.png" />
 </div>
 </div>
 <p>Both of these embeddings have clear clustering: there are two communities of nodes in both the human and the alien networks. We can recover the labels for these communities fairly easily using our pick of unsupervised clustering method. We know that the latent positions in each community of an Adjacency Spectral Embedding are normally distributed under this simulation setting, and we have two communities. That means that the above embeddings are distributed according to a Gaussian Mixture. Here, “Gaussian” just means “normal”, and a gaussian mixture just means that we have groups of normally distributed data clusters. As a result, it makes sense to cluster these data using scikit-learn’s GaussianMixture implementation.</p>
@@ -550,14 +612,12 @@
 
 <span class="n">plt</span><span class="o">.</span><span class="n">figtext</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Figure 4.3&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Clustering with GMM&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">24</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">1.05</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;/Users/alex/Dropbox/thesis_pdf/figures/fig_4-3.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">transparent</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.05, &#39;Clustering with GMM&#39;)
-</pre></div>
-</div>
-<img alt="../../_images/multigraph-representation-learning_17_1.png" src="../../_images/multigraph-representation-learning_17_1.png" />
+<img alt="../../_images/multigraph-representation-learning_17_0.png" src="../../_images/multigraph-representation-learning_17_0.png" />
 </div>
 </div>
 </div>
@@ -576,14 +636,12 @@
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_latents</span><span class="p">(</span><span class="n">all_latents</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Embedding when we average everything together&quot;</span><span class="p">);</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figtext</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Figure 4.4&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;/Users/alex/Dropbox/thesis_pdf/figures/fig_4-4.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">transparent</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0, &#39;Figure 4.4&#39;)
-</pre></div>
-</div>
-<img alt="../../_images/multigraph-representation-learning_21_1.png" src="../../_images/multigraph-representation-learning_21_1.png" />
+<img alt="../../_images/multigraph-representation-learning_21_0.png" src="../../_images/multigraph-representation-learning_21_0.png" />
 </div>
 </div>
 <p>Nope, bummer. Our community separation into discrete hemispheres is gone - the human networks and the alien networks cancelled each other out. As far as anybody can tell, our latent positions have just become meaningless noise, so we can’t cluster and find communities like we did before.</p>
@@ -601,14 +659,12 @@
 
 <span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Network Comparison&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">24</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">1.1</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figtext</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Figure 4.5&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;/Users/alex/Dropbox/thesis_pdf/figures/fig_4-5.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">transparent</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0, &#39;Figure 4.5&#39;)
-</pre></div>
-</div>
-<img alt="../../_images/multigraph-representation-learning_25_1.png" src="../../_images/multigraph-representation-learning_25_1.png" />
+<img alt="../../_images/multigraph-representation-learning_25_0.png" src="../../_images/multigraph-representation-learning_25_0.png" />
 </div>
 </div>
 <p>The human network has more edges in the upper-left and lower-left quadrants of the heatmap. This implies that two regions in the same hemisphere are more likely to be connected for humans than two regions in opposite hemispheres.</p>
@@ -639,14 +695,12 @@
            <span class="n">colors</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="s2">&quot;grey&quot;</span><span class="p">,</span> <span class="s2">&quot;black&quot;</span><span class="p">],</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.3</span><span class="p">,</span> <span class="mf">.5</span><span class="p">))</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">figtext</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Figure 4.7&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;/Users/alex/Dropbox/thesis_pdf/figures/fig_4-7.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">transparent</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0, &#39;Figure 4.7&#39;)
-</pre></div>
-</div>
-<img alt="../../_images/multigraph-representation-learning_28_1.png" src="../../_images/multigraph-representation-learning_28_1.png" />
+<img alt="../../_images/multigraph-representation-learning_28_0.png" src="../../_images/multigraph-representation-learning_28_0.png" />
 </div>
 </div>
 <p>By averaging, we’ve lost all of the community structure used to exist. That’s why our big averaged embedding failed.</p>
@@ -727,17 +781,15 @@
 
 <span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Combined Network Group Embedding&quot;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">1.1</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">26</span><span class="p">);</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figtext</span><span class="p">(</span><span class="mf">1.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">.2</span><span class="p">,</span> <span class="s2">&quot;Figure 4.7&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;/Users/alex/Dropbox/thesis_pdf/figures/fig_4-7.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">transparent</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(1.7, -0.2, &#39;Figure 4.7&#39;)
-</pre></div>
-</div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 432x288 with 0 Axes&gt;
 </pre></div>
 </div>
-<img alt="../../_images/multigraph-representation-learning_34_2.png" src="../../_images/multigraph-representation-learning_34_2.png" />
+<img alt="../../_images/multigraph-representation-learning_34_1.png" src="../../_images/multigraph-representation-learning_34_1.png" />
 </div>
 </div>
 </div>
@@ -800,14 +852,12 @@
     
 <span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Separate Network Group Embedding&quot;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">1.1</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">26</span><span class="p">);</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figtext</span><span class="p">(</span><span class="mf">1.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">.2</span><span class="p">,</span> <span class="s2">&quot;Figure 4.8&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;/Users/alex/Dropbox/thesis_pdf/figures/fig_4-8.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">transparent</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(1.7, -0.2, &#39;Figure 4.8&#39;)
-</pre></div>
-</div>
-<img alt="../../_images/multigraph-representation-learning_37_1.png" src="../../_images/multigraph-representation-learning_37_1.png" />
+<img alt="../../_images/multigraph-representation-learning_37_0.png" src="../../_images/multigraph-representation-learning_37_0.png" />
 </div>
 </div>
 </div>
@@ -868,14 +918,12 @@
 
 <span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Combined Embedding&quot;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mf">1.4</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">.7</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">);</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figtext</span><span class="p">(</span><span class="mf">1.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">.2</span><span class="p">,</span> <span class="s2">&quot;Figure 4.9&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;/Users/alex/Dropbox/thesis_pdf/figures/fig_4-9.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">transparent</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(1.7, -0.2, &#39;Figure 4.9&#39;)
-</pre></div>
-</div>
-<img alt="../../_images/multigraph-representation-learning_40_1.png" src="../../_images/multigraph-representation-learning_40_1.png" />
+<img alt="../../_images/multigraph-representation-learning_40_0.png" src="../../_images/multigraph-representation-learning_40_0.png" />
 </div>
 </div>
 <p>For the rest of this section, we’ll explore the strengths and weaknesses of different particular techniques which use these approaches. The first we’ll look at is combines the embeddings, like above. It’s called Multiple Adjacency Spectral Embedding, or MASE for short.</p>
@@ -904,6 +952,7 @@
              <span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">);</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">figtext</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Figure 4.10&quot;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;/Users/alex/Dropbox/thesis_pdf/figures/fig_4-10.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">transparent</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -959,14 +1008,12 @@
 
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figtext</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Figure 4.11&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;/Users/alex/Dropbox/thesis_pdf/figures/fig_4-11.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">transparent</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0, &#39;Figure 4.11&#39;)
-</pre></div>
-</div>
-<img alt="../../_images/multigraph-representation-learning_53_1.png" src="../../_images/multigraph-representation-learning_53_1.png" />
+<img alt="../../_images/multigraph-representation-learning_53_0.png" src="../../_images/multigraph-representation-learning_53_0.png" />
 </div>
 </div>
 </div>
@@ -1008,14 +1055,12 @@
 
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figtext</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">.05</span><span class="p">,</span> <span class="s2">&quot;Figure 4.13&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;/Users/alex/Dropbox/thesis_pdf/figures/fig_4-13.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">transparent</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, -0.05, &#39;Figure 4.13&#39;)
-</pre></div>
-</div>
-<img alt="../../_images/multigraph-representation-learning_57_1.png" src="../../_images/multigraph-representation-learning_57_1.png" />
+<img alt="../../_images/multigraph-representation-learning_57_0.png" src="../../_images/multigraph-representation-learning_57_0.png" />
 </div>
 </div>
 <p>It’s important to keep in mind that these embeddings don’t live in the same <em>latent space</em>. What this means is that averaging these networks together would result in essentially meaningless noise. This is because of the rotational invariance of latent positions: you can only recover the latent positions of any network up to a rotation.</p>
@@ -1047,15 +1092,13 @@
 <span class="n">im</span> <span class="o">=</span> <span class="n">cm</span><span class="o">.</span><span class="n">ScalarMappable</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">norm</span><span class="p">)</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">);</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">figtext</span><span class="p">(</span><span class="mf">0.4</span><span class="p">,</span> <span class="o">-</span><span class="mf">.05</span><span class="p">,</span> <span class="s2">&quot;Figure 4.13&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figtext</span><span class="p">(</span><span class="mf">0.4</span><span class="p">,</span> <span class="o">-</span><span class="mf">.05</span><span class="p">,</span> <span class="s2">&quot;Figure 4.14&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;/Users/alex/Dropbox/thesis_pdf/figures/fig_4-14.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">transparent</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.4, -0.05, &#39;Figure 4.13&#39;)
-</pre></div>
-</div>
-<img alt="../../_images/multigraph-representation-learning_61_1.png" src="../../_images/multigraph-representation-learning_61_1.png" />
+<img alt="../../_images/multigraph-representation-learning_61_0.png" src="../../_images/multigraph-representation-learning_61_0.png" />
 </div>
 </div>
 <p>Because the rows of these matrices are all aligned - meaning, row 0 corresponds to node 0 for all four matrices - we can actually think of each node as having (in this case) eight latent position dimensions: two for each of our four networks. Eight is a somewhat arbitrary number here: each network contributes two dimensions simply because we originally chose to embed all of our networks down to two dimensions with ASE, and the number of networks is of course even more arbitrary. You’ll usually have more than four.</p>
@@ -1076,12 +1119,12 @@
 <span class="n">hm</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Dimension&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
 <span class="n">hm</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Latent Position&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">);</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">figtext</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Figure 4.14&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figtext</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Figure 4.15&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0, &#39;Figure 4.14&#39;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0, &#39;Figure 4.15&#39;)
 </pre></div>
 </div>
 <img alt="../../_images/multigraph-representation-learning_64_1.png" src="../../_images/multigraph-representation-learning_64_1.png" />
@@ -1131,7 +1174,8 @@
 <span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Two Visualizations For Our Joint Embedding&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">figtext</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Figure 4.15&quot;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figtext</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Figure 4.16&quot;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;/Users/alex/Dropbox/thesis_pdf/figures/fig_4-16.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">transparent</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1164,15 +1208,13 @@
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_latents</span><span class="p">(</span><span class="n">latents</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;MASE embedding&quot;</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">);</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figtext</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Figure 4.16&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figtext</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Figure 4.17&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;/Users/alex/Dropbox/thesis_pdf/figures/fig_4-7.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">transparent</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0, &#39;Figure 4.16&#39;)
-</pre></div>
-</div>
-<img alt="../../_images/multigraph-representation-learning_73_1.png" src="../../_images/multigraph-representation-learning_73_1.png" />
+<img alt="../../_images/multigraph-representation-learning_73_0.png" src="../../_images/multigraph-representation-learning_73_0.png" />
 </div>
 </div>
 </div>
@@ -1256,8 +1298,8 @@
 </div>
 </div>
 <p>Below and to the left, you can see the original adjacency matrix for the first matrix. In the center, you can see the heatmap for the first network’s score matrix. Next to it, you can see the recreation of the first network. Remember that we only used the score matrix to recreate it. The first network has a block probability matrix of</p>
-<div class="amsmath math notranslate nohighlight" id="equation-0f73654a-14a1-4a7d-9b89-5ac0daa92ed6">
-<span class="eqno">(1)<a class="headerlink" href="#equation-0f73654a-14a1-4a7d-9b89-5ac0daa92ed6" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-40110e00-3258-47d8-83e7-61e2f4acb8a8">
+<span class="eqno">(1)<a class="headerlink" href="#equation-40110e00-3258-47d8-83e7-61e2f4acb8a8" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \begin{bmatrix}
 .12 &amp; .03 \\
 .03 &amp; .06 \\
@@ -1275,15 +1317,13 @@
 
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Score Matrices and Edge Probabilities&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">1.2</span><span class="p">);</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figtext</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">.05</span><span class="p">,</span> <span class="s2">&quot;Figure 4.17&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figtext</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">.05</span><span class="p">,</span> <span class="s2">&quot;Figure 4.18&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;/Users/alex/Dropbox/thesis_pdf/figures/fig_4-18.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">transparent</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, -0.05, &#39;Figure 4.17&#39;)
-</pre></div>
-</div>
-<img alt="../../_images/multigraph-representation-learning_86_1.png" src="../../_images/multigraph-representation-learning_86_1.png" />
+<img alt="../../_images/multigraph-representation-learning_86_0.png" src="../../_images/multigraph-representation-learning_86_0.png" />
 </div>
 </div>
 <p>So we’ve learned that MASE is useful when you want a joint embedding that combines all of your networks together, and when you want to estimate edge probabilities for one of your networks. What if we wanted to keep our separate embeddings, but put them all in the same space? That’s what the Omnibus Embedding gives, and what we’ll explore now.</p>
@@ -1302,8 +1342,8 @@
 <p>Let’s take a network generated from an RDPG with <span class="math notranslate nohighlight">\(n\)</span> nodes. Each of these <span class="math notranslate nohighlight">\(n\)</span> nodes is associated with a latent position vector, corresponding to that node’s row in the network’s embedding. What it means for a node to have a latent position vector is that the probability for an edge to exist between two nodes <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span> is the dot product of their latent position vectors.</p>
 <p>More specifically, if <span class="math notranslate nohighlight">\(\textbf{P}\)</span> is a matrix of edge probabilities, and <span class="math notranslate nohighlight">\(\textbf{X}\)</span> is our latent position matrix, then <span class="math notranslate nohighlight">\(\textbf{P} = \textbf{X} \textbf{X}^\top\)</span>.</p>
 <p>The nonidentifiability problem is as follows: Take any orthogonal matrix (a matrix which only rotates or flips other matrices). Call it <span class="math notranslate nohighlight">\(\textbf{W}\)</span>. By definition, the transpose of any orthogonal matrix is its inverse: <span class="math notranslate nohighlight">\(\textbf{W} \textbf{W}^\top = \textbf{I}\)</span>, where <span class="math notranslate nohighlight">\(\textbf{I}\)</span> is the identity matrix. So,</p>
-<div class="amsmath math notranslate nohighlight" id="equation-9a053d74-60e6-451f-bbc8-0b7fe07d631c">
-<span class="eqno">(2)<a class="headerlink" href="#equation-9a053d74-60e6-451f-bbc8-0b7fe07d631c" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-df68989e-a620-4f6e-9398-9f665f05230e">
+<span class="eqno">(2)<a class="headerlink" href="#equation-df68989e-a620-4f6e-9398-9f665f05230e" title="Permalink to this equation">¶</a></span>\[\begin{align}
 P &amp;= \textbf{X} \textbf{X}^\top \\
   &amp;= \textbf{X} \textbf{I} \textbf{X}^\top \\
   &amp;= (\textbf{X} \textbf{W}) (\textbf{W}^\top \textbf{X}^\top) \\
@@ -1332,15 +1372,13 @@ P &amp;= \textbf{X} \textbf{X}^\top \\
 <span class="n">fig</span><span class="o">.</span><span class="n">supylabel</span><span class="p">(</span><span class="s2">&quot;Dimension 2&quot;</span><span class="p">);</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figtext</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">.05</span><span class="p">,</span> <span class="s2">&quot;Figure 4.18&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figtext</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">.05</span><span class="p">,</span> <span class="s2">&quot;Figure 4.19&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;/Users/alex/Dropbox/thesis_pdf/figures/fig_4-19.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">transparent</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, -0.05, &#39;Figure 4.18&#39;)
-</pre></div>
-</div>
-<img alt="../../_images/multigraph-representation-learning_94_1.png" src="../../_images/multigraph-representation-learning_94_1.png" />
+<img alt="../../_images/multigraph-representation-learning_94_0.png" src="../../_images/multigraph-representation-learning_94_0.png" />
 </div>
 </div>
 </div>
@@ -1375,15 +1413,13 @@ P &amp;= \textbf{X} \textbf{X}^\top \\
 <span class="n">fig</span><span class="o">.</span><span class="n">supylabel</span><span class="p">(</span><span class="s2">&quot;Dimension 2&quot;</span><span class="p">);</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figtext</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">.05</span><span class="p">,</span> <span class="s2">&quot;Figure 4.19&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figtext</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">.05</span><span class="p">,</span> <span class="s2">&quot;Figure 4.20&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;/Users/alex/Dropbox/thesis_pdf/figures/fig_4-20.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">transparent</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, -0.05, &#39;Figure 4.19&#39;)
-</pre></div>
-</div>
-<img alt="../../_images/multigraph-representation-learning_98_1.png" src="../../_images/multigraph-representation-learning_98_1.png" />
+<img alt="../../_images/multigraph-representation-learning_98_0.png" src="../../_images/multigraph-representation-learning_98_0.png" />
 </div>
 </div>
 <p>Unlike when we embedded the four networks separately, the clusters created by the Omnibus Embedding <em>live in the same space</em>: you don’t have to rotate or flip your points to line them up across embeddings. The cluster of blue points is always in the top left, and the cluster of red points is always in the bottom right. This means that we can compare points directly; the relative location of the node in your network corresponding to the red circle, for instance, now means something across the four networks, and we can do stuff like measure the distance of the red circle in network 1 to the red circle in network two to gain information.</p>
@@ -1397,8 +1433,8 @@ P &amp;= \textbf{X} \textbf{X}^\top \\
 </ol>
 <p>The omnibus matrix itself just has every original adjacency or laplacian matrix along its diagonal, and the elementwise average of every pair of original matrices on the off-diagonals. This means that the Omnibus Matrix is <em>huge</em>: if you have <span class="math notranslate nohighlight">\(m\)</span> networks, each of which has <span class="math notranslate nohighlight">\(n\)</span> nodes, the Omnibus Matrix will be a <span class="math notranslate nohighlight">\(mn \times mn\)</span> matrix.</p>
 <p>For example, say we only have two networks. Let’s name their adjacency matrices <span class="math notranslate nohighlight">\(A^{(1)}\)</span> and <span class="math notranslate nohighlight">\(A^{(2)}\)</span>. Then, the omnibus embedding looks like this:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-91a80002-22be-45f0-bb85-943aa70aec22">
-<span class="eqno">(3)<a class="headerlink" href="#equation-91a80002-22be-45f0-bb85-943aa70aec22" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-8fd0e4f6-1c7c-4e90-a3a1-5774a3ec752b">
+<span class="eqno">(3)<a class="headerlink" href="#equation-8fd0e4f6-1c7c-4e90-a3a1-5774a3ec752b" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \begin{bmatrix}
 A^{(1)} &amp; \frac{A^{(1)} + A^{(2)}}{2} \\
 \frac{A^{(2)} + A^{(1)}}{2} &amp; A^{(2)} \\
@@ -1462,15 +1498,13 @@ A^{(1)} &amp; \frac{A^{(1)} + A^{(2)}}{2} \\
 
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;The Omnibus Matrix for Two Networks&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">24</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">1.1</span><span class="p">);</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figtext</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">.05</span><span class="p">,</span> <span class="s2">&quot;Figure 4.20&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figtext</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">.05</span><span class="p">,</span> <span class="s2">&quot;Figure 4.21&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;/Users/alex/Dropbox/thesis_pdf/figures/fig_4-21.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">transparent</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, -0.05, &#39;Figure 4.20&#39;)
-</pre></div>
-</div>
-<img alt="../../_images/multigraph-representation-learning_104_1.png" src="../../_images/multigraph-representation-learning_104_1.png" />
+<img alt="../../_images/multigraph-representation-learning_104_0.png" src="../../_images/multigraph-representation-learning_104_0.png" />
 </div>
 </div>
 <div class="section" id="creating-the-omnibus-matrix-for-all-four-networks">
@@ -1503,15 +1537,13 @@ A^{(1)} &amp; \frac{A^{(1)} + A^{(2)}}{2} \\
 <span class="n">hm</span><span class="o">.</span><span class="n">hlines</span><span class="p">(</span><span class="n">n</span><span class="o">//</span><span class="mi">2</span><span class="p">,</span> <span class="n">n</span><span class="o">*</span><span class="mf">.25</span><span class="p">,</span> <span class="n">n</span><span class="o">*</span><span class="mf">.75</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">.9</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">hm</span><span class="o">.</span><span class="n">hlines</span><span class="p">(</span><span class="n">n</span><span class="o">*</span><span class="mf">.75</span><span class="p">,</span> <span class="n">n</span><span class="o">//</span><span class="mi">2</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">.9</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">figtext</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="s2">&quot;Figure 4.21&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figtext</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="s2">&quot;Figure 4.22&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;/Users/alex/Dropbox/thesis_pdf/figures/fig_4-22.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">transparent</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0.1, &#39;Figure 4.21&#39;)
-</pre></div>
-</div>
-<img alt="../../_images/multigraph-representation-learning_107_1.png" src="../../_images/multigraph-representation-learning_107_1.png" />
+<img alt="../../_images/multigraph-representation-learning_107_0.png" src="../../_images/multigraph-representation-learning_107_0.png" />
 </div>
 </div>
 </div>
@@ -1596,15 +1628,13 @@ A^{(1)} &amp; \frac{A^{(1)} + A^{(2)}}{2} \\
 <span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">hm_ax</span><span class="p">,</span> <span class="n">ax0</span><span class="p">,</span> <span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">,</span> <span class="n">ax3</span><span class="p">]));</span>
 
 <span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Latent Positions for the Omnibus Embedding in Matrix Form&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">24</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">1.1</span><span class="p">);</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figtext</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Figure 4.22&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figtext</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Figure 4.23&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;/Users/alex/Dropbox/thesis_pdf/figures/fig_4-23.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">transparent</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0, &#39;Figure 4.22&#39;)
-</pre></div>
-</div>
-<img alt="../../_images/multigraph-representation-learning_115_1.png" src="../../_images/multigraph-representation-learning_115_1.png" />
+<img alt="../../_images/multigraph-representation-learning_115_0.png" src="../../_images/multigraph-representation-learning_115_0.png" />
 </div>
 </div>
 <p>And finally, below is the above embeddings, plotted in Euclidean space. Each point is a row of the embedding above, and the dots are colored according to their class label. The big matrix on the left (the joint OMNI embedding) just contains every latent position we have, across all of our networks. This means that, on the lefthand plot, there will be four points for every node (remember that we’re operating under the assumption that we have the same set of nodes across all of our networks).</p>
@@ -1632,15 +1662,13 @@ A^{(1)} &amp; \frac{A^{(1)} + A^{(2)}}{2} \\
 <span class="n">fig</span><span class="o">.</span><span class="n">supylabel</span><span class="p">(</span><span class="s2">&quot;Dimension 2&quot;</span><span class="p">,</span> <span class="n">x</span><span class="o">=-</span><span class="mf">.01</span><span class="p">);</span>
 
 <span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Latent Positions for the Omnibus Embedding in Euclidean Space&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">24</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">1.1</span><span class="p">);</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figtext</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">.05</span><span class="p">,</span> <span class="s2">&quot;Figure 4.23&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figtext</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">.05</span><span class="p">,</span> <span class="s2">&quot;Figure 4.24&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;/Users/alex/Dropbox/thesis_pdf/figures/fig_4-24.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">transparent</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, -0.05, &#39;Figure 4.23&#39;)
-</pre></div>
-</div>
-<img alt="../../_images/multigraph-representation-learning_117_1.png" src="../../_images/multigraph-representation-learning_117_1.png" />
+<img alt="../../_images/multigraph-representation-learning_117_0.png" src="../../_images/multigraph-representation-learning_117_0.png" />
 </div>
 </div>
 </div>
@@ -1782,15 +1810,13 @@ A^{(1)} &amp; \frac{A^{(1)} + A^{(2)}}{2} \\
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 <span class="n">g</span><span class="o">.</span><span class="n">add_legend</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Type of Mouse&quot;</span><span class="p">);</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">move_legend</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="s2">&quot;center right&quot;</span><span class="p">,</span> <span class="n">frameon</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figtext</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">.05</span><span class="p">,</span> <span class="s2">&quot;Figure 4.24&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figtext</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">.05</span><span class="p">,</span> <span class="s2">&quot;Figure 4.25&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;/Users/alex/Dropbox/thesis_pdf/figures/fig_4-25.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">transparent</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <img alt="../../_images/multigraph-representation-learning_120_0.png" src="../../_images/multigraph-representation-learning_120_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, -0.05, &#39;Figure 4.24&#39;)
-</pre></div>
-</div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 432x288 with 0 Axes&gt;
 </pre></div>
 </div>

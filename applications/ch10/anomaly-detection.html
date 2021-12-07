@@ -391,11 +391,78 @@
     
 <span class="n">plt</span><span class="o">.</span><span class="n">figtext</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mf">.3</span><span class="p">,</span> <span class="s2">&quot;Figure 8.1&quot;</span><span class="p">)</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Network Timeseries Data&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">24</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;/Users/alex/Dropbox/thesis_pdf/figures/fig_8-1.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">transparent</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/anomaly-detection_6_0.png" src="../../_images/anomaly-detection_6_0.png" />
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1772</span><span class="o">/</span><span class="mf">3361887810.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">28</span> <span class="n">plt</span><span class="o">.</span><span class="n">figtext</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mf">.3</span><span class="p">,</span> <span class="s2">&quot;Figure 8.1&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">29</span> <span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Network Timeseries Data&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">24</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+<span class="ne">---&gt; </span><span class="mi">30</span> <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;/Users/alex/Dropbox/thesis_pdf/figures/fig_8-1.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">transparent</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/matplotlib/pyplot.py</span> in <span class="ni">savefig</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">956</span> <span class="k">def</span> <span class="nf">savefig</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">957</span>     <span class="n">fig</span> <span class="o">=</span> <span class="n">gcf</span><span class="p">()</span>
+<span class="ne">--&gt; </span><span class="mi">958</span>     <span class="n">res</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">959</span>     <span class="n">fig</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">draw_idle</span><span class="p">()</span>   <span class="c1"># need this if &#39;transparent=True&#39; to reset colors</span>
+<span class="g g-Whitespace">    </span><span class="mi">960</span>     <span class="k">return</span> <span class="n">res</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/matplotlib/figure.py</span> in <span class="ni">savefig</span><span class="nt">(self, fname, transparent, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3010</span>                         <span class="n">ax</span><span class="o">.</span><span class="n">patch</span><span class="o">.</span><span class="n">_cm_set</span><span class="p">(</span><span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">))</span>
+<span class="g g-Whitespace">   </span><span class="mi">3011</span> 
+<span class="ne">-&gt; </span><span class="mi">3012</span>             <span class="bp">self</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">print_figure</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3013</span> 
+<span class="g g-Whitespace">   </span><span class="mi">3014</span>     <span class="k">def</span> <span class="nf">ginput</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">show_clicks</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/matplotlib/backend_bases.py</span> in <span class="ni">print_figure</span><span class="nt">(self, filename, dpi, facecolor, edgecolor, orientation, format, bbox_inches, pad_inches, bbox_extra_artists, backend, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2312</span>                 <span class="c1"># force the figure dpi to 72), so we need to set it again here.</span>
+<span class="g g-Whitespace">   </span><span class="mi">2313</span>                 <span class="k">with</span> <span class="n">cbook</span><span class="o">.</span><span class="n">_setattr_cm</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">figure</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="n">dpi</span><span class="p">):</span>
+<span class="ne">-&gt; </span><span class="mi">2314</span>                     <span class="n">result</span> <span class="o">=</span> <span class="n">print_method</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">2315</span>                         <span class="n">filename</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">2316</span>                         <span class="n">facecolor</span><span class="o">=</span><span class="n">facecolor</span><span class="p">,</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/matplotlib/backend_bases.py</span> in <span class="ni">wrapper</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1641</span>             <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1642</span> 
+<span class="ne">-&gt; </span><span class="mi">1643</span>         <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1644</span> 
+<span class="g g-Whitespace">   </span><span class="mi">1645</span>     <span class="k">return</span> <span class="n">wrapper</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/matplotlib/_api/deprecation.py</span> in <span class="ni">wrapper</span><span class="nt">(*inner_args, **inner_kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">410</span>                          <span class="k">else</span> <span class="n">deprecation_addendum</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">411</span>                 <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">412</span>         <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">inner_args</span><span class="p">,</span> <span class="o">**</span><span class="n">inner_kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">413</span> 
+<span class="g g-Whitespace">    </span><span class="mi">414</span>     <span class="n">DECORATORS</span><span class="p">[</span><span class="n">wrapper</span><span class="p">]</span> <span class="o">=</span> <span class="n">decorator</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/matplotlib/backends/backend_agg.py</span> in <span class="ni">print_png</span><span class="nt">(self, filename_or_obj, metadata, pil_kwargs, *args)</span>
+<span class="g g-Whitespace">    </span><span class="mi">539</span>         <span class="s2">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">540</span><span class="s2">         FigureCanvasAgg.draw(self)</span>
+<span class="ne">--&gt; </span><span class="mi">541</span><span class="s2">         mpl.image.imsave(</span>
+<span class="g g-Whitespace">    </span><span class="mi">542</span><span class="s2">             filename_or_obj, self.buffer_rgba(), format=&quot;png&quot;, origin=&quot;upper&quot;,</span>
+<span class="g g-Whitespace">    </span><span class="mi">543</span><span class="s2">             dpi=self.figure.dpi, metadata=metadata, pil_kwargs=pil_kwargs)</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/matplotlib/image.py</span> in <span class="ni">imsave</span><span class="nt">(fname, arr, vmin, vmax, cmap, format, origin, dpi, metadata, pil_kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1673</span><span class="s2">         pil_kwargs.setdefault(&quot;format&quot;, format)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1674</span><span class="s2">         pil_kwargs.setdefault(&quot;dpi&quot;, (dpi, dpi))</span>
+<span class="ne">-&gt; </span><span class="mi">1675</span><span class="s2">         image.save(fname, **pil_kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1676</span><span class="s2"> </span>
+<span class="g g-Whitespace">   </span><span class="mi">1677</span><span class="s2"> </span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/PIL/Image.py</span> in <span class="ni">save</span><span class="nt">(self, fp, format, **params)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2235</span><span class="s2">                 fp = builtins.open(filename, &quot;r+b&quot;)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2236</span><span class="s2">             else:</span>
+<span class="ne">-&gt; </span><span class="mi">2237</span><span class="s2">                 fp = builtins.open(filename, &quot;w+b&quot;)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2238</span><span class="s2"> </span>
+<span class="g g-Whitespace">   </span><span class="mi">2239</span><span class="s2">         try:</span>
+
+<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;/Users/alex/Dropbox/thesis_pdf/figures/fig_8-1.png&#39;
+</pre></div>
+</div>
+<img alt="../../_images/anomaly-detection_6_1.png" src="../../_images/anomaly-detection_6_1.png" />
 </div>
 </div>
 </div>
@@ -450,7 +517,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.587
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.621
 </pre></div>
 </div>
 </div>
@@ -470,7 +537,7 @@
 <div class="section" id="hypothesis-testing-with-our-test-statistic">
 <h2>Hypothesis Testing With our Test Statistic<a class="headerlink" href="#hypothesis-testing-with-our-test-statistic" title="Permalink to this headline">¶</a></h2>
 <p>We have our norm <span class="math notranslate nohighlight">\(y\)</span>, which will be our test statistic. It should be a small value if the first two adjacency matrices in the timeseries are distributed the same, and large if they’re distributed differently. Remember that we’re fundamentally trying to figure out whether <span class="math notranslate nohighlight">\(X = X^{(t)}\)</span>, our latent positions at time <span class="math notranslate nohighlight">\(t\)</span>, is the same as <span class="math notranslate nohighlight">\(Y = X^{(t-1)}\)</span>, our latent positions at time <span class="math notranslate nohighlight">\(t-1\)</span>. This is also known as a <em>hypothesis test</em>: we’re testing the the null hypothesis that <span class="math notranslate nohighlight">\(X = Y\)</span> against the alternative hypothesis that <span class="math notranslate nohighlight">\(X \neq Y\)</span>.</p>
-<p>The value of our test statistic is <span class="pasted-inline"><code class="output text_plain docutils literal notranslate"><span class="pre">'0.587'</span></code></span>. The problem is that we don’t know how big this is, relatively. Is <span class="pasted-inline"><code class="output text_plain docutils literal notranslate"><span class="pre">'0.587'</span></code></span> relatively large? small? how should we determine whether it’s small enough to say that X and Y probably come from the same distribution, and aren’t anomaly time points?</p>
+<p>The value of our test statistic is <span class="pasted-inline"><code class="output text_plain docutils literal notranslate"><span class="pre">'0.621'</span></code></span>. The problem is that we don’t know how big this is, relatively. Is <span class="pasted-inline"><code class="output text_plain docutils literal notranslate"><span class="pre">'0.621'</span></code></span> relatively large? small? how should we determine whether it’s small enough to say that X and Y probably come from the same distribution, and aren’t anomaly time points?</p>
 <p>Well, what if we could use our estimated latent positions <span class="math notranslate nohighlight">\(\hat{X}\)</span> at time <span class="math notranslate nohighlight">\(t\)</span> to generate a bunch of networks, then make test statistics from those new networks? We’d know for a fact that any pair of those networks are drawn from the same set of latent positions, and we could get a sense for what our test statistic should look like if the latent positions actually were the same. This technique is called <em>bootstrapping</em>, since you’re using estimated parameters to “pull yourself up by your own bootstraps” and generate a bunch of artificial data. Bootstrapping pops up all over the place in machine learning and statistics contexts.</p>
 <div class="section" id="bootstrapped-distribution-estimation">
 <h3>Bootstrapped Distribution Estimation<a class="headerlink" href="#bootstrapped-distribution-estimation" title="Permalink to this headline">¶</a></h3>
@@ -513,17 +580,15 @@
 <span class="n">plot</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">.50</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="s2">&quot;Bootstrapped Distribution&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">60</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">figtext</span><span class="p">(</span><span class="mf">.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Figure 8.2&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;/Users/alex/Dropbox/thesis_pdf/figures/fig_8-2.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">transparent</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0, &#39;Figure 8.2&#39;)
-</pre></div>
-</div>
-<img alt="../../_images/anomaly-detection_19_1.png" src="../../_images/anomaly-detection_19_1.png" />
+<img alt="../../_images/anomaly-detection_19_0.png" src="../../_images/anomaly-detection_19_0.png" />
 </div>
 </div>
-<p>Fortunately, <span class="pasted-inline"><code class="output text_plain docutils literal notranslate"><span class="pre">'0.587'</span></code></span> is well within a reasonable range under the assumption that the time-points share latent positions. However, we can’t always eyeball stuff, and we need a way to formalize what it means for a test statistic to be “within a reasonable range”. Our test statistic is  <span class="math notranslate nohighlight">\(y = ||X^{(t)} - X^{(t-1)}||\)</span>, we’re trying to figure out if <span class="math notranslate nohighlight">\(X^{(t)} = X^{(t-1)}\)</span>, and we have a bunch of bootstrapped test statistics that we know were drawn from the same distribution (and are thus examples of the case where the null hypothesis is true).</p>
+<p>Fortunately, <span class="pasted-inline"><code class="output text_plain docutils literal notranslate"><span class="pre">'0.621'</span></code></span> is well within a reasonable range under the assumption that the time-points share latent positions. However, we can’t always eyeball stuff, and we need a way to formalize what it means for a test statistic to be “within a reasonable range”. Our test statistic is  <span class="math notranslate nohighlight">\(y = ||X^{(t)} - X^{(t-1)}||\)</span>, we’re trying to figure out if <span class="math notranslate nohighlight">\(X^{(t)} = X^{(t-1)}\)</span>, and we have a bunch of bootstrapped test statistics that we know were drawn from the same distribution (and are thus examples of the case where the null hypothesis is true).</p>
 </div>
 </div>
 <div class="section" id="p-value-estimation">
@@ -544,7 +609,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.567
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.327
 </pre></div>
 </div>
 </div>
@@ -580,14 +645,12 @@
 <span class="n">plot</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Timeseries Pairs&quot;</span><span class="p">);</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">figtext</span><span class="p">(</span><span class="mf">.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">.7</span><span class="p">,</span> <span class="s2">&quot;Figure 8.3&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;/Users/alex/Dropbox/thesis_pdf/figures/fig_8-3.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">transparent</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, -0.7, &#39;Figure 8.3&#39;)
-</pre></div>
-</div>
-<img alt="../../_images/anomaly-detection_28_1.png" src="../../_images/anomaly-detection_28_1.png" />
+<img alt="../../_images/anomaly-detection_28_0.png" src="../../_images/anomaly-detection_28_0.png" />
 </div>
 </div>
 <p>If we were to plot a distribution of bootstrapped test statistics with each of our estimated y-values, it would look like the histogram below. Notice that two test statistics are clearly anomalous: the one comparing times five and six, and the one comparing times seven and eight. We know by design that networks six and seven actually are anomolous, and so we can see that our test managed to correctly determine the anomaly times.</p>
@@ -613,14 +676,12 @@
 
 <span class="n">plot</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">.49</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="s2">&quot;Bootstrapped Distribution&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">70</span><span class="p">);</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figtext</span><span class="p">(</span><span class="mf">.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Figure 8.4&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;/Users/alex/Dropbox/thesis_pdf/figures/fig_8-4.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">transparent</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0, &#39;Figure 8.4&#39;)
-</pre></div>
-</div>
-<img alt="../../_images/anomaly-detection_30_1.png" src="../../_images/anomaly-detection_30_1.png" />
+<img alt="../../_images/anomaly-detection_30_0.png" src="../../_images/anomaly-detection_30_0.png" />
 </div>
 </div>
 </div>
@@ -676,14 +737,12 @@
 <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">figtext</span><span class="p">(</span><span class="mf">.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Figure 8.5&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;/Users/alex/Dropbox/thesis_pdf/figures/fig_8-5.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">transparent</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0, &#39;Figure 8.5&#39;)
-</pre></div>
-</div>
-<img alt="../../_images/anomaly-detection_33_1.png" src="../../_images/anomaly-detection_33_1.png" />
+<img alt="../../_images/anomaly-detection_33_0.png" src="../../_images/anomaly-detection_33_0.png" />
 </div>
 </div>
 </div>
