@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Preface &#8212; Hands-on Network Machine Learning with Scikit-Learn and Graspologic</title>
+    <title>Front Matter &#8212; Hands-on Network Machine Learning with Scikit-Learn and Graspologic</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -49,6 +49,8 @@
         const thebe_selector_output = ".output"
     </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Matrix Representations Of Networks" href="../representations/ch4/matrix-representations.html" />
@@ -92,7 +94,7 @@
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Preface
+   Front Matter
   </a>
  </li>
  <li class="toctree-l1">
@@ -224,43 +226,8 @@
             <nav id="bd-toc-nav">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#network-machine-learning-and-you">
-   Network Machine Learning and You
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#network-machine-learning-in-your-projects">
-   Network Machine Learning in Your Projects
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#objective-and-approach">
-   Objective and Approach
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#prerequisites">
-   Prerequisites
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#roadmap">
-   Roadmap
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#conventions-used-in-this-book">
-   Conventions Used In This Book
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#using-code-examples">
-   Using Code Examples
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#about-the-authors">
-   About the Authors
+  <a class="reference internal nav-link" href="#abstract">
+   Abstract
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -269,8 +236,20 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#finished-sections">
-   Finished Sections
+  <a class="reference internal nav-link" href="#dedication">
+   <strong>
+    Dedication
+   </strong>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#contents">
+   Contents
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#list-of-figures">
+   List of Figures
   </a>
  </li>
 </ul>
@@ -284,115 +263,190 @@
         
               <div>
                 
-  <div class="section" id="preface">
-<h1>Preface<a class="headerlink" href="#preface" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="network-machine-learning-and-you">
-<h2>Network Machine Learning and You<a class="headerlink" href="#network-machine-learning-and-you" title="Permalink to this headline">¶</a></h2>
-<p>This book is about networks, and how you can use tools from machine learning to understand and explain them more deeply. Why is this an interesting thing to learn about, and why should you care?</p>
+  <div class="section" id="front-matter">
+<h1>Front Matter<a class="headerlink" href="#front-matter" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="abstract">
+<h2>Abstract<a class="headerlink" href="#abstract" title="Permalink to this headline">¶</a></h2>
+<p>This thesis is essentially a general overview of spectral methods on networks, and how you can use tools from a network’s eigenspace to understand and explain the network more deeply. Why are networks an interesting thing to learn about, and why should you care?</p>
 <p>Well, at some level, every aspect of reality seems to be made of interconnected parts. Atoms and molecules are connected to each other with chemical bonds. Your neurons connect to each other through synapses, and the different parts of your brain connect to each other through groups of neurons interacting with each other. At a larger level, you are interconnected with other humans through social networks, and our economy is a global, interconnected trade network. The Earth’s food chain is an ecological network, and larger still, every object with mass in the universe is connected to every other object through a gravitational network.</p>
 <p>So if you can understand networks, you can understand a little something about everything!</p>
-</div>
-<div class="section" id="network-machine-learning-in-your-projects">
-<h2>Network Machine Learning in Your Projects<a class="headerlink" href="#network-machine-learning-in-your-projects" title="Permalink to this headline">¶</a></h2>
-<p>So, naturally you are excited about network machine learning and you would love to join the party!</p>
-<p>Perhaps you’re a researcher and you want to expose shadowy financial networks and corporate fraud? Or create a network framework for measuring teamwork in healthcare? Maybe you’re interested in evolutionary releationships between different animals, or maybe you want to model communities of neurons in the brain?</p>
-<p>Or maybe you’re a data scientist and your company has tons of data (user logs, financial data, production data, machine sensor data, hotline stats, HR reports, etc.), and more than likely you could
-view the data as a network and unearth some hidden gems of knowledge if you just knew where to look? For example:</p>
-<ul class="simple">
-<li><p>Explore purchasing networks and isolate the most active customers</p></li>
-<li><p>Explore patterns of collaboration in your company’s network of employees</p></li>
-<li><p>Detect which transactions are likely to be fraudulent</p></li>
-<li><p>Isolate groups in your company which are overperforming or underperforming</p></li>
-<li><p>Model the transportation chain necessary to produce and disseminate your product</p></li>
-<li><p>And more</p></li>
-</ul>
-<p>Whatever the reason, you have decided to learn about networks and implement their analysis in your projects. Great idea!</p>
-</div>
-<div class="section" id="objective-and-approach">
-<h2>Objective and Approach<a class="headerlink" href="#objective-and-approach" title="Permalink to this headline">¶</a></h2>
-<p>This book assumes you know next to nothing about how networks can be viewed as a statistical object. Its goal is to give you the concepts, the intuitions, and the tools you need to actually implement programs capable of learning from network data.</p>
-<p>The book is intended to give you the best introduction you can possibly get to explore and exploit network data. You might be a graduate student, doing research on biochemical networks or trade networks in ancient Mesopotamia. Or you might be a professional interested in an introduction to the field of network data science, because you think it might be useful for your company. Whoever you are, we think you’ll find a lot of things that are useful and interesting in this book!</p>
-<p>We’ll cover the fundamentals of network data science, focusing on developing intuition on networks as statistical objects, doing so while paired with relevant Python tutorials. By the end of this book, you will be able to utilize efficient and easy to use tools available for performing analyses on networks. You will also have a whole new range of statistical techniques in your toolbox, such as representations, theory, and algorithms for networks.</p>
-<p>We’ll spend this book learning about network algorithms by showing how they’re implemented in production-ready Python frameworks:</p>
+<p>We’ll cover the fundamentals of spectral methods with respect to network data science, focusing on developing intuition on networks as statistical objects, while paired with relevant Python code. By the end of this thesis, you will be able to utilize efficient and easy to use tools available for performing analyses on networks. You will also have a whole new range of statistical techniques in your toolbox, such as representations, theory, and algorithms for networks.</p>
+<p>We’ll spend this thesis learning about network algorithms by showing how they’re implemented in production-ready Python frameworks:</p>
 <ul class="simple">
 <li><p>Numpy and Scipy are used for scientific programming. They give you access to array objects, which are the main way we’ll represent networks computationally.</p></li>
 <li><p>Scikit-Learn is very easy to use, yet it implements many Machine Learning algorithms efficiently, so it makes a great entry point for downstream analysis of networks.</p></li>
 <li><p>Graspologic is an open-source Python package developed by Microsoft and the NeuroData lab at Johns Hopkins University which gives you utilities and algorithms for doing statistical analyses on network-valued data.</p></li>
 </ul>
-<p>The book favors a hands-on approach, growing an intuitive understanding of
-networks through concrete working examples and a bit of theory.
-While you can read this book without picking up your laptop, we highly recommend
-you experiment with the code examples available online as Jupyter notebooks at <a class="reference external" href="http://docs.neurodata.io/graph-stats-book/index.html">http://docs.neurodata.io/graph-stats-book/index.html</a>.</p>
-</div>
-<div class="section" id="prerequisites">
-<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
-<p>We assume you have a basic knowledge of mathematics. Because network science uses a lot of linear algebra, requiring a bit of linear algebra knowledge is unfortunately unavoidable. (You should know what an eigenvalue is!)</p>
-<p>If you care about what’s under the hood mathematically, we have certain sections marked as “advanced material” - you should have a reasonable understanding of college-level math, such as calculus, linear algebra, probability, and statistics for these sections.</p>
-<p>You should also probably have some background in programming - we’ll mainly be using Python to build and explore our networks. If you don’t have too much of a Python or math background, don’t worry - we’ll link some resources to give you a head start.</p>
-<p>If you’ve never used Jupyter, don’t worry about it. It is a great tool to have in your toolbox and it’s easy to learn. We’ll also link some resources for you if you are not familiar with Python’s scientific libraries, like numpy, scipy, networkx, and scikit-learn.</p>
-</div>
-<div class="section" id="roadmap">
-<h2>Roadmap<a class="headerlink" href="#roadmap" title="Permalink to this headline">¶</a></h2>
-<p>This book is organized into three parts.</p>
-<p>Part I, Foundations, gives you a brief overview of the kinds of things you’ll be doing in this book, and shows you how to solve a network data science problem from start to finish. It covers the following topics:</p>
-<ul class="simple">
-<li><p>What a network is and where you can find networks in the wild</p></li>
-<li><p>All the reasons why you should care about studying networks</p></li>
-<li><p>Examples of ways you could apply network data science to your own projects</p></li>
-<li><p>An overview of the types of problems Network Machine Learning is good at dealing with</p></li>
-<li><p>The main challenges you’d encounter if you explored Network Learning more deeply</p></li>
-<li><p>Exploring a real network data science dataset, to get a broad understanding of what you might be able to learn.</p></li>
-</ul>
-<p>Part II, Representations, is all about how we can represent networks statistically, and what we can do with those representations. It covers the following topics:</p>
-<ul class="simple">
-<li><p>Ways you can represent individual networks</p></li>
-<li><p>Ways you can represent groups of networks</p></li>
-<li><p>The various useful properties different types of networks have</p></li>
-<li><p>Types of network representations and why they’re useful</p></li>
-<li><p>How to represent networks as a bunch of points in space</p></li>
-<li><p>How to represent multiple networks</p></li>
-<li><p>How to represent networks when you have extra information about your nodes</p></li>
-</ul>
-<p>Part III, Applications, is about using the representations from Part II to explore and exploit your networks. It covers the following topics:</p>
-<ul class="simple">
-<li><p>Figuring out if communities in your networks are different from each other</p></li>
-<li><p>Selecting a reasonable model to represent your data</p></li>
-<li><p>Finding nodes, edges, or communities in your networks that are interesting</p></li>
-<li><p>Finding time points which are anomalies in a network which is evolving over time</p></li>
-<li><p>What to do when you have new data after you’ve already trained a network model</p></li>
-<li><p>How hypothesis testing works on networks</p></li>
-<li><p>Figuring out which nodes are the most similar in a pair of networks</p></li>
-</ul>
-</div>
-<div class="section" id="conventions-used-in-this-book">
-<h2>Conventions Used In This Book<a class="headerlink" href="#conventions-used-in-this-book" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="using-code-examples">
-<h2>Using Code Examples<a class="headerlink" href="#using-code-examples" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="about-the-authors">
-<h2>About the Authors<a class="headerlink" href="#about-the-authors" title="Permalink to this headline">¶</a></h2>
-<p><strong>Dr. Joshua Vogelstein</strong> is an Assistant Professor in the Department of Biomedical Engineering at Johns Hopkins University, with joint appointments in Applied Mathematics and Statistics, Computer Science, Electrical and Computer Engineering, Neuroscience, and Biostatistics. His research focuses on the statistics of networks in brain science (connectomes). His lab and collaborators have developed the leading computational algorithms and libraries to perform statistical analysis on networks.</p>
-<p><strong>Alex Loftus</strong> is a master’s student at Johns Hopkins University in the Department of Biomedical Engineering, with an undergraduate degree in neuroscience. He has worked on implementing network spectral embedding and clustering algorithms in Python, and helped develop an MRI pipeline to produce brain networks from diffusion MRI data.</p>
-<p><strong>Eric Bridgeford</strong> is a PhD student in the Department of Biostatistics at Johns Hopkins University. Eric’s background includes Computer Science and Biomedical Engineering, and he is an avid contributor of packages to CRAN and PyPi for nonparametric hypothesis testing. Eric studies general approaches for statistical inference in network data, with applications to problems with network estimation in MRI connectomics data, including replicability and batch effects.</p>
-<p><strong>Dr. Carey E. Priebe</strong> is Professor of Applied Mathematics and Statistics, and a founding member of the Center for Imaging Science (CIS) and the Mathematical Institute for Data Science (MINDS) at Johns Hopkins University. He is a leading researcher in theoretical, methodological, and applied statistics / data science; much of his recent work focuses on spectral network analysis and subsequent statistical inference. Professor Priebe is Senior Member of the IEEE, Elected Member of the International Statistical Institute, Fellow of the Institute of Mathematical Statistics, and Fellow of the American Statistical Association.</p>
-<p><strong>Dr. Christopher M. White</strong> is Managing Director, Microsoft Research Special Projects. He leads mission-oriented research and software development teams focusing on high risk problems. Prior to joining Microsoft, he was a Fellow at Harvard for network statistics and machine learning. Chris’s work has been featured in media outlets including Popular Science, CBS’s 60 Minutes, CNN, the Wall Street Journal, Rolling Stone Magazine, TEDx, and Google’s Solve for X. Chris was profiled in a cover feature for the Sept/Oct 2016 issue of Popular Science.</p>
-<p><strong>Weiwei Yang</strong> is a Principal Development Manager at Microsoft Research. Her interests are in resource efficient alt-SGD ML methods inspired by biological learning. The applied research group she leads aims to democratize AI by addressing issues of sustainability, robustness, scalability, and efficiency in ML. Her group has applied ML to address social issues such as countering human trafficking and to energy grid stabilizations.</p>
+<p>The thesis favors a hands-on approach, growing an intuitive understanding of networks through concrete working examples and a bit of theory. While you can read this thesis without picking up your laptop, I highly recommend you experiment with the code examples available online as Jupyter notebooks at <a class="reference external" href="http://docs.neurodata.io/graph-stats-book/index.html">http://docs.neurodata.io/graph-stats-book/index.html</a>.</p>
+<p><strong>Primary Reader and Advisor</strong>: Joshua Vogelstein<br />
+<strong>Secondary Reader</strong>: Avanti Athreya</p>
 </div>
 <div class="section" id="acknowledgements">
 <h2>Acknowledgements<a class="headerlink" href="#acknowledgements" title="Permalink to this headline">¶</a></h2>
-<p>First of all, big thanks to everybody who has been reading the book as we write and giving feedback. So far, this list includes Dax Pryce, Ross Lawrence, Geoff Loftus, Alexandra McCoy, Olivia Taylor, and Peter Brown.</p>
+<p>Big thanks to everybody who has been reading the thesis as I write and giving feedback. This list includes Dax Pryce, Ross Lawrence, Geoff Loftus, Alexandra McCoy, Olivia Taylor Peter Brown, Sambit Panda, Eric Bridgeford, Josh Vogelstein, and Ali Sad-Aldin.</p>
+<p>I am grateful to my advisor, Joshua Vogelstein, for his insights and strong feedback. The value he puts on clarity and simplicity in any mathematical model has been an enormous help throughout this process.</p>
+<p>I am also especially grateful to Eric Bridgeford, who has been giving me constant feedback throughout the writing process. I would be lost in a sea of papers without his help.</p>
 </div>
-<div class="section" id="finished-sections">
-<h2>Finished Sections<a class="headerlink" href="#finished-sections" title="Permalink to this headline">¶</a></h2>
-<p>(lots more in progress…)</p>
-<ol class="simple">
-<li><p>Preface: <a class="reference internal" href="#"><span class="doc std std-doc">Preface</span></a></p></li>
-<li><p>Why Use Statistical Models: <a class="reference internal" href="../representations/ch5/why-use-models.html"><span class="doc std std-doc">Why Use Statistical Models?</span></a></p></li>
-<li><p>Single-Network Models: <a class="reference internal" href="../representations/ch5/single-network-models.html"><span class="doc std std-doc">Network Models</span></a></p></li>
-<li><p>Multi-Network Representation Learning: <a class="reference internal" href="../representations/ch6/multigraph-representation-learning.html"><span class="doc std std-doc">Multiple-Network Representation Learning</span></a></p></li>
-<li><p>Joint Representation Learning: <a class="reference internal" href="../representations/ch6/joint-representation-learning.html"><span class="doc std std-doc">Joint Representation Learning</span></a></p></li>
-</ol>
+<div class="section" id="dedication">
+<h2><strong>Dedication</strong><a class="headerlink" href="#dedication" title="Permalink to this headline">¶</a></h2>
+<p>This thesis is dedicated to my father, Geoffrey Loftus, for teaching me the value of rigor in science and for being a resoundingly positive role model throughout my life, and to my mother, Susan Loftus, for teaching me to never give up in the face of adversity.</p>
+</div>
+<div class="section" id="contents">
+<h2>Contents<a class="headerlink" href="#contents" title="Permalink to this headline">¶</a></h2>
+<p><strong>Abstract</strong><br />
+<strong>Acknowledgements</strong><br />
+<strong>List of Figures</strong><br />
+<strong>1. Matrix Representations of Networks</strong><br />
+The Adjacency Matrix<br />
+The Incidence Matrix<br />
+The Oriented Incidence Matrix<br />
+The Degree Matrix<br />
+The Laplacian Matrix<br />
+<strong>2. Why Embed Networks?</strong><br />
+High Dimensionality of Network Data<br />
+Latent Estimation<br />
+The Latent Position Matrix<br />
+Edge Probability Estimation
+Block Probability Matrices<br />
+Geometry of Latent Positions<br />
+<strong>3. Spectral Embedding Methods</strong><br />
+Singular Vectors and Singular Value Decomposition<br />
+Breaking Down the Laplacian<br />
+Matrix Rank<br />
+Sums of Rank One Matrices<br />
+Laplacian Approximation Through Summation<br />
+Increased Usefulness of Approximation with Larger Networks<br />
+Matrix Rank and Spectral Embedding<br />
+Dimensionality Estimation<br />
+The Two-Truths Phenomenon<br />
+<strong>4. Multiple-Network Representation Learning</strong><br />
+Data Generation<br />
+Simple Embedding Methods on Multiple Networks<br />
+Averaging Separately<br />
+Averaging Together<br />
+Different Types of Multi-Network Representation Learning<br />
+Network Combination: Together<br />
+Network Combination: Separate<br />
+Embedding Combination<br />
+Multiple-Adjacency Spectral Embedding<br />
+Overview of MASE
+Data Generation<br />
+Embedding<br />
+Combining Embeddings<br />
+Joint Embedding of Combinations<br />
+Score Matrices<br />
+Omnibus Embedding<br />
+OMNI on Four Networks<br />
+Overview of OMNI<br />
+The Omnibus Matrix<br />
+Embedding the Omnibus Matrix<br />
+Using the Omnibus Embedding<br />
+<strong>5. Joint Representation Learning</strong><br />
+Data Generation<br />
+Covariates<br />
+Covariate-Assisted Spectral Embedding<br />
+Weight Exploration<br />
+Weight Estimation<br />
+Omnibus Joint Embedding<br />
+MASE Joint Embedding<br />
+<strong>6. Single-Network Vertex Nomination</strong><br />
+Spectral Vertex Nomination<br />
+Finding a Single Set of Nominations<br />
+Nominations for Each Node<br />
+<strong>7. Out-of-Sample Embedding</strong><br />
+Data Generation<br />
+Probability Vector Estimation<br />
+Inversion of Probability Vector Estimation<br />
+The Moore-Penrose Pseudoinverse<br />
+Using the Pseudoinverse for Out-of-Sample Estimation<br />
+<strong>8. Anomaly Detection for Timeseries of Networks</strong><br />
+Simulating Timeseries Data<br />
+Approaches for Anomaly Detection<br />
+Detecting if the First Time-Point is an Anomaly<br />
+Hypothesis Testing a Test Statistic<br />
+Bootstrapped Distribution Estimation<br />
+P-Value Estimation<br />
+Testing the Remaining Time-Points<br />
+The Distribution of the Bootstrapped Test Statistic</p>
+</div>
+<div class="section" id="list-of-figures">
+<h2>List of Figures<a class="headerlink" href="#list-of-figures" title="Permalink to this headline">¶</a></h2>
+<p>1.1 A Three-Node Network<br />
+1.2 Adjacency Matrix and Layout Plot<br />
+1.2 Incidence Matrix and Layout Plot<br />
+1.3 Oriented Incidence Matrix and Layout Plot<br />
+2.1 Euclidean data represented as a data matrix and represented in Euclidean space<br />
+2.2 Clustered data after K-Means<br />
+2.3 A Network With Two Groups<br />
+2.4 Latent Position Estimation<br />
+2.5 Estimated and True Block Probability Matrices<br />
+2.6 Geometry of Latent Positions<br />
+3.1 The Spectral Embedding Algorithm<br />
+3.2 A Simple Network<br />
+3.3 The Laplacian Is Just a Function of the Adjacency Matrix<br />
+3.4 Decomposing our Simple Laplacian into Eigenvectors and Eigenvalues with SVD<br />
+3.5 We Can Recreate our Simple Laplacian by Summing All the Low-Rank Matrices
+3.6 The Sum of an Increasing Number of Low-Rank Matrices<br />
+3.7 Summing Only Two Low-Rank Matrices Approximates the Normalized Laplacian<br />
+3.8 The Latent Position Matrix<br />
+3.9 Low-Rank Matrices Contain the Same Information As Columns of the Latent Position Matrix<br />
+3.10 Expressing the Sum With Columns of the Latent Position Matrix<br />
+3.11 Scree Plot<br />
+3.12 The Adjacency Spectral Embedding<br />
+3.13 The Laplacian Spectral Embedding<br />
+3.14 Affinity vs Core-Periphery Structure<br />
+4.1 Different Sets of Brain Networks<br />
+4.2 Averaged Embedded Networks<br />
+4.3 Clustering with GMM<br />
+4.4 Embedding when we Average Everything Together<br />
+4.5 Network Comparison
+4.6 Averaged Brain Network<br />
+4.7 Combined Network Group Embedding<br />
+4.8 Separate Network Group Embedding<br />
+4.9 Combined Embedding<br />
+4.10 MASE Embedding On Network Groups<br />
+4.11 Four Different Networks<br />
+4.12 ASE on Four Networks<br />
+4.13 Latent Position Matrices for Four Embeddings<br />
+4.14 Combined Embeddings For Four Networks<br />
+4.15 Visualizing the Joint Embedding<br />
+4.16 MASE Embedding<br />
+4.17 Score Matrices and Edge Probabilities<br />
+4.18 ASE for Four Networks<br />
+4.19 Omnibus Embedding for Four Networks<br />
+4.20 The Omnibus Matrix for Two Networks<br />
+4.21 Full Omnibus Matrix for All Four Networks<br />
+4.22 Latent Positions for the Omnibus Embedding in Matrix Form<br />
+4.23 Latent Positions for the Omnibus Embedding in Euclidean Space<br />
+4.24 Mouse Networks Corresponding to a Single Node after Omnibus Embedding
+5.1 Stochastic Block Model with Three Communities<br />
+5.2 Laplacian-Embedded Latent Positions<br />
+5.3 Covariate Visualization<br />
+5.4 Laplacian and Covariates<br />
+5.5 Embedding Without Weights<br />
+5.6 Comparison of Embeddings for Different Weights on <span class="math notranslate nohighlight">\(YY^\top\)</span><br />
+5.7 Embedding With Weights<br />
+5.8 The Benefit Of Using Two Types of Information<br />
+5.9 Embedding with Graspologic<br />
+5.10 Omni Embedding for Topology and Covariates<br />
+5.11 MASE Joint Embedding<br />
+6.1 Latent Positions and Seeds for an SBM With Three Communities<br />
+6.2 Centroid for Seed Latent Positions<br />
+6.3 Nomination List<br />
+6.4 Nomination List: Network Plot<br />
+6.5 Nominations for Each Seed Node<br />
+7.1 Adjacency Matrix and Vector For Additional Node<br />
+7.2 Latent Positions for Original Network<br />
+7.3 Estimated Probability Vector for First Node<br />
+7.4 A Noninvertible Linear Transformation<br />
+7.5 The Best Approximation The Pseudoinverse Can Do<br />
+7.6 Estimating the Out-of-Sample Latent Position<br />
+7.7 Latent Positions with Out-of-Sample Estimate<br />
+8.1 Network Timeseries Data<br />
+8.2 Distribution of test statistics with the same latent positions<br />
+8.3 Test Statistics for Each Timeseries<br />
+8.4 Distribution of test statistics with the same latent positions<br />
+8.5 Distribution Comparison for Bootstrapped and True Test Statistic</p>
 </div>
 </div>
 

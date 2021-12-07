@@ -92,7 +92,7 @@
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="introduction/preface.html">
-   Preface
+   Front Matter
   </a>
  </li>
  <li class="toctree-l1">
@@ -460,7 +460,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/spectral-embedding_9_01.png" src="_images/spectral-embedding_9_01.png" />
+<img alt="_images/spectral-embedding_9_0.png" src="_images/spectral-embedding_9_0.png" />
 </div>
 </div>
 </div>
@@ -648,7 +648,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/spectral-embedding_23_01.png" src="_images/spectral-embedding_23_01.png" />
+<img alt="_images/spectral-embedding_23_0.png" src="_images/spectral-embedding_23_0.png" />
 </div>
 </div>
 <p>So now we have a collection of eigenvectors organized into a matrix with <span class="math notranslate nohighlight">\(U\)</span>, and a collection of their corresponding eigenvalues organized into a matrix with <span class="math notranslate nohighlight">\(S\)</span>. Remember that with Spectral Embedding, we keep only the largest eigenvalues/vectors and “clip” columns off of <span class="math notranslate nohighlight">\(U\)</span>.</p>
@@ -892,7 +892,7 @@ Take the <span class="math notranslate nohighlight">\(i^{th}\)</span> column of 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/spectral-embedding_45_01.png" src="_images/spectral-embedding_45_01.png" />
+<img alt="_images/spectral-embedding_45_0.png" src="_images/spectral-embedding_45_0.png" />
 </div>
 </div>
 <p>In fact, you can express the sum we did earlier - our lower-rank estimation of L - with just our latent position matrix! Remember that <span class="math notranslate nohighlight">\(U_k\)</span> is the first <span class="math notranslate nohighlight">\(k\)</span> eigenvectors of our Laplacian, and <span class="math notranslate nohighlight">\(S_k\)</span> is the diagonal matrix with the first <span class="math notranslate nohighlight">\(k\)</span> eigenvalues (and that we named them <span class="math notranslate nohighlight">\(\sigma_1\)</span> through <span class="math notranslate nohighlight">\(\sigma_k\)</span>).</p>
@@ -949,7 +949,7 @@ Take the <span class="math notranslate nohighlight">\(i^{th}\)</span> column of 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/spectral-embedding_47_01.png" src="_images/spectral-embedding_47_01.png" />
+<img alt="_images/spectral-embedding_47_0.png" src="_images/spectral-embedding_47_0.png" />
 </div>
 </div>
 <p>This helps gives an intuition for why our latent position matrix gives a representation of our network. You can take columns of it, turn those columns into matrices, and sum those matrices, and then estimate the Laplacian for the network. That means the columns of our embedding network contain all of the information necessary to estimate the network!</p>
