@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Spectral Embedding Methods &#8212; Hands-on Network Machine Learning with Scikit-Learn and Graspologic</title>
     
-  <link href="../../_static/css/theme.css" rel="stylesheet" />
-  <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -23,7 +23,7 @@
 
     
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
@@ -31,7 +31,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
     <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
@@ -42,21 +42,24 @@
     <script src="../../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"processClass": "tex2jax_process|mathjax_process|math|output_area"}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
     </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Multiple-Network Representation Learning" href="multigraph-representation-learning.html" />
     <link rel="prev" title="Why embed networks?" href="why-embed-networks.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -73,6 +76,10 @@
         <div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../../index.html">
       
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
       <img src="../../_static/logo.png" class="logo" alt="logo">
       
       
@@ -82,7 +89,7 @@
 </div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
@@ -223,7 +230,7 @@
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
             </div>
-            <nav id="bd-toc-nav">
+            <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#data-generation">
@@ -310,7 +317,7 @@
         
               <div>
                 
-  <div class="section" id="spectral-embedding-methods">
+  <div class="tex2jax_ignore mathjax_ignore section" id="spectral-embedding-methods">
 <h1>Spectral Embedding Methods<a class="headerlink" href="#spectral-embedding-methods" title="Permalink to this headline">¶</a></h1>
 <p>One of the primary embedding tools we’ll use in this book is a set of methods called <em>spectral embedding</em> <span id="id1"></span>. You’ll see spectral embedding and variations on it repeatedly, both throughout this section and when we get into applications, so it’s worth taking the time to understand spectral embedding deeply. If you’re familiar with Principal Component Analysis (PCA), this method has a lot of similarities. We’ll need to get into a bit of linear algebra to understand how it works.</p>
 <p>Remember that the basic idea behind any network embedding method is to take the network and put it into Euclidean space - meaning, a nice data table with rows as observations and columns as features (or dimensions), which you can then plot on an x-y axis. In this section, you’ll see the linear algebra-centric approach that spectral embedding uses to do this.</p>
@@ -353,26 +360,26 @@
     
 <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">();</span>
 
-<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_axes</span><span class="p">([</span><span class="o">.</span><span class="mi">06</span><span class="p">,</span> <span class="o">-.</span><span class="mi">06</span><span class="p">,</span> <span class="o">.</span><span class="mi">8</span><span class="p">,</span> <span class="o">.</span><span class="mi">8</span><span class="p">])</span> 
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_axes</span><span class="p">([</span><span class="mf">.06</span><span class="p">,</span> <span class="o">-</span><span class="mf">.06</span><span class="p">,</span> <span class="mf">.8</span><span class="p">,</span> <span class="mf">.8</span><span class="p">])</span> 
 <span class="n">ax</span> <span class="o">=</span> <span class="n">heatmap</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Network Representation&quot;</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
 
 
 <span class="c1"># add arrow</span>
-<span class="n">arrow_ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_axes</span><span class="p">([</span><span class="o">.</span><span class="mi">8</span><span class="p">,</span> <span class="o">.</span><span class="mi">3</span><span class="p">,</span> <span class="o">.</span><span class="mi">3</span><span class="p">,</span> <span class="o">.</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">arrow_ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_axes</span><span class="p">([</span><span class="mf">.8</span><span class="p">,</span> <span class="mf">.3</span><span class="p">,</span> <span class="mf">.3</span><span class="p">,</span> <span class="mf">.1</span><span class="p">])</span>
 <span class="n">rm_ticks</span><span class="p">(</span><span class="n">arrow_ax</span><span class="p">,</span> <span class="n">left</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">arrow</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">dx</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">dy</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">width</span><span class="o">=.</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">)</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">arrow</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">dx</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">dy</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">.1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">)</span> 
 
 <span class="c1"># add joint matrix</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_axes</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="o">-.</span><span class="mi">02</span><span class="o">*</span><span class="mi">3</span><span class="p">,</span> <span class="o">.</span><span class="mi">8</span><span class="p">,</span> <span class="o">.</span><span class="mi">8</span><span class="p">])</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_axes</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mf">.02</span><span class="o">*</span><span class="mi">3</span><span class="p">,</span> <span class="mf">.8</span><span class="p">,</span> <span class="mf">.8</span><span class="p">])</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">heatmap</span><span class="p">(</span><span class="n">U</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Left Singular vector matrix $U$&quot;</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">)</span>
 
-<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_axes</span><span class="p">([</span><span class="mf">1.55</span><span class="p">,</span> <span class="o">-.</span><span class="mi">06</span><span class="p">,</span> <span class="o">.</span><span class="mi">8</span><span class="p">,</span> <span class="o">.</span><span class="mi">8</span><span class="p">])</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_axes</span><span class="p">([</span><span class="mf">1.55</span><span class="p">,</span> <span class="o">-</span><span class="mf">.06</span><span class="p">,</span> <span class="mf">.8</span><span class="p">,</span> <span class="mf">.8</span><span class="p">])</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">heatmap</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">E</span><span class="p">),</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Singular value matrix $S$&quot;</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">)</span>
 
-<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_axes</span><span class="p">([</span><span class="mf">2.1</span><span class="p">,</span> <span class="o">-.</span><span class="mi">06</span><span class="p">,</span> <span class="o">.</span><span class="mi">8</span><span class="p">,</span> <span class="o">.</span><span class="mi">8</span><span class="p">])</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_axes</span><span class="p">([</span><span class="mf">2.1</span><span class="p">,</span> <span class="o">-</span><span class="mf">.06</span><span class="p">,</span> <span class="mf">.8</span><span class="p">,</span> <span class="mf">.8</span><span class="p">])</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">heatmap</span><span class="p">(</span><span class="n">Ut</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Right singular vector matrix $V^T$&quot;</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">)</span>
     
@@ -381,19 +388,19 @@
 <span class="n">rm_ticks</span><span class="p">(</span><span class="n">arrow_ax</span><span class="p">,</span> <span class="n">left</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">style</span> <span class="o">=</span> <span class="s2">&quot;Simple, tail_width=10, head_width=40, head_length=20&quot;</span>
 <span class="n">kw</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">arrowstyle</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">text_arrow</span> <span class="o">=</span> <span class="n">patches</span><span class="o">.</span><span class="n">FancyArrowPatch</span><span class="p">((</span><span class="mf">0.33</span><span class="p">,</span> <span class="o">.</span><span class="mi">9</span><span class="p">),</span> <span class="p">(</span><span class="o">.</span><span class="mi">1</span><span class="p">,</span> <span class="o">.</span><span class="mi">5</span><span class="p">),</span> <span class="n">connectionstyle</span><span class="o">=</span><span class="s2">&quot;arc3, rad=-.55&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">)</span>
+<span class="n">text_arrow</span> <span class="o">=</span> <span class="n">patches</span><span class="o">.</span><span class="n">FancyArrowPatch</span><span class="p">((</span><span class="mf">0.33</span><span class="p">,</span> <span class="mf">.9</span><span class="p">),</span> <span class="p">(</span><span class="mf">.1</span><span class="p">,</span> <span class="mf">.5</span><span class="p">),</span> <span class="n">connectionstyle</span><span class="o">=</span><span class="s2">&quot;arc3, rad=-.55&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">)</span>
 <span class="n">arrow_ax</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">text_arrow</span><span class="p">)</span>
 
 
 <span class="c1"># Embedding</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_axes</span><span class="p">([</span><span class="o">.</span><span class="mi">185</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.2</span><span class="p">,</span> <span class="o">.</span><span class="mi">4</span><span class="p">,</span> <span class="o">.</span><span class="mi">8</span><span class="p">])</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_axes</span><span class="p">([</span><span class="mf">.185</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.2</span><span class="p">,</span> <span class="mf">.4</span><span class="p">,</span> <span class="mf">.8</span><span class="p">])</span>
 <span class="n">cmap</span> <span class="o">=</span> <span class="n">cmaps</span><span class="p">[</span><span class="s2">&quot;sequential&quot;</span><span class="p">]</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">latents</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span> 
             <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">xticklabels</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">yticklabels</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Latent Positions </span><span class="se">\n</span><span class="s2">(matrix representation)&quot;</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;First two scaled columns of $U$&quot;</span><span class="p">)</span>
 
-<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_axes</span><span class="p">([</span><span class="o">.</span><span class="mi">185</span><span class="o">+.</span><span class="mi">45</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.2</span><span class="p">,</span> <span class="o">.</span><span class="mi">8</span><span class="p">,</span> <span class="o">.</span><span class="mi">8</span><span class="p">])</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_axes</span><span class="p">([</span><span class="mf">.185</span><span class="o">+</span><span class="mf">.45</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.2</span><span class="p">,</span> <span class="mf">.8</span><span class="p">,</span> <span class="mf">.8</span><span class="p">])</span>
 <span class="n">plot_latents</span><span class="p">(</span><span class="n">latents</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Latent Positions (Euclidean representation)&quot;</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Plotting the rows of U as points in space&quot;</span><span class="p">)</span>
@@ -456,7 +463,7 @@
 <span class="n">draw_multiplot</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">kamada_kawai_layout</span><span class="p">);</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;A Simple Network&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">24</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">1.05</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figtext</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-.</span><span class="mi">05</span><span class="p">,</span> <span class="s2">&quot;Figure 3.2&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figtext</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">.05</span><span class="p">,</span> <span class="s2">&quot;Figure 3.2&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -529,7 +536,7 @@
 <span class="n">heatmap</span><span class="p">(</span><span class="n">D</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Degree Matrix $D$&quot;</span><span class="p">)</span>
 
 <span class="c1"># Second axis (-)</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="o">=.</span><span class="mi">5</span><span class="p">,</span> <span class="n">y</span><span class="o">=.</span><span class="mi">5</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> 
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mf">.5</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">.5</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> 
             <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">get_xaxis</span><span class="p">()</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">get_yaxis</span><span class="p">()</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
@@ -539,7 +546,7 @@
 <span class="n">heatmap</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Adjacency Matrix $A$&quot;</span><span class="p">)</span>
 
 <span class="c1"># Third axis (=)</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="o">=.</span><span class="mi">5</span><span class="p">,</span> <span class="n">y</span><span class="o">=.</span><span class="mi">5</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="s2">&quot;=&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mf">.5</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">.5</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="s2">&quot;=&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>
             <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">get_xaxis</span><span class="p">()</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">get_yaxis</span><span class="p">()</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
@@ -555,7 +562,7 @@
 <span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">,</span> <span class="n">shrink</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="mi">10</span><span class="p">);</span>
 
 <span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;The Laplacian is Just a Function of the Adjacency Matrix&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">24</span><span class="p">);</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figtext</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">.</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;Figure 3.3&quot;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figtext</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">.1</span><span class="p">,</span> <span class="s2">&quot;Figure 3.3&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -624,7 +631,7 @@
 <span class="n">heatmap</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;$L$&quot;</span><span class="p">)</span>
 
 <span class="c1"># Second axis (=)</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="o">=.</span><span class="mi">5</span><span class="p">,</span> <span class="n">y</span><span class="o">=.</span><span class="mi">5</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="s2">&quot;=&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> 
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mf">.5</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">.5</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="s2">&quot;=&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> 
             <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">get_xaxis</span><span class="p">()</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">get_yaxis</span><span class="p">()</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
@@ -649,7 +656,7 @@
 <span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">,</span> <span class="n">shrink</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="mi">10</span><span class="p">);</span>
 
 <span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Decomposing our Simple Laplacian into Eigenvectors and Eigenvalues with SVD&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">24</span><span class="p">);</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figtext</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">.</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;Figure 3.4&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figtext</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">.1</span><span class="p">,</span> <span class="s2">&quot;Figure 3.4&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -729,7 +736,7 @@ Take the <span class="math notranslate nohighlight">\(i^{th}\)</span> column of 
 <span class="n">heatmap</span><span class="p">(</span><span class="n">laplacian_sum</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax_laplacian</span><span class="p">,</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;$L = \sum_{i = 1}^n \sigma_i u_i v_i^T$&quot;</span><span class="p">)</span>
 
 <span class="c1"># # Colorbar</span>
-<span class="n">cax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_axes</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">.</span><span class="mi">04</span><span class="p">,</span> <span class="o">.</span><span class="mi">8</span><span class="p">])</span>
+<span class="n">cax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_axes</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">.04</span><span class="p">,</span> <span class="mf">.8</span><span class="p">])</span>
 <span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">laplacian_sum</span><span class="p">)</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">laplacian_sum</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
 <span class="n">norm</span> <span class="o">=</span> <span class="n">Normalize</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="n">vmax</span><span class="p">)</span>
 <span class="n">im</span> <span class="o">=</span> <span class="n">cm</span><span class="o">.</span><span class="n">ScalarMappable</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="n">GraphColormap</span><span class="p">(</span><span class="s2">&quot;sequential&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">color</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">norm</span><span class="p">)</span>
@@ -737,7 +744,7 @@ Take the <span class="math notranslate nohighlight">\(i^{th}\)</span> column of 
 
 
 <span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;We can Recreate our Simple Laplacian by Summing all the Low-Rank Matrices&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">24</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figtext</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-.</span><span class="mi">05</span><span class="p">,</span> <span class="s2">&quot;Figure 3.5&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figtext</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">.05</span><span class="p">,</span> <span class="s2">&quot;Figure 3.5&quot;</span><span class="p">)</span>
 
 <span class="k">with</span> <span class="n">warnings</span><span class="o">.</span><span class="n">catch_warnings</span><span class="p">():</span>
     <span class="n">warnings</span><span class="o">.</span><span class="n">simplefilter</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
@@ -746,7 +753,45 @@ Take the <span class="math notranslate nohighlight">\(i^{th}\)</span> column of 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/spectral-embedding_31_0.png" src="../../_images/spectral-embedding_31_0.png" />
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_2543</span><span class="o">/</span><span class="mf">778003647.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">31</span> <span class="k">with</span> <span class="n">warnings</span><span class="o">.</span><span class="n">catch_warnings</span><span class="p">():</span>
+<span class="g g-Whitespace">     </span><span class="mi">32</span>     <span class="n">warnings</span><span class="o">.</span><span class="n">simplefilter</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+<span class="ne">---&gt; </span><span class="mi">33</span>     <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">();</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/matplotlib/pyplot.py</span> in <span class="ni">tight_layout</span><span class="nt">(pad, h_pad, w_pad, rect)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2300</span> <span class="nd">@_copy_docstring_and_deprecators</span><span class="p">(</span><span class="n">Figure</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2301</span> <span class="k">def</span> <span class="nf">tight_layout</span><span class="p">(</span><span class="o">*</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">1.08</span><span class="p">,</span> <span class="n">h_pad</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">w_pad</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">rect</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="ne">-&gt; </span><span class="mi">2302</span>     <span class="k">return</span> <span class="n">gcf</span><span class="p">()</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">pad</span><span class="o">=</span><span class="n">pad</span><span class="p">,</span> <span class="n">h_pad</span><span class="o">=</span><span class="n">h_pad</span><span class="p">,</span> <span class="n">w_pad</span><span class="o">=</span><span class="n">w_pad</span><span class="p">,</span> <span class="n">rect</span><span class="o">=</span><span class="n">rect</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2303</span> 
+<span class="g g-Whitespace">   </span><span class="mi">2304</span> 
+
+<span class="nn">/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/matplotlib/figure.py</span> in <span class="ni">tight_layout</span><span class="nt">(self, pad, h_pad, w_pad, rect)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3181</span>         <span class="kn">from</span> <span class="nn">.tight_layout</span> <span class="kn">import</span> <span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">3182</span>             <span class="n">get_subplotspec_list</span><span class="p">,</span> <span class="n">get_tight_layout_figure</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">3183</span>         <span class="n">subplotspec_list</span> <span class="o">=</span> <span class="n">get_subplotspec_list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">axes</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3184</span>         <span class="k">if</span> <span class="kc">None</span> <span class="ow">in</span> <span class="n">subplotspec_list</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">3185</span>             <span class="n">_api</span><span class="o">.</span><span class="n">warn_external</span><span class="p">(</span><span class="s2">&quot;This figure includes Axes that are not &quot;</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/matplotlib/tight_layout.py</span> in <span class="ni">get_subplotspec_list</span><span class="nt">(axes_list, grid_spec)</span>
+<span class="g g-Whitespace">    </span><span class="mi">232</span> 
+<span class="g g-Whitespace">    </span><span class="mi">233</span>         <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">axes_or_locator</span><span class="p">,</span> <span class="s2">&quot;get_subplotspec&quot;</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">234</span>             <span class="n">subplotspec</span> <span class="o">=</span> <span class="n">axes_or_locator</span><span class="o">.</span><span class="n">get_subplotspec</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">235</span>             <span class="n">subplotspec</span> <span class="o">=</span> <span class="n">subplotspec</span><span class="o">.</span><span class="n">get_topmost_subplotspec</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">236</span>             <span class="n">gs</span> <span class="o">=</span> <span class="n">subplotspec</span><span class="o">.</span><span class="n">get_gridspec</span><span class="p">()</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/matplotlib/colorbar.py</span> in <span class="ni">get_subplotspec</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">281</span>         <span class="n">ss</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cbar</span><span class="o">.</span><span class="n">ax</span><span class="p">,</span> <span class="s1">&#39;get_subplotspec&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">282</span>         <span class="k">if</span> <span class="n">ss</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">283</span>             <span class="n">ss</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_orig_locator</span><span class="o">.</span><span class="n">get_subplotspec</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">284</span>         <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">285</span>             <span class="n">ss</span> <span class="o">=</span> <span class="n">ss</span><span class="p">()</span>
+
+<span class="ne">AttributeError</span>: &#39;NoneType&#39; object has no attribute &#39;get_subplotspec&#39;
+</pre></div>
+</div>
+<img alt="../../_images/spectral-embedding_31_1.png" src="../../_images/spectral-embedding_31_1.png" />
 </div>
 </div>
 <p>Next up, we’ll estimate the Laplacian by only taking a few of these matrices. You can already kind of see in the figure above that this’ll work - the last two matrices don’t even have anything in them (they’re just 0)!</p>
@@ -768,13 +813,10 @@ Take the <span class="math notranslate nohighlight">\(i^{th}\)</span> column of 
             <span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;$\sum_</span><span class="se">{{</span><span class="s2">i = 1</span><span class="se">}}</span><span class="s2">^</span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2"> \sigma_i u_i u_i^T$&quot;</span><span class="p">)</span>
     
 <span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;The Sum of an </span><span class="se">\n</span><span class="s2">Increasing Number of Low-Rank Matrices&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figtext</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-.</span><span class="mi">05</span><span class="p">,</span> <span class="s2">&quot;Figure 3.6&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figtext</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">.05</span><span class="p">,</span> <span class="s2">&quot;Figure 3.6&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../_images/spectral-embedding_35_0.png" src="../../_images/spectral-embedding_35_0.png" />
 </div>
 </div>
 </div>
@@ -814,13 +856,10 @@ Take the <span class="math notranslate nohighlight">\(i^{th}\)</span> column of 
 <span class="n">l2approx_hm</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Sum of only two low-rank matrices&quot;</span><span class="p">,</span> <span class="n">fontdict</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="mi">15</span><span class="p">});</span>
 
 <span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Summing only two low-rank matrices approximates the normalized Laplacian&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">24</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figtext</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-.</span><span class="mi">05</span><span class="p">,</span> <span class="s2">&quot;Figure 3.7&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figtext</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">.05</span><span class="p">,</span> <span class="s2">&quot;Figure 3.7&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../_images/spectral-embedding_38_0.png" src="../../_images/spectral-embedding_38_0.png" />
 </div>
 </div>
 <p>This is where a lot of the power of an SVD comes from: you can approximate extremely complicated (high-rank) matrices with extremely simple (low-rank) matrices.</p>
@@ -851,13 +890,10 @@ Take the <span class="math notranslate nohighlight">\(i^{th}\)</span> column of 
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Node&quot;</span><span class="p">)</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Latent Position Matrix&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">22</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">1.01</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figtext</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-.</span><span class="mi">05</span><span class="p">,</span> <span class="s2">&quot;Figure 3.8&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figtext</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">.05</span><span class="p">,</span> <span class="s2">&quot;Figure 3.8&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">();</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../_images/spectral-embedding_43_0.png" src="../../_images/spectral-embedding_43_0.png" />
 </div>
 </div>
 <p>How does what we just talked about help us understand spectral embedding?</p>
@@ -884,7 +920,7 @@ Take the <span class="math notranslate nohighlight">\(i^{th}\)</span> column of 
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;First column of latent position matrix $u_0^T$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">1.01</span><span class="p">)</span>
 
 <span class="c1"># Third axis (=)</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="o">=.</span><span class="mi">5</span><span class="p">,</span> <span class="n">y</span><span class="o">=.</span><span class="mi">5</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="s2">&quot;=&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mf">.5</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">.5</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="s2">&quot;=&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>
             <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">get_xaxis</span><span class="p">()</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">get_yaxis</span><span class="p">()</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
@@ -900,15 +936,9 @@ Take the <span class="math notranslate nohighlight">\(i^{th}\)</span> column of 
 <span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">,</span> <span class="n">shrink</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="mi">10</span><span class="p">);</span>
 
 <span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Low-Rank Matrices Contain the Same Information</span><span class="se">\n</span><span class="s2"> as the Columns of the Latent Position Matrix&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">22</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">1.1</span><span class="p">);</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figtext</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-.</span><span class="mi">05</span><span class="p">,</span> <span class="s2">&quot;Figure 3.9&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figtext</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">.05</span><span class="p">,</span> <span class="s2">&quot;Figure 3.9&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, -0.05, &#39;Figure 3.9&#39;)
-</pre></div>
-</div>
-<img alt="../../_images/spectral-embedding_45_1.png" src="../../_images/spectral-embedding_45_1.png" />
 </div>
 </div>
 <p>In fact, you can express the sum we did earlier - our lower-rank estimation of L - with just our latent position matrix! Remember that <span class="math notranslate nohighlight">\(U_k\)</span> is the first <span class="math notranslate nohighlight">\(k\)</span> eigenvectors of our Laplacian, and <span class="math notranslate nohighlight">\(S_k\)</span> is the diagonal matrix with the first <span class="math notranslate nohighlight">\(k\)</span> eigenvalues (and that we named them <span class="math notranslate nohighlight">\(\sigma_1\)</span> through <span class="math notranslate nohighlight">\(\sigma_k\)</span>).</p>
@@ -927,7 +957,7 @@ Take the <span class="math notranslate nohighlight">\(i^{th}\)</span> column of 
 <span class="n">heatmap</span><span class="p">(</span><span class="n">current</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;$\sum_{i=1}^2 \sigma_i u_i u_i^T$&quot;</span><span class="p">)</span>
 
 <span class="c1"># Second axis (=)</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="o">=.</span><span class="mi">5</span><span class="p">,</span> <span class="n">y</span><span class="o">=.</span><span class="mi">5</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="s2">&quot;=&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mf">.5</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">.5</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="s2">&quot;=&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>
             <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">get_xaxis</span><span class="p">()</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">get_yaxis</span><span class="p">()</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
@@ -958,20 +988,14 @@ Take the <span class="math notranslate nohighlight">\(i^{th}\)</span> column of 
 <span class="n">axs</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">set_transform</span><span class="p">(</span><span class="n">transform</span><span class="p">)</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">Uk</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> 
                  <span class="n">xticklabels</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">yticklabels</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_box_aspect</span><span class="p">(</span><span class="o">.</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_box_aspect</span><span class="p">(</span><span class="mf">.5</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;$U_k^T$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">1.01</span><span class="p">)</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">(</span><span class="n">bottom</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">left</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
 
 <span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Expressing the Sum With Columns of the Latent Position Matrix&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">22</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">1.1</span><span class="p">);</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figtext</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-.</span><span class="mi">05</span><span class="p">,</span> <span class="s2">&quot;Figure 3.10&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figtext</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">.05</span><span class="p">,</span> <span class="s2">&quot;Figure 3.10&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, -0.05, &#39;Figure 3.10&#39;)
-</pre></div>
-</div>
-<img alt="../../_images/spectral-embedding_47_1.png" src="../../_images/spectral-embedding_47_1.png" />
 </div>
 </div>
 <p>This helps gives an intuition for why our latent position matrix gives a representation of our network. You can take columns of it, turn those columns into matrices, and sum those matrices, and then estimate the Laplacian for the network. That means the columns of our embedding network contain all of the information necessary to estimate the network!</p>
@@ -1000,11 +1024,11 @@ Take the <span class="math notranslate nohighlight">\(i^{th}\)</span> column of 
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Singular value&quot;</span><span class="p">)</span>
 
 <span class="c1"># plot circle</span>
-<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="o">.</span><span class="mi">15</span><span class="p">,</span> <span class="o">.</span><span class="mi">15</span>
-<span class="n">radius</span> <span class="o">=</span> <span class="o">.</span><span class="mi">15</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mf">.15</span><span class="p">,</span> <span class="mf">.15</span>
+<span class="n">radius</span> <span class="o">=</span> <span class="mf">.15</span>
 <span class="n">ada</span> <span class="o">=</span> <span class="n">AnchoredDrawingArea</span><span class="p">(</span><span class="mi">150</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower left&#39;</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">0.</span><span class="p">,</span> <span class="n">frameon</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">circle</span> <span class="o">=</span> <span class="n">Circle</span><span class="p">((</span><span class="mi">105</span><span class="p">,</span> <span class="mi">35</span><span class="p">),</span> <span class="mi">20</span><span class="p">,</span> <span class="n">clip_on</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-                <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">.</span><span class="mi">0125</span><span class="p">),</span>
+                <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">.0125</span><span class="p">),</span>
                 <span class="n">path_effects</span><span class="o">=</span><span class="p">[</span><span class="n">withStroke</span><span class="p">(</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">foreground</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">)])</span>
 <span class="n">ada</span><span class="o">.</span><span class="n">da</span><span class="o">.</span><span class="n">add_artist</span><span class="p">(</span><span class="n">circle</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">add_artist</span><span class="p">(</span><span class="n">ada</span><span class="p">)</span>
@@ -1014,18 +1038,12 @@ Take the <span class="math notranslate nohighlight">\(i^{th}\)</span> column of 
     <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">backgroundcolor</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">,</span>
             <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
     
-<span class="n">text</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="o">.</span><span class="mi">19</span><span class="p">,</span> <span class="s2">&quot;Elbow&quot;</span><span class="p">)</span>
+<span class="n">text</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mf">.19</span><span class="p">,</span> <span class="s2">&quot;Elbow&quot;</span><span class="p">)</span>
 
 <span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Scree Plot&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">22</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">1.1</span><span class="p">);</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figtext</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-.</span><span class="mi">05</span><span class="p">,</span> <span class="s2">&quot;Figure 3.11&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figtext</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">.05</span><span class="p">,</span> <span class="s2">&quot;Figure 3.11&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, -0.05, &#39;Figure 3.11&#39;)
-</pre></div>
-</div>
-<img alt="../../_images/spectral-embedding_51_1.png" src="../../_images/spectral-embedding_51_1.png" />
 </div>
 </div>
 <p>You’ll notice that there’s a marked area called the “elbow”. This is an area where singular values stop changing in magnitude as much when they get smaller: before the elbow, singular values change rapidly, and after the elbow, singular values barely change at all. (It’s called an elbow because the plot kind of looks like an arm, viewed from the side!)</p>
@@ -1058,15 +1076,9 @@ Take the <span class="math notranslate nohighlight">\(i^{th}\)</span> column of 
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_latents</span><span class="p">(</span><span class="n">embedding</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;The Adjacency Spectral Embedding&quot;</span><span class="p">);</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figtext</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-.</span><span class="mi">05</span><span class="p">,</span> <span class="s2">&quot;Figure 3.12&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figtext</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">.05</span><span class="p">,</span> <span class="s2">&quot;Figure 3.12&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, -0.05, &#39;Figure 3.12&#39;)
-</pre></div>
-</div>
-<img alt="../../_images/spectral-embedding_57_1.png" src="../../_images/spectral-embedding_57_1.png" />
 </div>
 </div>
 </div>
@@ -1084,15 +1096,9 @@ Take the <span class="math notranslate nohighlight">\(i^{th}\)</span> column of 
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_latents</span><span class="p">(</span><span class="n">embedding</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;The Laplacian Spectral Embedding&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figtext</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-.</span><span class="mi">05</span><span class="p">,</span> <span class="s2">&quot;Figure 3.13&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figtext</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">.05</span><span class="p">,</span> <span class="s2">&quot;Figure 3.13&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, -0.05, &#39;Figure 3.13&#39;)
-</pre></div>
-</div>
-<img alt="../../_images/spectral-embedding_60_1.png" src="../../_images/spectral-embedding_60_1.png" />
 </div>
 </div>
 </div>
@@ -1134,16 +1140,27 @@ Take the <span class="math notranslate nohighlight">\(i^{th}\)</span> column of 
               </div>
               
         
-        <div class='prev-next-bottom'>
-            
-    <a class='left-prev' id="prev-link" href="why-embed-networks.html" title="previous page">Why embed networks?</a>
-    <a class='right-next' id="next-link" href="multigraph-representation-learning.html" title="next page">Multiple-Network Representation Learning</a>
-
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="why-embed-networks.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Why embed networks?</p>
         </div>
+    </a>
+    <a class='right-next' id="next-link" href="multigraph-representation-learning.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Multiple-Network Representation Learning</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
         
         </div>
     </div>
-    <footer class="footer mt-5 mt-md-0">
+    <footer class="footer">
     <div class="container">
       <p>
         
@@ -1158,8 +1175,7 @@ Take the <span class="math notranslate nohighlight">\(i^{th}\)</span> column of 
       </div>
     </div>
   
-  <script src="../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
-  
   </body>
 </html>

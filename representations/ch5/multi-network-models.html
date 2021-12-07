@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Multiple Network Models &#8212; Hands-on Network Machine Learning with Scikit-Learn and Graspologic</title>
     
-  <link href="../../_static/css/theme.css" rel="stylesheet" />
-  <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -23,7 +23,7 @@
 
     
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
@@ -31,7 +31,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
     <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
@@ -42,19 +42,22 @@
     <script src="../../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"processClass": "tex2jax_process|mathjax_process|math|output_area"}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
     </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -71,6 +74,10 @@
         <div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../../index.html">
       
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
       <img src="../../_static/logo.png" class="logo" alt="logo">
       
       
@@ -80,7 +87,7 @@
 </div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
@@ -221,7 +228,7 @@
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
             </div>
-            <nav id="bd-toc-nav">
+            <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#joint-random-dot-product-graphs-jrdpg-model">
@@ -290,7 +297,7 @@
         
               <div>
                 
-  <div class="section" id="multiple-network-models">
+  <div class="tex2jax_ignore mathjax_ignore section" id="multiple-network-models">
 <h1>Multiple Network Models<a class="headerlink" href="#multiple-network-models" title="Permalink to this headline">¶</a></h1>
 <p>Up to this point, we have studied network models which are useful for a single network. What do we do if we have multiple networks?</p>
 <p>Let’s imagine that we have a company with <span class="math notranslate nohighlight">\(45\)</span> total employees. This company is a <em>real</em> innovator, and is focused on developing software for network machine learning for business use. <span class="math notranslate nohighlight">\(10\)</span> of these employees are company administrative executives, <span class="math notranslate nohighlight">\(25\)</span> of these employees are network machine learning experts, and <span class="math notranslate nohighlight">\(10\)</span> of these employees are marketing experts. For each day over the course of a full <span class="math notranslate nohighlight">\(30\)</span>-day month, we study the emails that go back and forth between the employees in the company. We summarize the emailing habits within the company using a nework, where the nodes of the network are employees, and the edges indicate the emailing behaviors between each pair of employees. An edge is said to exist if the two employees have exchanged an email on that day, and an edge does not exist if the two employees have not exchanged an email on that day. In most companies, it is common for employees in a similar role to tend to work more closely together, so we might expect that there is some level of a community structure to the emailing habits. For instance, if two employees are both network machine learning experts, they might exchange more emails between one another than a machine learning expert and a marketing expert. For the sake of this example, we will assume that the networks are organized such that the first day is a Monday, the second day is a Tuesday, so on and so forth. Let’s take a look at an example of some possible realizations of the first <span class="math notranslate nohighlight">\(3\)</span> days worth of emails. What we will see below is that all of the networks appear to have the same community organization, though on Wednesday, we will assume there was an executive board meeting, and in the morning leading up to the board meeting, the administrative executives of the company exchanged more emails than on other days. This is reflected in the fact that there are more emails going back and forth between administrative members in the network for “Wednesday”:</p>
@@ -306,13 +313,13 @@
 <span class="n">B1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">K</span><span class="p">,</span><span class="n">K</span><span class="p">))</span>
 
 <span class="n">B1</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.3</span>
-<span class="n">B1</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="o">.</span><span class="mi">05</span>
-<span class="n">B1</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="o">.</span><span class="mi">05</span>
-<span class="n">B1</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="o">.</span><span class="mi">05</span>
-<span class="n">B1</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="o">.</span><span class="mi">05</span>
+<span class="n">B1</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mf">.05</span>
+<span class="n">B1</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">.05</span>
+<span class="n">B1</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mf">.05</span>
+<span class="n">B1</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">.05</span>
 <span class="n">B1</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.3</span>
-<span class="n">B1</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="o">.</span><span class="mi">05</span>
-<span class="n">B1</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="o">.</span><span class="mi">05</span>
+<span class="n">B1</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mf">.05</span>
+<span class="n">B1</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mf">.05</span>
 <span class="n">B1</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.3</span>
 
 <span class="n">B2</span> <span class="o">=</span> <span class="n">B1</span>
@@ -657,10 +664,10 @@
 <span class="c1"># where the first 50 students are from community one and the second 50 students are</span>
 <span class="c1"># from community two</span>
 <span class="n">P</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n</span><span class="p">,</span><span class="n">n</span><span class="p">))</span>
-<span class="n">P</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">50</span><span class="p">,</span><span class="mi">0</span><span class="p">:</span><span class="mi">50</span><span class="p">]</span> <span class="o">=</span> <span class="o">.</span><span class="mi">5</span>
-<span class="n">P</span><span class="p">[</span><span class="mi">50</span><span class="p">:</span><span class="mi">100</span><span class="p">,</span> <span class="mi">50</span><span class="p">:</span><span class="mi">100</span><span class="p">]</span> <span class="o">=</span> <span class="o">.</span><span class="mi">3</span>
-<span class="n">P</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">50</span><span class="p">,</span><span class="mi">50</span><span class="p">:</span><span class="mi">100</span><span class="p">]</span> <span class="o">=</span> <span class="o">.</span><span class="mi">2</span>
-<span class="n">P</span><span class="p">[</span><span class="mi">50</span><span class="p">:</span><span class="mi">100</span><span class="p">,</span><span class="mi">0</span><span class="p">:</span><span class="mi">50</span><span class="p">]</span> <span class="o">=</span> <span class="o">.</span><span class="mi">2</span>
+<span class="n">P</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">50</span><span class="p">,</span><span class="mi">0</span><span class="p">:</span><span class="mi">50</span><span class="p">]</span> <span class="o">=</span> <span class="mf">.5</span>
+<span class="n">P</span><span class="p">[</span><span class="mi">50</span><span class="p">:</span><span class="mi">100</span><span class="p">,</span> <span class="mi">50</span><span class="p">:</span><span class="mi">100</span><span class="p">]</span> <span class="o">=</span> <span class="mf">.3</span>
+<span class="n">P</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">50</span><span class="p">,</span><span class="mi">50</span><span class="p">:</span><span class="mi">100</span><span class="p">]</span> <span class="o">=</span> <span class="mf">.2</span>
+<span class="n">P</span><span class="p">[</span><span class="mi">50</span><span class="p">:</span><span class="mi">100</span><span class="p">,</span><span class="mi">0</span><span class="p">:</span><span class="mi">50</span><span class="p">]</span> <span class="o">=</span> <span class="mf">.2</span>
 
 <span class="c1"># use the singular value decomposition to obtain the corresponding latent</span>
 <span class="c1"># position matrix</span>
@@ -799,14 +806,13 @@
               </div>
               
         
-        <div class='prev-next-bottom'>
-            
-
-        </div>
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
         
         </div>
     </div>
-    <footer class="footer mt-5 mt-md-0">
+    <footer class="footer">
     <div class="container">
       <p>
         
@@ -821,8 +827,7 @@
       </div>
     </div>
   
-  <script src="../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
-  
   </body>
 </html>

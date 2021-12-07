@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Single-Network Vertex Nomination &#8212; Hands-on Network Machine Learning with Scikit-Learn and Graspologic</title>
     
-  <link href="../../_static/css/theme.css" rel="stylesheet" />
-  <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -23,7 +23,7 @@
 
     
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
@@ -31,7 +31,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
     <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
@@ -42,19 +42,22 @@
     <script src="../../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"processClass": "tex2jax_process|mathjax_process|math|output_area"}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
     </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -71,6 +74,10 @@
         <div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../../index.html">
       
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
       <img src="../../_static/logo.png" class="logo" alt="logo">
       
       
@@ -80,7 +87,7 @@
 </div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
@@ -221,7 +228,7 @@
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
             </div>
-            <nav id="bd-toc-nav">
+            <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#spectral-vertex-nomination">
@@ -256,7 +263,7 @@
         
               <div>
                 
-  <div class="section" id="single-network-vertex-nomination">
+  <div class="tex2jax_ignore mathjax_ignore section" id="single-network-vertex-nomination">
 <h1>Single-Network Vertex Nomination<a class="headerlink" href="#single-network-vertex-nomination" title="Permalink to this headline">¶</a></h1>
 <p>Say you’re a criminal investigator trying to uncover a human trafficking ring. You build a network of potential suspects: some of the nodes in the network represent human traffickers, and some represent innocent people. The edges of the network represent a working relationship between a given pair of individuals.</p>
 <p>Your team has limited resources, and so it’s difficult to scrutinize everybody in the network directly to see if they are human traffickers. Ideally, you’d like to use your network to nominate potential suspects, so that you can prioritize your investigative efforts. You’ve already done some work: you have a list of a few nodes of the network who are known to be traffickers, and you have a list of a few who you know are not. Your goal, then, is to build an ordered list of nodes in the network that are most similar to the nodes you already know belong to human traffickers. Ideally, the first nodes in the list would be more likely to be traffickers, and the nodes would get less and less likely the further down in the list you go.</p>
@@ -306,12 +313,12 @@
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
 <span class="n">plot</span> <span class="o">=</span> <span class="n">plot_latents</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">memberships</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Latent positions and seeds for an SBM </span><span class="se">\n</span><span class="s2">with three communities&quot;</span><span class="p">,</span> 
-                    <span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;#1f77b4&quot;</span><span class="p">,</span> <span class="s2">&quot;#ff0000&quot;</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=.</span><span class="mi">5</span><span class="p">);</span>
+                    <span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;#1f77b4&quot;</span><span class="p">,</span> <span class="s2">&quot;#ff0000&quot;</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">.5</span><span class="p">);</span>
 <span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">seed_latents</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">seed_latents</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
 <span class="n">plot</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">plot</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">plot</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;latent positions </span><span class="se">\n</span><span class="s2">for seed nodes&quot;</span><span class="p">,</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="o">.</span><span class="mi">45</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> 
-              <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="o">.</span><span class="mi">52</span><span class="p">,</span> <span class="o">-.</span><span class="mi">15</span><span class="p">),</span> <span class="n">arrowprops</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;arrowstyle&quot;</span><span class="p">:</span> <span class="s2">&quot;-&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="p">});</span>
+<span class="n">plot</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;latent positions </span><span class="se">\n</span><span class="s2">for seed nodes&quot;</span><span class="p">,</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mf">.45</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> 
+              <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mf">.52</span><span class="p">,</span> <span class="o">-</span><span class="mf">.15</span><span class="p">),</span> <span class="n">arrowprops</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;arrowstyle&quot;</span><span class="p">:</span> <span class="s2">&quot;-&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="p">});</span>
 </pre></div>
 </div>
 </div>
@@ -333,14 +340,14 @@
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot</span> <span class="o">=</span> <span class="n">plot_latents</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">memberships</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Centroid for seed latent positions&quot;</span><span class="p">,</span> 
-                    <span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;#1f77b4&quot;</span><span class="p">,</span> <span class="s2">&quot;#ff0000&quot;</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=.</span><span class="mi">5</span><span class="p">);</span>
+                    <span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;#1f77b4&quot;</span><span class="p">,</span> <span class="s2">&quot;#ff0000&quot;</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">.5</span><span class="p">);</span>
 <span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">seed_latents</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">seed_latents</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> 
-             <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=.</span><span class="mi">5</span><span class="p">)</span>
+             <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">.5</span><span class="p">)</span>
 <span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">centroid</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">centroid</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
 <span class="n">plot</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">plot</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">plot</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;Centroid&quot;</span><span class="p">,</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="o">.</span><span class="mi">52</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> 
-              <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="n">centroid</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+.</span><span class="mi">005</span><span class="p">,</span> <span class="n">centroid</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+.</span><span class="mi">05</span><span class="p">),</span> 
+<span class="n">plot</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;Centroid&quot;</span><span class="p">,</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mf">.52</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> 
+              <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="n">centroid</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="mf">.005</span><span class="p">,</span> <span class="n">centroid</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="mf">.05</span><span class="p">),</span> 
               <span class="n">arrowprops</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;arrowstyle&quot;</span><span class="p">:</span> <span class="s2">&quot;-&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="p">});</span>
 </pre></div>
 </div>
@@ -373,13 +380,13 @@
     <span class="n">t</span> <span class="o">=</span> <span class="mi">10</span>
     <span class="n">f</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">t</span><span class="o">*</span><span class="n">d</span><span class="p">)</span>
     <span class="n">g</span> <span class="o">=</span> <span class="n">t</span><span class="o">*</span><span class="n">d</span><span class="o">**</span><span class="n">t</span> <span class="o">+</span> <span class="mi">1</span>
-    <span class="n">alpha_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">amax</span><span class="p">([</span><span class="n">f</span><span class="o">*</span><span class="n">g</span><span class="p">,</span> <span class="o">.</span><span class="mi">1</span><span class="p">])</span>  <span class="c1"># Function made through trial and error to get alpha-values looking right</span>
+    <span class="n">alpha_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">amax</span><span class="p">([</span><span class="n">f</span><span class="o">*</span><span class="n">g</span><span class="p">,</span> <span class="mf">.1</span><span class="p">])</span>  <span class="c1"># Function made through trial and error to get alpha-values looking right</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">alpha_</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;#1f77b4&quot;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">centroid</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">centroid</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;Nominations closer to the </span><span class="se">\n</span><span class="s2">centroid are more visible&quot;</span><span class="p">,</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="o">.</span><span class="mi">45</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> 
-              <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="o">.</span><span class="mi">525</span><span class="p">,</span> <span class="o">-.</span><span class="mi">28</span><span class="p">),</span> <span class="n">arrowprops</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;arrowstyle&quot;</span><span class="p">:</span> <span class="s2">&quot;-&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="p">});</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;Nominations closer to the </span><span class="se">\n</span><span class="s2">centroid are more visible&quot;</span><span class="p">,</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mf">.45</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> 
+              <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mf">.525</span><span class="p">,</span> <span class="o">-</span><span class="mf">.28</span><span class="p">),</span> <span class="n">arrowprops</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;arrowstyle&quot;</span><span class="p">:</span> <span class="s2">&quot;-&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="p">});</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Nomination List&quot;</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
@@ -396,8 +403,8 @@
 <span class="n">plot</span> <span class="o">=</span> <span class="n">networkplot</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">node_hue</span><span class="o">=</span><span class="n">nominations</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> 
             <span class="n">palette</span><span class="o">=</span><span class="s2">&quot;Purples&quot;</span><span class="p">,</span> <span class="n">edge_alpha</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
 
-<span class="n">plot</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;Higher-ranked nominations tend to be</span><span class="se">\n</span><span class="s2"> in the same group as the seed nodes&quot;</span><span class="p">,</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="o">.</span><span class="mi">45</span><span class="p">,</span> <span class="o">.</span><span class="mi">15</span><span class="p">),</span> 
-              <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="o">.</span><span class="mi">6</span><span class="p">,</span> <span class="o">.</span><span class="mi">5</span><span class="p">),</span> <span class="n">arrowprops</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;arrowstyle&quot;</span><span class="p">:</span> <span class="s2">&quot;-&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="p">});</span>
+<span class="n">plot</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;Higher-ranked nominations tend to be</span><span class="se">\n</span><span class="s2"> in the same group as the seed nodes&quot;</span><span class="p">,</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mf">.45</span><span class="p">,</span> <span class="mf">.15</span><span class="p">),</span> 
+              <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mf">.6</span><span class="p">,</span> <span class="mf">.5</span><span class="p">),</span> <span class="n">arrowprops</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;arrowstyle&quot;</span><span class="p">:</span> <span class="s2">&quot;-&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="p">});</span>
 
 <span class="c1"># TODO: add colorbar</span>
 </pre></div>
@@ -435,10 +442,10 @@
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[  0,   1,   2,   3,   4],
-       [ 17,  69,  98,   2,  89],
-       [188,  47,  55,  98,  24],
-       [ 46,  75,   3,  55,  38],
-       [ 81,  19,  75,  75,  45]])
+       [ 57, 119,  81, 125,  97],
+       [ 11, 106,  30,  87,  64],
+       [ 49, 133,  76, 111,  78],
+       [ 79, 171,  54, 193,   2]])
 </pre></div>
 </div>
 </div>
@@ -451,7 +458,7 @@
 
 <span class="n">fix</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">seed_latents</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">seed_latents</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> 
-             <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=.</span><span class="mi">5</span><span class="p">)</span>
+             <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">.5</span><span class="p">)</span>
 
 <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">seed_group</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">nominations</span><span class="o">.</span><span class="n">T</span><span class="p">):</span>
     <span class="n">neighbors</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">seed_group</span><span class="p">]</span>
@@ -506,14 +513,13 @@
               </div>
               
         
-        <div class='prev-next-bottom'>
-            
-
-        </div>
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
         
         </div>
     </div>
-    <footer class="footer mt-5 mt-md-0">
+    <footer class="footer">
     <div class="container">
       <p>
         
@@ -528,8 +534,7 @@
       </div>
     </div>
   
-  <script src="../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
-  
   </body>
 </html>
