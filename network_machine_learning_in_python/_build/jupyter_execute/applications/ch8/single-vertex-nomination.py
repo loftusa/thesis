@@ -65,6 +65,7 @@ plot.annotate(text="latent positions \nfor seed nodes", xytext=(.45, 0),
               xy=(.52, -.15), arrowprops={"arrowstyle": "->", "color": "k", });
 
 plt.figtext(0.5, 0, "Figure 6.1")
+plt.savefig("/Users/alex/Dropbox/thesis_pdf/figures/fig_6-1.png", dpi=300, transparent=False, bbox_inches='tight')
 
 
 # Now, we'd like to order the rest of the vertices in this network by their degree of similarity to the seed nodes. Remember that we talked about two ways of doing this: we could find a separate set of nominations for each seed node, or we could find a single set of nominations for all of the seed nodes. Let's start by finding a single set, using the centroid.
@@ -94,6 +95,7 @@ plot.annotate(text="Centroid", xytext=(.52, 0),
               arrowprops={"arrowstyle": "->", "color": "k", });
 
 plt.figtext(0.5, 0, "Figure 6.2")
+plt.savefig("/Users/alex/Dropbox/thesis_pdf/figures/fig_6-2.png", dpi=300, transparent=False, bbox_inches='tight')
 
 
 # Now, all we do is order the rest of the latent positions (the blue dots in the figure above) by their distance to the centroid. The nodes corresponding to the closer latent positions will be higher up in our nomination list. Scikit-learn has a `NearestNeighbors` classifier, so we'll just use that. Below, we fit the classifier to our latent positions matrix, then get our nominations using the `kneighbors` function. The latent positions closer to the centroid are more visible, and they get progressively less visible the further from the centroid they are.
@@ -131,6 +133,7 @@ ax.annotate(text="Nominations closer to the \ncentroid are more visible", xytext
 ax.set_title("Nomination List", loc="left");
 
 plt.figtext(0.5, 0, "Figure 6.3")
+plt.savefig("/Users/alex/Dropbox/thesis_pdf/figures/fig_6-3.png", dpi=300, transparent=False, bbox_inches='tight')
 
 
 # Let's look at the network directly, and see where our nominations tend to be. Below is a network colored by nomination rank: nodes that are higher up in the nomination list are more purple, and nodes that are lower in the nomination list are more white. You can see that the higher up in the nomination list you get (more purple), the more well-connected nodes tend to be to the seed nodes.
@@ -148,6 +151,7 @@ plot.annotate(text="Higher-ranked nominations tend to be\n in the same group as 
 
 plt.suptitle("Nomination List: Network Plot", fontsize=24, y=1)
 plt.figtext(0.5, 0, "Figure 6.4");
+plt.savefig("/Users/alex/Dropbox/thesis_pdf/figures/fig_6-4.png", dpi=300, transparent=False, bbox_inches='tight')
 # TODO: add colorbar
 
 
@@ -193,7 +197,8 @@ for i, seed_group in enumerate(nominations.T):
     ax.scatter(x, y, c=seed_color[i], s=10)
     
 ax.set_title("Nominees for each seed node", loc="left");
-plt.figtext(0.5, 0, "Figure 6.4")
+plt.figtext(0.5, 0, "Figure 6.5")
+plt.savefig("/Users/alex/Dropbox/thesis_pdf/figures/fig_6-5.png", dpi=300, transparent=False, bbox_inches='tight')
 
 
 # These approaches are each useful in different situations. 

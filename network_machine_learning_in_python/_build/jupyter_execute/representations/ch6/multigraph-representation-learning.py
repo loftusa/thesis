@@ -596,7 +596,7 @@ norm = Normalize(vmin=vmin, vmax=vmax)
 im = cm.ScalarMappable(cmap=cmap, norm=norm)
 fig.colorbar(im, ax=axs);
 
-plt.figtext(0.4, -.05, "Figure 4.13")
+plt.figtext(0.4, -.05, "Figure 4.14")
 
 
 # Because the rows of these matrices are all aligned - meaning, row 0 corresponds to node 0 for all four matrices - we can actually think of each node as having (in this case) eight latent position dimensions: two for each of our four networks. Eight is a somewhat arbitrary number here: each network contributes two dimensions simply because we originally chose to embed all of our networks down to two dimensions with ASE, and the number of networks is of course even more arbitrary. You'll usually have more than four.
@@ -619,7 +619,7 @@ hm.set_title(f"Combined embedding for all four networks", fontdict={'fontsize': 
 hm.set_xlabel("Dimension", fontsize=16)
 hm.set_ylabel("Latent Position", fontsize=16);
 
-plt.figtext(0.5, 0, "Figure 4.14")
+plt.figtext(0.5, 0, "Figure 4.15")
 
 
 # #### Embedding our Combination To Create a Joint Embedding
@@ -667,7 +667,7 @@ splot.legend(title='Community', handles=h, labels=["a", "b"])
 plt.suptitle("Two Visualizations For Our Joint Embedding", fontsize=20)
 plt.tight_layout()
 
-plt.figtext(0.5, 0, "Figure 4.15");
+plt.figtext(0.5, 0, "Figure 4.16");
 
 
 # Looks like this idea worked well - Our nodes are clearly grouped into two distinct communities, and all of our networks were drawn from the same distribution! To reiterate, what we did was:
@@ -693,7 +693,7 @@ latents = mase.fit_transform(networks)
 
 
 plot_latents(latents, title="MASE embedding", labels=labels);
-plt.figtext(0.5, 0, "Figure 4.16")
+plt.figtext(0.5, 0, "Figure 4.17")
 
 
 # ### Score Matrices*
@@ -790,7 +790,7 @@ lined_heatmap(P_0, binary=False, cbar=False, title="Estimated edge probabilities
 
 plt.tight_layout()
 fig.suptitle("Score Matrices and Edge Probabilities", fontsize=32, y=1.2);
-plt.figtext(0.5, -.05, "Figure 4.17")
+plt.figtext(0.5, -.05, "Figure 4.18")
 
 
 # So we've learned that MASE is useful when you want a joint embedding that combines all of your networks together, and when you want to estimate edge probabilities for one of your networks. What if we wanted to keep our separate embeddings, but put them all in the same space? That's what the Omnibus Embedding gives, and what we'll explore now.
@@ -846,7 +846,7 @@ fig.supxlabel("Dimension 1")
 fig.supylabel("Dimension 2");
 
 plt.tight_layout()
-plt.figtext(0.5, -.05, "Figure 4.18")
+plt.figtext(0.5, -.05, "Figure 4.19")
 
 
 # ### OMNI on our four heterogeneous networks
@@ -881,7 +881,7 @@ fig.supxlabel("Dimension 1")
 fig.supylabel("Dimension 2");
 
 plt.tight_layout()
-plt.figtext(0.5, -.05, "Figure 4.19")
+plt.figtext(0.5, -.05, "Figure 4.20")
 
 
 # Unlike when we embedded the four networks separately, the clusters created by the Omnibus Embedding *live in the same space*: you don't have to rotate or flip your points to line them up across embeddings. The cluster of blue points is always in the top left, and the cluster of red points is always in the bottom right. This means that we can compare points directly; the relative location of the node in your network corresponding to the red circle, for instance, now means something across the four networks, and we can do stuff like measure the distance of the red circle in network 1 to the red circle in network two to gain information.
@@ -964,7 +964,7 @@ add_legend(legend_labels=omni_labels, colors=omni_cmap)
 
 plt.tight_layout()
 fig.suptitle("The Omnibus Matrix for Two Networks", fontsize=24, y=1.1);
-plt.figtext(0.5, -.05, "Figure 4.20")
+plt.figtext(0.5, -.05, "Figure 4.21")
 
 
 # #### Creating the Omnibus Matrix For All Four Networks
@@ -999,7 +999,7 @@ hm.hlines(n//4, 0, n//2, colors="black", lw=.9, alpha=1)
 hm.hlines(n//2, n*.25, n*.75, colors="black", lw=.9, alpha=1)
 hm.hlines(n*.75, n//2, n, colors="black", lw=.9, alpha=1);
 
-plt.figtext(0.5, 0.1, "Figure 4.21")
+plt.figtext(0.5, 0.1, "Figure 4.22")
 
 
 # #### Embedding the Omnibus Matrix
@@ -1075,7 +1075,7 @@ plt.tight_layout()
 fig.colorbar(im, ax=np.array([hm_ax, ax0, ax1, ax2, ax3]));
 
 fig.suptitle("Latent Positions for the Omnibus Embedding in Matrix Form", fontsize=24, y=1.1);
-plt.figtext(0.5, 0, "Figure 4.22")
+plt.figtext(0.5, 0, "Figure 4.23")
 
 
 # And finally, below is the above embeddings, plotted in Euclidean space. Each point is a row of the embedding above, and the dots are colored according to their class label. The big matrix on the left (the joint OMNI embedding) just contains every latent position we have, across all of our networks. This means that, on the lefthand plot, there will be four points for every node (remember that we're operating under the assumption that we have the same set of nodes across all of our networks).
@@ -1105,7 +1105,7 @@ fig.supxlabel("Dimension 1", y=-.03)
 fig.supylabel("Dimension 2", x=-.01);
 
 fig.suptitle("Latent Positions for the Omnibus Embedding in Euclidean Space", fontsize=24, y=1.1);
-plt.figtext(0.5, -.05, "Figure 4.23")
+plt.figtext(0.5, -.05, "Figure 4.24")
 
 
 # ## How Can You Use The Omnibus Embedding?
@@ -1251,7 +1251,7 @@ g.add_legend()
 plt.show()
 g.add_legend(title="Type of Mouse");
 sns.move_legend(g, "center right", frameon=True)
-plt.figtext(0.5, -.05, "Figure 4.24")
+plt.figtext(0.5, -.05, "Figure 4.25")
 
 
 # You can clearly see a difference between the genetically modified mice and the normal mice. The genetically modified mice are off in their own cluster; if you're familiar with classical statistics, you could do a MANOVA here and find that the genetically modified mice are significantly different from the rest - if we wanted to, we could figure out which mice are genetically modified, even without having that information in advance!

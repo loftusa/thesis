@@ -410,13 +410,9 @@ norm = Normalize(vmin=vmin, vmax=vmax)
 im = cm.ScalarMappable(cmap=GraphColormap("sequential").color, norm=norm)
 fig.colorbar(im, cax=cax, use_gridspec=False);
 
-
 fig.suptitle("We can Recreate our Simple Laplacian by Summing all the Low-Rank Matrices", fontsize=24)
 plt.figtext(0.5, -.05, "Figure 3.5")
-
-with warnings.catch_warnings():
-    warnings.simplefilter("ignore")
-    plt.tight_layout();
+# plt.tight_layout();
 
 
 # Next up, we'll estimate the Laplacian by only taking a few of these matrices. You can already kind of see in the figure above that this'll work - the last two matrices don't even have anything in them (they're just 0)!

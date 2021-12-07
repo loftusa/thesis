@@ -102,6 +102,7 @@ for i in range(time_points):
     
 plt.figtext(1, -.3, "Figure 8.1")
 fig.suptitle("Network Timeseries Data", fontsize=24, x=1);
+plt.savefig("/Users/alex/Dropbox/thesis_pdf/figures/fig_8-1.png", dpi=300, transparent=False, bbox_inches='tight')
 
 
 # ## Approaches for Anomaly Detection
@@ -223,6 +224,7 @@ plot.annotate("y = difference in norm \nbetween $\hat{X}$ and $\hat{Y}$", (y+.00
 plot.text(.50, 20, "Bootstrapped Distribution", color="blue", rotation=60)
 
 plt.figtext(.5, 0, "Figure 8.2")
+plt.savefig("/Users/alex/Dropbox/thesis_pdf/figures/fig_8-2.png", dpi=300, transparent=False, bbox_inches='tight')
 
 
 # Fortunately, {glue:}`y` is well within a reasonable range under the assumption that the time-points share latent positions. However, we can't always eyeball stuff, and we need a way to formalize what it means for a test statistic to be "within a reasonable range". Our test statistic is  $y = ||X^{(t)} - X^{(t-1)}||$, we're trying to figure out if $X^{(t)} = X^{(t-1)}$, and we have a bunch of bootstrapped test statistics that we know were drawn from the same distribution (and are thus examples of the case where the null hypothesis is true).
@@ -280,6 +282,7 @@ plot.axes.xaxis.set_ticklabels(list(ys_true.keys()));
 plot.set_xlabel("Timeseries Pairs");
 
 plt.figtext(.5, -.7, "Figure 8.3")
+plt.savefig("/Users/alex/Dropbox/thesis_pdf/figures/fig_8-3.png", dpi=300, transparent=False, bbox_inches='tight')
 
 
 # If we were to plot a distribution of bootstrapped test statistics with each of our estimated y-values, it would look like the histogram below. Notice that two test statistics are clearly anomalous: the one comparing times five and six, and the one comparing times seven and eight. We know by design that networks six and seven actually are anomolous, and so we can see that our test managed to correctly determine the anomaly times.
@@ -307,6 +310,7 @@ plot.annotate("Anomalous \nTimeseries", xy=(x_max, 140), xytext=(x_max-.12, 140)
 
 plot.text(.49, 20, "Bootstrapped Distribution", color="blue", rotation=70);
 plt.figtext(.5, 0, "Figure 8.4")
+plt.savefig("/Users/alex/Dropbox/thesis_pdf/figures/fig_8-4.png", dpi=300, transparent=False, bbox_inches='tight')
 
 
 # ## The Distribution of the Bootstrapped Test Statistic
@@ -364,6 +368,7 @@ sns.histplot(ys_bootstrap, label="distribution of bootstrapped y values", color=
 plt.gca().legend()
 
 plt.figtext(.5, 0, "Figure 8.5")
+plt.savefig("/Users/alex/Dropbox/thesis_pdf/figures/fig_8-5.png", dpi=300, transparent=False, bbox_inches='tight')
 
 
 # ## 

@@ -66,6 +66,7 @@ plot.yaxis.set_label_position("right")
 # title
 fig.suptitle("Adjacency matrix (left) and vector for additional \nnode (right)", y=1.1, fontsize=16, x=.19, ha="left");
 plt.figtext(0.5, -.1, "Figure 7.1")
+plt.savefig("/Users/alex/Dropbox/thesis_pdf/figures/fig_7-1.png", dpi=300, transparent=False, bbox_inches='tight')
 
 
 # After embedding with ASE, we have an embedding for the original network. The rows of this embedding contain the latent position for each original node. We'll call the embedding $X$.
@@ -86,6 +87,7 @@ X = ase.transform(A)
 from graphbook_code import plot_latents
 plot_latents(X, title="Latent positions for our original network (X)");
 plt.figtext(0.5, 0, "Figure 7.2")
+plt.savefig("/Users/alex/Dropbox/thesis_pdf/figures/fig_7-2.png", dpi=300, transparent=False, bbox_inches='tight')
 
 
 # ## Probability Vector Estimation
@@ -117,6 +119,7 @@ ax.set_ylabel("Node index")
 plt.title("Estimated probability\n vector" + r" for first node $X v_1$");
 
 plt.figtext(0.5, 0.1, "Figure 7.3")
+plt.savefig("/Users/alex/Dropbox/thesis_pdf/figures/fig_7-3.png", dpi=300, transparent=False, bbox_inches='tight')
 
 
 # ## Inversion of Probability Vector Estimation
@@ -204,6 +207,7 @@ ax.text(x=-2.2, y=-1.2, s="output vectors", fontdict=dict(c="black"));
 
 plt.suptitle("A Noninvertible Linear Transformation", fontsize=18, y=1.1)
 plt.figtext(0.5, 0, "Figure 7.4")
+plt.savefig("/Users/alex/Dropbox/thesis_pdf/figures/fig_7-4.png", dpi=300, transparent=False, bbox_inches='tight')
 
 
 # Our goal is to reverse $T$ and bring $Tv_1$ and $Tv_2$ back to $v_1$ and $v_2$. Unfortunately, since both $v_1$ and $v_2$ get squished onto zero in the y-axis position after getting passed through $T$, we've lost all information about what was happening on the y-axis -- that's a lost cause. So it's impossible to get perfectly back to $v_1$ or $v_2$.
@@ -248,6 +252,7 @@ ax.text(x=1.8, y=-.4, s="$T^+ (X v_2$)", fontdict=dict(c="red"));
 
 plt.suptitle("The Best Approximation the Pseudoinverse Can Do", fontsize=18, y=1.1)
 plt.figtext(0.5, 0, "Figure 7.5")
+plt.savefig("/Users/alex/Dropbox/thesis_pdf/figures/fig_7-5.png", dpi=300, transparent=False, bbox_inches='tight')
 
 
 # ## Using the Pseudoinverse for Out-of-Sample Estimation
@@ -317,6 +322,7 @@ fig.subplots_adjust(wspace=.5)
 
 plt.suptitle("Estimating the Out-of-Sample Latent Position", fontsize=18, y=1.1)
 plt.figtext(0.5, 0, "Figure 7.6")
+plt.savefig("/Users/alex/Dropbox/thesis_pdf/figures/fig_7-6.png", dpi=300, transparent=False, bbox_inches='tight')
 
 
 # ## Using Graspologic
@@ -365,10 +371,5 @@ sns.move_legend(ax, "center right")
 fig.subplots_adjust(wspace=.5)
 
 plt.figtext(0.5, 0, "Figure 7.7")
-
-
-# In[ ]:
-
-
-
+plt.savefig("/Users/alex/Dropbox/thesis_pdf/figures/fig_7-7.png", dpi=300, transparent=False, bbox_inches='tight')
 
