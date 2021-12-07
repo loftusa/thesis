@@ -123,8 +123,7 @@ A, labels = sbm([25, 25], p, return_labels=True)
 # In[6]:
 
 
-get_ipython().run_line_magic('aimport', 'graphbook_code')
-get_ipython().run_line_magic('autoreload', '2')
+import graphbook_code
 
 from graphbook_code import draw_multiplot
 axs = draw_multiplot(A, labels=labels)

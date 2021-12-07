@@ -240,28 +240,6 @@
    The Oriented Incidence Matrix
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#the-degree-matrix">
-   The Degree Matrix
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#the-laplacian-matrix">
-   The Laplacian Matrix
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#the-symmetric-laplacian">
-     The Symmetric Laplacian
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#the-random-walk-laplacian">
-     The Random-Walk Laplacian
-    </a>
-   </li>
-  </ul>
- </li>
 </ul>
 
             </nav>
@@ -355,10 +333,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.05, &#39;Adjacency Matrix and Layout Plot&#39;)
-</pre></div>
-</div>
-<img alt="../../_images/matrix-representations_6_1.png" src="../../_images/matrix-representations_6_1.png" />
+<img alt="../../_images/matrix-representations_6_0.png" src="../../_images/matrix-representations_6_0.png" />
 </div>
 </div>
 <p>Although the adjacency matrix is straightforward and easy to understand, it isn’t the only way to represent networks.</p>
@@ -397,10 +372,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.05, &#39;Incidence Matrix and Layout Plot&#39;)
-</pre></div>
-</div>
-<img alt="../../_images/matrix-representations_10_1.png" src="../../_images/matrix-representations_10_1.png" />
+<img alt="../../_images/matrix-representations_10_0.png" src="../../_images/matrix-representations_10_0.png" />
 </div>
 </div>
 <p>When networks are large, incidence matrices tend to be extremely sparse – meaning, their values are mostly 0’s. This is because each column must have exactly two nonzero values along its rows: one value for the first node its edge is connected to, and another for the second. Because of this, incidence matrices are usually represented in Python computationally as scipy’s <em>sparse matrices</em> rather than as numpy arrays, since this data type is much better-suited for matrices which contain mostly zeroes.</p>
@@ -443,26 +415,10 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.05, &#39;Oriented Incidence Matrix and Layout Plot&#39;)
-</pre></div>
-</div>
-<img alt="../../_images/matrix-representations_14_1.png" src="../../_images/matrix-representations_14_1.png" />
+<img alt="../../_images/matrix-representations_14_0.png" src="../../_images/matrix-representations_14_0.png" />
 </div>
 </div>
 <p>Although we won’t use incidence matrices, oriented or otherwise, in this book too much, we introduced them because there’s a deep connection between incidence matrices, adjacency matrices, and a matrix representation that we haven’t introduced yet called the Laplacian. Before we can explore that connection, we’ll discuss one more representation: the degree matrix.</p>
-</div>
-<div class="section" id="the-degree-matrix">
-<h2>The Degree Matrix<a class="headerlink" href="#the-degree-matrix" title="Permalink to this headline">¶</a></h2>
-<p>The degree matrix isn’t a full representation of our network, because you wouldn’t be able to reconstruct an entire network from a degree matrix. However, the degree matrix</p>
-</div>
-<div class="section" id="the-laplacian-matrix">
-<h2>The Laplacian Matrix<a class="headerlink" href="#the-laplacian-matrix" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="the-symmetric-laplacian">
-<h3>The Symmetric Laplacian<a class="headerlink" href="#the-symmetric-laplacian" title="Permalink to this headline">¶</a></h3>
-</div>
-<div class="section" id="the-random-walk-laplacian">
-<h3>The Random-Walk Laplacian<a class="headerlink" href="#the-random-walk-laplacian" title="Permalink to this headline">¶</a></h3>
-</div>
 </div>
 </div>
 
