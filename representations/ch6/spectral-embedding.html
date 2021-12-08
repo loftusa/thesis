@@ -899,15 +899,12 @@ Take <span class="math notranslate nohighlight">\(\vec u_i\)</span>, the <span c
 <span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">,</span> <span class="n">shrink</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="mi">10</span><span class="p">);</span>
 
 <span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Low-Rank Matrices Contain the Same Information</span><span class="se">\n</span><span class="s2"> as the Columns of the Latent Position Matrix&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">22</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">1.1</span><span class="p">);</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figtext</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">.05</span><span class="p">,</span> <span class="s2">&quot;Figure 3.9&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figtext</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">.05</span><span class="p">,</span> <span class="s2">&quot;Figure 3.9&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, -0.05, &#39;Figure 3.9&#39;)
-</pre></div>
-</div>
-<img alt="../../_images/spectral-embedding_45_1.png" src="../../_images/spectral-embedding_45_1.png" />
+<img alt="../../_images/spectral-embedding_45_0.png" src="../../_images/spectral-embedding_45_0.png" />
 </div>
 </div>
 <p>In fact, you can express the sum we did earlier - our lower-rank estimation of L - with just our estimated latent position matrix! Remember that <span class="math notranslate nohighlight">\(U_k\)</span> is the first <span class="math notranslate nohighlight">\(k\)</span> eigenvectors of our Laplacian, and <span class="math notranslate nohighlight">\(S_k\)</span> is the diagonal matrix with the first <span class="math notranslate nohighlight">\(k\)</span> eigenvalues (and that we named them <span class="math notranslate nohighlight">\(\lambda_1\)</span> through <span class="math notranslate nohighlight">\(\lambda_k\)</span>).</p>
@@ -962,22 +959,19 @@ Take <span class="math notranslate nohighlight">\(\vec u_i\)</span>, the <span c
 <span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">(</span><span class="n">bottom</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">left</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
 
 <span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Expressing the Sum With Columns of the Estimated Latent Position Matrix&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">22</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">1.1</span><span class="p">);</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figtext</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">.05</span><span class="p">,</span> <span class="s2">&quot;Figure 3.10&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figtext</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">.05</span><span class="p">,</span> <span class="s2">&quot;Figure 3.10&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, -0.05, &#39;Figure 3.10&#39;)
-</pre></div>
-</div>
-<img alt="../../_images/spectral-embedding_47_1.png" src="../../_images/spectral-embedding_47_1.png" />
+<img alt="../../_images/spectral-embedding_47_0.png" src="../../_images/spectral-embedding_47_0.png" />
 </div>
 </div>
 <p>This helps gives an intuition for why our latent position matrix gives a representation of our network. You can take columns of it, turn those columns into matrices, and sum those matrices, and then estimate the Laplacian for the network. That means the columns of our embedding network contain all of the information necessary to estimate the network!</p>
 </div>
 <div class="section" id="dimensionality-estimation">
 <h2>Dimensionality Estimation<a class="headerlink" href="#dimensionality-estimation" title="Permalink to this headline">¶</a></h2>
-<p>One thing we haven’t addressed is how to figure out how many dimensions to embed down to. We’ve generally been embedding into two dimensions throughout this chapter (mainly because it’s easier to visualize), but you can embed into as many dimensions as you want.</p>
+<p>One thing we haven’t addressed is how to figure out how many dimensions to embed our network down to. We’ve generally been embedding into two dimensions throughout this chapter (mainly because it’s easier to visualize), but you can embed into as many dimensions as you want.</p>
 <p>If you don’t have any prior information about the “true” dimensionality of your latent positions, by default you’d just be stuck guessing. Fortunately, there are some rules-of-thumb to make your guess better, and some methods people have developed to make fairly decent guesses automatically.</p>
 <p>The most common way to pick the number of embedding dimensions is with something called a scree plot. Essentially, the intuition is this: the top singular vectors of an adjacency matrix contain the most useful information about your network, and as the singular vectors have smaller and smaller singular values, they contain less information and so are less important (this is why it’s reasonable to cut out the smallest <span class="math notranslate nohighlight">\(n-k\)</span> singular vectors in the spectral embedding algorithm).</p>
 <p>The scree plot just plots the singular values by their indices: the first (biggest) singular value is in the beginning, and the last (smallest) singular value is at the end.</p>
@@ -1028,8 +1022,8 @@ Take <span class="math notranslate nohighlight">\(\vec u_i\)</span>, the <span c
 </div>
 </div>
 <p>You’ll notice that there’s a marked area called the “elbow”. This is an area where singular values stop changing in magnitude as much when they get smaller: before the elbow, singular values change rapidly, and after the elbow, singular values barely change at all. (It’s called an elbow because the plot kind of looks like an arm, viewed from the side!)</p>
-<p>The location of this elbow gives you a rough indication for how many “true” dimensions your latent positions have. The singular values after the elbow are quite close to each other and have singular vectors which are largely noise, and don’t tell you very much about your data. It looks from the scree plot that we should be embedding down to two dimensions, and that adding more dimensions would probably just mean adding noise to our embedding.</p>
-<p>One drawback to this method is that a lot of the time, the elbow location is pretty subjective - real data will rarely have a nice, pretty elbow like the one you see above. The advantage is that it still generally works pretty well; embedding into a few more dimensions than you need isn’t too bad, since you’ll only have a few noies dimensions and there still may be <em>some</em> signal there.</p>
+<p>The location of this elbow gives you a rough estimate for how many “true” dimensions the true, underlying latent positions have. The singular values after the elbow are quite close to each other and have singular vectors which are largely noise, and don’t tell you very much about your data. It looks from the scree plot that we should be embedding down to two dimensions, and that adding more dimensions would probably just mean adding noise to our embedding.</p>
+<p>One drawback to this method is that a lot of the time, the elbow location is pretty subjective - real data will rarely have a nice, pretty elbow like the one you see above. The advantage is that it still generally works pretty well; embedding into a few more dimensions than you need isn’t too bad, since you’ll only have a few noise dimensions and there still may be <em>some</em> signal there.</p>
 <p>In any case, Graspologic automates the process of finding an elbow using a popular method developed in 2006 by Mu Zhu and Ali Ghodsi at the University of Waterloo. We won’t get into the specifics of how it works here, but you can usually find fairly good elbows automatically.</p>
 </div>
 <div class="section" id="using-graspologic-to-embed-networks">
