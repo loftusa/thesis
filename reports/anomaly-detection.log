@@ -37,12 +37,12 @@ yhat, Xhat = get_statistic(networks, return_latents=True)
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mNameError[0m                                 Traceback (most recent call last)
-[0;32m/tmp/ipykernel_1840/2578005892.py[0m in [0;36m<module>[0;34m[0m
+[0;32m/tmp/ipykernel_1757/2578005892.py[0m in [0;36m<module>[0;34m[0m
 [1;32m     14[0m         [0;32mreturn[0m [0my[0m[0;34m[0m[0;34m[0m[0m
 [1;32m     15[0m [0;34m[0m[0m
 [0;32m---> 16[0;31m [0myhat[0m[0;34m,[0m [0mXhat[0m [0;34m=[0m [0mget_statistic[0m[0;34m([0m[0mnetworks[0m[0;34m,[0m [0mreturn_latents[0m[0;34m=[0m[0;32mTrue[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
 [0m
-[0;32m/tmp/ipykernel_1840/2578005892.py[0m in [0;36mget_statistic[0;34m(adjacencies, return_latents)[0m
+[0;32m/tmp/ipykernel_1757/2578005892.py[0m in [0;36mget_statistic[0;34m(adjacencies, return_latents)[0m
 [1;32m     10[0m     [0myhat[0m [0;34m=[0m [0mnp[0m[0;34m.[0m[0mlinalg[0m[0;34m.[0m[0mnorm[0m[0;34m([0m[0mXhat[0m [0;34m-[0m [0mYhat[0m[0;34m,[0m [0mord[0m[0;34m=[0m[0;36m2[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
 [1;32m     11[0m     [0;32mif[0m [0mreturn_latents[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
 [0;32m---> 12[0;31m         [0;32mreturn[0m [0my[0m[0;34m,[0m [0mXhat[0m[0;34m[0m[0;34m[0m[0m
