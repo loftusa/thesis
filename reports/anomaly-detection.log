@@ -17,37 +17,17 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-from graspologic.embed import OmnibusEmbed as OMNI
+p = (bootstraps > y).sum() / N
 
-def get_statistic(adjacencies, return_latents=False):
-    """
-    Get the operator norm of the difference of two matrices.
-    """
-    omni = OMNI(n_components=1)
-    latents_est = omni.fit_transform(adjacencies)
-    Xhat, Yhat = latents_est[0], latents_est[1]
-    yhat = np.linalg.norm(Xhat - Yhat, ord=2)
-    if return_latents:
-        return y, Xhat
-    else:
-        return y
-
-yhat, Xhat = get_statistic(networks, return_latents=True)
+print(p)
 ------------------
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mNameError[0m                                 Traceback (most recent call last)
-[0;32m/tmp/ipykernel_1809/2578005892.py[0m in [0;36m<module>[0;34m[0m
-[1;32m     14[0m         [0;32mreturn[0m [0my[0m[0;34m[0m[0;34m[0m[0m
-[1;32m     15[0m [0;34m[0m[0m
-[0;32m---> 16[0;31m [0myhat[0m[0;34m,[0m [0mXhat[0m [0;34m=[0m [0mget_statistic[0m[0;34m([0m[0mnetworks[0m[0;34m,[0m [0mreturn_latents[0m[0;34m=[0m[0;32mTrue[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0m
-[0;32m/tmp/ipykernel_1809/2578005892.py[0m in [0;36mget_statistic[0;34m(adjacencies, return_latents)[0m
-[1;32m     10[0m     [0myhat[0m [0;34m=[0m [0mnp[0m[0;34m.[0m[0mlinalg[0m[0;34m.[0m[0mnorm[0m[0;34m([0m[0mXhat[0m [0;34m-[0m [0mYhat[0m[0;34m,[0m [0mord[0m[0;34m=[0m[0;36m2[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[1;32m     11[0m     [0;32mif[0m [0mreturn_latents[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
-[0;32m---> 12[0;31m         [0;32mreturn[0m [0my[0m[0;34m,[0m [0mXhat[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m     13[0m     [0;32melse[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
-[1;32m     14[0m         [0;32mreturn[0m [0my[0m[0;34m[0m[0;34m[0m[0m
+[0;32m/tmp/ipykernel_1736/1502028792.py[0m in [0;36m<module>[0;34m[0m
+[0;32m----> 1[0;31m [0mp[0m [0;34m=[0m [0;34m([0m[0mbootstraps[0m [0;34m>[0m [0my[0m[0;34m)[0m[0;34m.[0m[0msum[0m[0;34m([0m[0;34m)[0m [0;34m/[0m [0mN[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m      2[0m [0;34m[0m[0m
+[1;32m      3[0m [0mprint[0m[0;34m([0m[0mp[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
 
 [0;31mNameError[0m: name 'y' is not defined
 NameError: name 'y' is not defined
