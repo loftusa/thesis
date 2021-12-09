@@ -322,7 +322,7 @@
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#score-matrices">
-     Score Matrices*
+     Score Matrices
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
@@ -353,20 +353,20 @@
     <a class="reference internal nav-link" href="#overview-of-omni">
      Overview of OMNI
     </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#creating-the-omnibus-matrix-for-all-four-networks">
+     Creating the Omnibus Matrix For All Four Networks
+    </a>
     <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#creating-the-omnibus-matrix-for-all-four-networks">
-       Creating the Omnibus Matrix For All Four Networks
-      </a>
-     </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#embedding-the-omnibus-matrix">
        Embedding the Omnibus Matrix
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#creating-separate-latent-positions-in-the-same-latent-space">
-       Creating Separate Latent Positions In The Same Latent Space
+      <a class="reference internal nav-link" href="#estimating-separate-latent-positions-in-the-same-latent-space">
+       Estimating Separate Latent Positions In The Same Latent Space
       </a>
      </li>
     </ul>
@@ -885,7 +885,7 @@
 <h2>Multiple Adjacency Spectral Embedding<a class="headerlink" href="#multiple-adjacency-spectral-embedding" title="Permalink to this headline">¶</a></h2>
 <p>MASE is a technique which combines embeddings by concatennating and re-embedding the separate latent positions into a single space. It’s nice because you don’t actually need each network to be generated from the same distribution - you only need the nodes of the different networks to be aligned and for them to belong to the same communities.</p>
 <p>MASE is probably the easiest to understand if you know how Adjacency Spectral Embeddings work. Say you have some number of networks, and (like we said above) their nodes are aligned. The goal of MASE is to embed the networks into a single space, with each point in that space representing a single node - but, unlike simply averaging, MASE lets you combine networks which aren’t necessarily drawn from the same distribution. MASE is based on the common subspace independent-edge (COSIE) model from the multi-network models section of chapter 5, so we’re operating under the assumption that there <em>is</em> some low-dimensional space common to all of our networks that we can embed into in the first place.</p>
-<p>Let’s go back to our group of human and alien brains and try using MASE to embed them rather than averaging. Then, we’ll dive deeper into what’s going on under the hood. First, we’ll instantiate a MASE classifier and embed down to two dimensions. Then we’ll create a combined list of the human and alien brains, and use MASE to find the latent positions.</p>
+<p>Let’s go back to our group of human and alien brains and try using MASE to embed them rather than averaging. Then, we’ll dive deeper into what’s going on under the hood. First, we’ll instantiate a MASE classifier and embed down to two dimensions. Then we’ll create a combined list of the human and alien brains, and use MASE to find the latent positions. You can see the results of using MASE on the humans and aliens in the figure below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">graspologic.embed</span> <span class="kn">import</span> <span class="n">MultipleASE</span> <span class="k">as</span> <span class="n">MASE</span>
@@ -1038,7 +1038,7 @@
     
 <span class="n">fig</span><span class="o">.</span><span class="n">supxlabel</span><span class="p">(</span><span class="s2">&quot;Dimension&quot;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mf">.42</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">supylabel</span><span class="p">(</span><span class="s2">&quot;Latent Position&quot;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mf">.005</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
-<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Latent position matrices for our four embeddings&quot;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mf">.42</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Estimated Latent position matrices for our four embeddings&quot;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mf">.42</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
 
 <span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">w_pad</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">latents_mase</span><span class="p">)</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">latents_mase</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
@@ -1176,7 +1176,7 @@
 </div>
 </div>
 <div class="section" id="score-matrices">
-<h3>Score Matrices*<a class="headerlink" href="#score-matrices" title="Permalink to this headline">¶</a></h3>
+<h3>Score Matrices<a class="headerlink" href="#score-matrices" title="Permalink to this headline">¶</a></h3>
 <p>Exactly how is the joint embedding we created related to all of separate, original networks? Well, to understand this, we need to introduce the concept of <em>score matrices</em>.</p>
 <p>In MASE, each network is associated with its own score matrix. Just like the joint embedding describes how the networks are similar, the score matrices describe how each network is different.</p>
 <p>Suppose we have a set of networks with adjacency matrices <span class="math notranslate nohighlight">\(A^{(1)}, ..., A^{(m)}\)</span>, with each network being unweighted. In the joint embedding we made before, for instance, we had <span class="math notranslate nohighlight">\(m=4\)</span>.</p>
@@ -1224,7 +1224,7 @@
 </div>
 </div>
 </div>
-<p>and so, finally, we can use the above two facts to find the score matrix for a particular network. We just take our original formula <span class="math notranslate nohighlight">\(A^{(i)} = VR^{(i)} V^\top\)</span>, left-multiply by <span class="math notranslate nohighlight">\(V^\top\)</span>, and right-multiply by <span class="math notranslate nohighlight">\(V\)</span>.</p>
+<p>And so, finally, we can use the above two facts to find the score matrix for a particular network. We just take our original formula <span class="math notranslate nohighlight">\(A^{(i)} = VR^{(i)} V^\top\)</span>, left-multiply by <span class="math notranslate nohighlight">\(V^\top\)</span>, and right-multiply by <span class="math notranslate nohighlight">\(V\)</span>.</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     A^{(i)} &amp;= VR^{(i)} V^\top \\
@@ -1255,8 +1255,8 @@
 </div>
 </div>
 <p>Below and to the left, you can see the original adjacency matrix for the first matrix. In the center, you can see the heatmap for the first network’s score matrix. Next to it, you can see the recreation of the first network. Remember that we only used the score matrix to recreate it. The first network has a block probability matrix of</p>
-<div class="amsmath math notranslate nohighlight" id="equation-99b446d6-7648-406b-b428-aa5e8c5df937">
-<span class="eqno">(1)<a class="headerlink" href="#equation-99b446d6-7648-406b-b428-aa5e8c5df937" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-e3ccd338-4dc1-4192-925a-829f8c3fa25b">
+<span class="eqno">(1)<a class="headerlink" href="#equation-e3ccd338-4dc1-4192-925a-829f8c3fa25b" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \begin{bmatrix}
 .12 &amp; .03 \\
 .03 &amp; .06 \\
@@ -1301,8 +1301,8 @@
 <p>Let’s take a network generated from an RDPG with <span class="math notranslate nohighlight">\(n\)</span> nodes. Each of these <span class="math notranslate nohighlight">\(n\)</span> nodes is associated with a latent position vector, corresponding to that node’s row in the network’s embedding. What it means for a node to have a latent position vector is that the probability for an edge to exist between two nodes <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span> is the dot product of their latent position vectors.</p>
 <p>More specifically, if <span class="math notranslate nohighlight">\(\textbf{P}\)</span> is a matrix of edge probabilities, and <span class="math notranslate nohighlight">\(\textbf{X}\)</span> is our latent position matrix, then <span class="math notranslate nohighlight">\(\textbf{P} = \textbf{X} \textbf{X}^\top\)</span>.</p>
 <p>The nonidentifiability problem is as follows: Take any orthogonal matrix (a matrix which only rotates or flips other matrices). Call it <span class="math notranslate nohighlight">\(\textbf{W}\)</span>. By definition, the transpose of any orthogonal matrix is its inverse: <span class="math notranslate nohighlight">\(\textbf{W} \textbf{W}^\top = \textbf{I}\)</span>, where <span class="math notranslate nohighlight">\(\textbf{I}\)</span> is the identity matrix. So,</p>
-<div class="amsmath math notranslate nohighlight" id="equation-3076055b-7d5d-4c89-a9e1-59c1d93be078">
-<span class="eqno">(2)<a class="headerlink" href="#equation-3076055b-7d5d-4c89-a9e1-59c1d93be078" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-d91765f2-7d55-4c91-9118-8b7a1ac88246">
+<span class="eqno">(2)<a class="headerlink" href="#equation-d91765f2-7d55-4c91-9118-8b7a1ac88246" title="Permalink to this equation">¶</a></span>\[\begin{align}
 P &amp;= \textbf{X} \textbf{X}^\top \\
   &amp;= \textbf{X} \textbf{I} \textbf{X}^\top \\
   &amp;= (\textbf{X} \textbf{W}) (\textbf{W}^\top \textbf{X}^\top) \\
@@ -1321,7 +1321,7 @@ P &amp;= \textbf{X} \textbf{X}^\top \\
     <span class="n">_x</span><span class="p">,</span> <span class="n">_y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">latents_mase</span><span class="p">)[</span><span class="n">i</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">_x</span><span class="p">,</span> <span class="n">_y</span><span class="p">,</span> <span class="s1">&#39;ro&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">plt</span><span class="o">.</span><span class="n">MaxNLocator</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;ASE for four networks&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;The Nonidentifiability Problem&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">);</span>
 
 <span class="n">h</span><span class="p">,</span> <span class="n">l</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_legend_handles_labels</span><span class="p">()</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;center right&#39;</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.25</span><span class="p">,</span> <span class="mf">.5</span><span class="p">),</span> 
@@ -1331,12 +1331,76 @@ P &amp;= \textbf{X} \textbf{X}^\top \\
 <span class="n">fig</span><span class="o">.</span><span class="n">supylabel</span><span class="p">(</span><span class="s2">&quot;Dimension 2&quot;</span><span class="p">);</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figtext</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">.05</span><span class="p">,</span> <span class="s2">&quot;Figure 4.18&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figtext</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">.05</span><span class="p">,</span> <span class="s2">&quot;Figure 4.19&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;/Users/alex/Dropbox/thesis_pdf/figures/fig_4-18.png&quot;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s2">&quot;tight&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, -0.05, &#39;Figure 4.18&#39;)
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_2570</span><span class="o">/</span><span class="mf">1221871348.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">17</span> <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">18</span> <span class="n">plt</span><span class="o">.</span><span class="n">figtext</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">.05</span><span class="p">,</span> <span class="s2">&quot;Figure 4.19&quot;</span><span class="p">)</span>
+<span class="ne">---&gt; </span><span class="mi">19</span> <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;/Users/alex/Dropbox/thesis_pdf/figures/fig_4-18.png&quot;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s2">&quot;tight&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/matplotlib/pyplot.py</span> in <span class="ni">savefig</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">956</span> <span class="k">def</span> <span class="nf">savefig</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">957</span>     <span class="n">fig</span> <span class="o">=</span> <span class="n">gcf</span><span class="p">()</span>
+<span class="ne">--&gt; </span><span class="mi">958</span>     <span class="n">res</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">959</span>     <span class="n">fig</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">draw_idle</span><span class="p">()</span>   <span class="c1"># need this if &#39;transparent=True&#39; to reset colors</span>
+<span class="g g-Whitespace">    </span><span class="mi">960</span>     <span class="k">return</span> <span class="n">res</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/matplotlib/figure.py</span> in <span class="ni">savefig</span><span class="nt">(self, fname, transparent, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3010</span>                         <span class="n">ax</span><span class="o">.</span><span class="n">patch</span><span class="o">.</span><span class="n">_cm_set</span><span class="p">(</span><span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">))</span>
+<span class="g g-Whitespace">   </span><span class="mi">3011</span> 
+<span class="ne">-&gt; </span><span class="mi">3012</span>             <span class="bp">self</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">print_figure</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3013</span> 
+<span class="g g-Whitespace">   </span><span class="mi">3014</span>     <span class="k">def</span> <span class="nf">ginput</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">show_clicks</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/matplotlib/backend_bases.py</span> in <span class="ni">print_figure</span><span class="nt">(self, filename, dpi, facecolor, edgecolor, orientation, format, bbox_inches, pad_inches, bbox_extra_artists, backend, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2312</span>                 <span class="c1"># force the figure dpi to 72), so we need to set it again here.</span>
+<span class="g g-Whitespace">   </span><span class="mi">2313</span>                 <span class="k">with</span> <span class="n">cbook</span><span class="o">.</span><span class="n">_setattr_cm</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">figure</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="n">dpi</span><span class="p">):</span>
+<span class="ne">-&gt; </span><span class="mi">2314</span>                     <span class="n">result</span> <span class="o">=</span> <span class="n">print_method</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">2315</span>                         <span class="n">filename</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">2316</span>                         <span class="n">facecolor</span><span class="o">=</span><span class="n">facecolor</span><span class="p">,</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/matplotlib/backend_bases.py</span> in <span class="ni">wrapper</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1641</span>             <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1642</span> 
+<span class="ne">-&gt; </span><span class="mi">1643</span>         <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1644</span> 
+<span class="g g-Whitespace">   </span><span class="mi">1645</span>     <span class="k">return</span> <span class="n">wrapper</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/matplotlib/_api/deprecation.py</span> in <span class="ni">wrapper</span><span class="nt">(*inner_args, **inner_kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">410</span>                          <span class="k">else</span> <span class="n">deprecation_addendum</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">411</span>                 <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">412</span>         <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">inner_args</span><span class="p">,</span> <span class="o">**</span><span class="n">inner_kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">413</span> 
+<span class="g g-Whitespace">    </span><span class="mi">414</span>     <span class="n">DECORATORS</span><span class="p">[</span><span class="n">wrapper</span><span class="p">]</span> <span class="o">=</span> <span class="n">decorator</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/matplotlib/backends/backend_agg.py</span> in <span class="ni">print_png</span><span class="nt">(self, filename_or_obj, metadata, pil_kwargs, *args)</span>
+<span class="g g-Whitespace">    </span><span class="mi">539</span>         <span class="s2">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">540</span><span class="s2">         FigureCanvasAgg.draw(self)</span>
+<span class="ne">--&gt; </span><span class="mi">541</span><span class="s2">         mpl.image.imsave(</span>
+<span class="g g-Whitespace">    </span><span class="mi">542</span><span class="s2">             filename_or_obj, self.buffer_rgba(), format=&quot;png&quot;, origin=&quot;upper&quot;,</span>
+<span class="g g-Whitespace">    </span><span class="mi">543</span><span class="s2">             dpi=self.figure.dpi, metadata=metadata, pil_kwargs=pil_kwargs)</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/matplotlib/image.py</span> in <span class="ni">imsave</span><span class="nt">(fname, arr, vmin, vmax, cmap, format, origin, dpi, metadata, pil_kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1673</span><span class="s2">         pil_kwargs.setdefault(&quot;format&quot;, format)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1674</span><span class="s2">         pil_kwargs.setdefault(&quot;dpi&quot;, (dpi, dpi))</span>
+<span class="ne">-&gt; </span><span class="mi">1675</span><span class="s2">         image.save(fname, **pil_kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1676</span><span class="s2"> </span>
+<span class="g g-Whitespace">   </span><span class="mi">1677</span><span class="s2"> </span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/PIL/Image.py</span> in <span class="ni">save</span><span class="nt">(self, fp, format, **params)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2235</span><span class="s2">                 fp = builtins.open(filename, &quot;r+b&quot;)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2236</span><span class="s2">             else:</span>
+<span class="ne">-&gt; </span><span class="mi">2237</span><span class="s2">                 fp = builtins.open(filename, &quot;w+b&quot;)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2238</span><span class="s2"> </span>
+<span class="g g-Whitespace">   </span><span class="mi">2239</span><span class="s2">         try:</span>
+
+<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;/Users/alex/Dropbox/thesis_pdf/figures/fig_4-18.png&#39;
 </pre></div>
 </div>
 <img alt="../../_images/multigraph-representation-learning_95_1.png" src="../../_images/multigraph-representation-learning_95_1.png" />
@@ -1378,12 +1442,6 @@ P &amp;= \textbf{X} \textbf{X}^\top \\
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, -0.05, &#39;Figure 4.19&#39;)
-</pre></div>
-</div>
-<img alt="../../_images/multigraph-representation-learning_99_1.png" src="../../_images/multigraph-representation-learning_99_1.png" />
-</div>
 </div>
 <p>Unlike when we embedded the four networks separately, the clusters created by the Omnibus Embedding <em>live in the same space</em>: you don’t have to rotate or flip your points to line them up across embeddings. The cluster of blue points is always in the top left, and the cluster of red points is always in the bottom right. This means that we can compare points directly; the relative location of the node in your network corresponding to the red circle, for instance, now means something across the four networks, and we can do stuff like measure the distance of the red circle in network 1 to the red circle in network two to gain information.</p>
 </div>
@@ -1396,8 +1454,8 @@ P &amp;= \textbf{X} \textbf{X}^\top \\
 </ol>
 <p>The omnibus matrix itself just has every original adjacency or laplacian matrix along its diagonal, and the elementwise average of every pair of original matrices on the off-diagonals. This means that the Omnibus Matrix is <em>huge</em>: if you have <span class="math notranslate nohighlight">\(m\)</span> networks, each of which has <span class="math notranslate nohighlight">\(n\)</span> nodes, the Omnibus Matrix will be a <span class="math notranslate nohighlight">\(mn \times mn\)</span> matrix.</p>
 <p>For example, say we only have two networks. Let’s name their adjacency matrices <span class="math notranslate nohighlight">\(A^{(1)}\)</span> and <span class="math notranslate nohighlight">\(A^{(2)}\)</span>. Then, the omnibus embedding looks like this:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-f4a895fd-8b22-430c-92d9-186cd292d450">
-<span class="eqno">(3)<a class="headerlink" href="#equation-f4a895fd-8b22-430c-92d9-186cd292d450" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-43eba8e2-3801-473f-82fe-7133b3405564">
+<span class="eqno">(3)<a class="headerlink" href="#equation-43eba8e2-3801-473f-82fe-7133b3405564" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \begin{bmatrix}
 A^{(1)} &amp; \frac{A^{(1)} + A^{(2)}}{2} \\
 \frac{A^{(2)} + A^{(1)}}{2} &amp; A^{(2)} \\
@@ -1465,15 +1523,10 @@ A^{(1)} &amp; \frac{A^{(1)} + A^{(2)}}{2} \\
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, -0.05, &#39;Figure 4.20&#39;)
-</pre></div>
-</div>
-<img alt="../../_images/multigraph-representation-learning_105_1.png" src="../../_images/multigraph-representation-learning_105_1.png" />
 </div>
 </div>
 <div class="section" id="creating-the-omnibus-matrix-for-all-four-networks">
-<h4>Creating the Omnibus Matrix For All Four Networks<a class="headerlink" href="#creating-the-omnibus-matrix-for-all-four-networks" title="Permalink to this headline">¶</a></h4>
+<h3>Creating the Omnibus Matrix For All Four Networks<a class="headerlink" href="#creating-the-omnibus-matrix-for-all-four-networks" title="Permalink to this headline">¶</a></h3>
 <p>Here’s the Omnibus Matrix for all four of our networks. You can see adjacency matrices for the original four networks on the diagonal blocks, highlighted in blue, and all possible pairs of averages of adjacency matrices on the off-diagonal blocks, highlighted in orange.</p>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
@@ -1506,13 +1559,6 @@ A^{(1)} &amp; \frac{A^{(1)} + A^{(2)}}{2} \\
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0.1, &#39;Figure 4.21&#39;)
-</pre></div>
-</div>
-<img alt="../../_images/multigraph-representation-learning_108_1.png" src="../../_images/multigraph-representation-learning_108_1.png" />
-</div>
-</div>
 </div>
 <div class="section" id="embedding-the-omnibus-matrix">
 <h4>Embedding the Omnibus Matrix<a class="headerlink" href="#embedding-the-omnibus-matrix" title="Permalink to this headline">¶</a></h4>
@@ -1528,15 +1574,10 @@ A^{(1)} &amp; \frac{A^{(1)} + A^{(2)}}{2} \\
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(800, 2)
-</pre></div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="creating-separate-latent-positions-in-the-same-latent-space">
-<h4>Creating Separate Latent Positions In The Same Latent Space<a class="headerlink" href="#creating-separate-latent-positions-in-the-same-latent-space" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="estimating-separate-latent-positions-in-the-same-latent-space">
+<h4>Estimating Separate Latent Positions In The Same Latent Space<a class="headerlink" href="#estimating-separate-latent-positions-in-the-same-latent-space" title="Permalink to this headline">¶</a></h4>
 <p>Now, the only question we have remaining is how to actually pull the separate latent positions for each network from this matrix. It turns out that the individual latent positions for each network are actually stacked on top of each other: the first <span class="math notranslate nohighlight">\(n\)</span> rows of the joint matrix we just made correspond to the nodes of the first network, the second <span class="math notranslate nohighlight">\(n\)</span> rows correspond to the nodes of the second network, and so on.</p>
 <p>If we want, we can pull out the separate latent positions for each network explicitly. Below, we reshape our 2-dimensional <span class="math notranslate nohighlight">\(mn \times d\)</span> numpy array for the omnbus embedding into a <span class="math notranslate nohighlight">\(m \times n \times d\)</span> array: the embeddings for each network are now simply stacked on top of each other on the third dimension (and the first axis of our numpy array).</p>
 <div class="cell docutils container">
@@ -1546,11 +1587,6 @@ A^{(1)} &amp; \frac{A^{(1)} + A^{(2)}}{2} \\
 <span class="n">latent_networks</span> <span class="o">=</span> <span class="n">joint_embedding</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
 
 <span class="n">latent_networks</span><span class="o">.</span><span class="n">shape</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(4, 200, 2)
 </pre></div>
 </div>
 </div>
@@ -1599,12 +1635,6 @@ A^{(1)} &amp; \frac{A^{(1)} + A^{(2)}}{2} \\
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0, &#39;Figure 4.22&#39;)
-</pre></div>
-</div>
-<img alt="../../_images/multigraph-representation-learning_116_1.png" src="../../_images/multigraph-representation-learning_116_1.png" />
-</div>
 </div>
 <p>And finally, below is the above embeddings, plotted in Euclidean space. Each point is a row of the embedding above, and the dots are colored according to their class label. The big matrix on the left (the joint OMNI embedding) just contains every latent position we have, across all of our networks. This means that, on the lefthand plot, there will be four points for every node (remember that we’re operating under the assumption that we have the same set of nodes across all of our networks).</p>
 <div class="cell tag_hide-input docutils container">
@@ -1634,12 +1664,6 @@ A^{(1)} &amp; \frac{A^{(1)} + A^{(2)}}{2} \\
 <span class="n">plt</span><span class="o">.</span><span class="n">figtext</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">.05</span><span class="p">,</span> <span class="s2">&quot;Figure 4.23&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, -0.05, &#39;Figure 4.23&#39;)
-</pre></div>
-</div>
-<img alt="../../_images/multigraph-representation-learning_118_1.png" src="../../_images/multigraph-representation-learning_118_1.png" />
 </div>
 </div>
 </div>
@@ -1776,21 +1800,9 @@ A^{(1)} &amp; \frac{A^{(1)} + A^{(2)}}{2} \\
 <span class="c1"># Make the plot</span>
 <span class="n">g</span> <span class="o">=</span> <span class="n">ellipse_pairgrid</span><span class="p">(</span><span class="n">omni_embedding</span><span class="p">[:,</span> <span class="n">index</span><span class="p">,</span> <span class="p">:</span><span class="mi">3</span><span class="p">],</span> <span class="n">labels</span><span class="p">,</span> <span class="n">ci</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
 <span class="n">g</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Mouse Networks Corresponding to a Single Node </span><span class="se">\n</span><span class="s2">After Omnibus Embedding&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">1.08</span><span class="p">)</span>
-<span class="n">g</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
 <span class="n">g</span><span class="o">.</span><span class="n">add_legend</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 <span class="n">g</span><span class="o">.</span><span class="n">add_legend</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Type of Mouse&quot;</span><span class="p">);</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">move_legend</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="s2">&quot;center right&quot;</span><span class="p">,</span> <span class="n">frameon</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figtext</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">.05</span><span class="p">,</span> <span class="s2">&quot;Figure 4.24&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../_images/multigraph-representation-learning_121_0.png" src="../../_images/multigraph-representation-learning_121_0.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, -0.05, &#39;Figure 4.24&#39;)
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 432x288 with 0 Axes&gt;
 </pre></div>
 </div>
 </div>
