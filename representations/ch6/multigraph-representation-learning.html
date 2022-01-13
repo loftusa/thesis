@@ -1347,8 +1347,8 @@
 </div>
 </div>
 <p>Below and to the left, you can see the original adjacency matrix for the first matrix. In the center, you can see the heatmap for the first network’s score matrix. Next to it, you can see the recreation of the first network. Remember that we only used the score matrix to recreate it. The first network has a block probability matrix of</p>
-<div class="amsmath math notranslate nohighlight" id="equation-eeff012b-1e82-4de7-bf8d-2ea72ccfac26">
-<span class="eqno">(1)<a class="headerlink" href="#equation-eeff012b-1e82-4de7-bf8d-2ea72ccfac26" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-06653be4-9793-4af1-9bb6-c9eb78027513">
+<span class="eqno">(1)<a class="headerlink" href="#equation-06653be4-9793-4af1-9bb6-c9eb78027513" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \begin{bmatrix}
 .12 &amp; .03 \\
 .03 &amp; .06 \\
@@ -1388,8 +1388,8 @@
 <p>Let’s take a network generated from an RDPG with <span class="math notranslate nohighlight">\(n\)</span> nodes. Each of these <span class="math notranslate nohighlight">\(n\)</span> nodes is associated with a latent position vector, corresponding to that node’s row in the network’s embedding. What it means for a node to have a latent position vector is that the probability for an edge to exist between two nodes <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span> is the dot product of their latent position vectors.</p>
 <p>More specifically, if <span class="math notranslate nohighlight">\(\textbf{P}\)</span> is a matrix of edge probabilities, and <span class="math notranslate nohighlight">\(\textbf{X}\)</span> is our latent position matrix, then <span class="math notranslate nohighlight">\(\textbf{P} = \textbf{X} \textbf{X}^\top\)</span>.</p>
 <p>The nonidentifiability problem is as follows: Take any orthogonal matrix (a matrix which only rotates or flips other matrices). Call it <span class="math notranslate nohighlight">\(\textbf{W}\)</span>. By definition, the transpose of any orthogonal matrix is its inverse: <span class="math notranslate nohighlight">\(\textbf{W} \textbf{W}^\top = \textbf{I}\)</span>, where <span class="math notranslate nohighlight">\(\textbf{I}\)</span> is the identity matrix. So,</p>
-<div class="amsmath math notranslate nohighlight" id="equation-85d22aac-11c2-421a-b886-ac39b5baff1d">
-<span class="eqno">(2)<a class="headerlink" href="#equation-85d22aac-11c2-421a-b886-ac39b5baff1d" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-537f77ea-62bb-445a-be20-10b22c4d84f1">
+<span class="eqno">(2)<a class="headerlink" href="#equation-537f77ea-62bb-445a-be20-10b22c4d84f1" title="Permalink to this equation">¶</a></span>\[\begin{align}
 P &amp;= \textbf{X} \textbf{X}^\top \\
   &amp;= \textbf{X} \textbf{I} \textbf{X}^\top \\
   &amp;= (\textbf{X} \textbf{W}) (\textbf{W}^\top \textbf{X}^\top) \\
@@ -1475,8 +1475,8 @@ P &amp;= \textbf{X} \textbf{X}^\top \\
 </ol>
 <p>The omnibus matrix itself just has every original adjacency or laplacian matrix along its diagonal, and the elementwise average of every pair of original matrices on the off-diagonals. This means that the Omnibus Matrix is <em>huge</em>: if you have <span class="math notranslate nohighlight">\(m\)</span> networks, each of which has <span class="math notranslate nohighlight">\(n\)</span> nodes, the Omnibus Matrix will be a <span class="math notranslate nohighlight">\(mn \times mn\)</span> matrix.</p>
 <p>For example, say we only have two networks. Let’s name their adjacency matrices <span class="math notranslate nohighlight">\(A^{(1)}\)</span> and <span class="math notranslate nohighlight">\(A^{(2)}\)</span>. Then, the omnibus embedding looks like this:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-572a2e59-65c8-42f3-8488-b59e488dfbe3">
-<span class="eqno">(3)<a class="headerlink" href="#equation-572a2e59-65c8-42f3-8488-b59e488dfbe3" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-918740e6-c247-49b5-9622-5efe258c1006">
+<span class="eqno">(3)<a class="headerlink" href="#equation-918740e6-c247-49b5-9622-5efe258c1006" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \begin{bmatrix}
 A^{(1)} &amp; \frac{A^{(1)} + A^{(2)}}{2} \\
 \frac{A^{(2)} + A^{(1)}}{2} &amp; A^{(2)} \\
@@ -1671,12 +1671,6 @@ A^{(1)} &amp; \frac{A^{(1)} + A^{(2)}}{2} \\
 <img alt="../../_images/multigraph-representation-learning_115_1.png" src="../../_images/multigraph-representation-learning_115_1.png" />
 </div>
 </div>
-<div class="figure align-default" id="fig-omnibus" style="width: 300px">
-<div class="cell_output docutils container">
-<img alt="../../_images/multigraph-representation-learning_115_0.png" src="../../_images/multigraph-representation-learning_115_0.png" />
-</div>
-<p class="caption"><span class="caption-number">Fig. 3 </span><span class="caption-text">This is a <strong>caption</strong>, with an embedded <code class="docutils literal notranslate"><span class="pre">{glue:text}</span></code> element: !</span><a class="headerlink" href="#fig-omnibus" title="Permalink to this image">¶</a></p>
-</div>
 <p>And finally, below is the above embeddings, plotted in Euclidean space. Each point is a row of the embedding above, and the dots are colored according to their class label. The big matrix on the left (the joint OMNI embedding) just contains every latent position we have, across all of our networks. This means that, on the lefthand plot, there will be four points for every node (remember that we’re operating under the assumption that we have the same set of nodes across all of our networks).</p>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
@@ -1704,7 +1698,7 @@ A^{(1)} &amp; \frac{A^{(1)} + A^{(2)}}{2} \\
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/multigraph-representation-learning_118_0.png" src="../../_images/multigraph-representation-learning_118_0.png" />
+<img alt="../../_images/multigraph-representation-learning_117_0.png" src="../../_images/multigraph-representation-learning_117_0.png" />
 </div>
 </div>
 </div>
@@ -1850,7 +1844,7 @@ A^{(1)} &amp; \frac{A^{(1)} + A^{(2)}}{2} \\
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/multigraph-representation-learning_121_0.png" src="../../_images/multigraph-representation-learning_121_0.png" />
+<img alt="../../_images/multigraph-representation-learning_120_0.png" src="../../_images/multigraph-representation-learning_120_0.png" />
 </div>
 </div>
 <p>You can clearly see a difference between the genetically modified mice and the normal mice. The genetically modified mice are off in their own cluster; if you’re familiar with classical statistics, you could do a MANOVA here and find that the genetically modified mice are significantly different from the rest - if we wanted to, we could figure out which mice are genetically modified, even without having that information in advance!</p>
