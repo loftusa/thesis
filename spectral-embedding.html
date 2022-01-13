@@ -41,7 +41,7 @@
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"processClass": "tex2jax_process|mathjax_process|math|output_area"}})</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -188,7 +188,7 @@
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -223,7 +223,7 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
@@ -317,7 +317,104 @@
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Spectral Embedding Methods</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-simple-network">
+   A Simple Network
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-laplacian-matrix">
+   The Laplacian Matrix
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#finding-singular-vectors-with-singular-value-decomposition">
+   Finding Singular Vectors With Singular Value Decomposition
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#breaking-down-our-network-s-laplacian-matrix">
+   Breaking Down Our Network’s Laplacian matrix
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#why-we-care-about-taking-eigenvectors-matrix-rank">
+   Why We Care About Taking Eigenvectors: Matrix Rank
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#summing-rank-1-matrices-recreates-the-original-matrix">
+     Summing Rank 1 Matrices Recreates The Original Matrix
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#we-can-approximate-our-simple-laplacian-by-only-summing-a-few-of-the-low-rank-matrices">
+     We can approximate our simple Laplacian by only summing a few of the low-rank matrices
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#approximating-becomes-extremely-useful-when-we-have-a-bigger-now-regularized-laplacian">
+     Approximating becomes extremely useful when we have a bigger (now regularized) Laplacian
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-this-matrix-rank-stuff-helps-us-understand-spectral-embedding">
+   How This Matrix Rank Stuff Helps Us Understand Spectral Embedding
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#figuring-out-how-many-dimensions-to-embed-your-network-into">
+   Figuring Out How Many Dimensions To Embed Your Network Into
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   Figuring Out How Many Dimensions To Embed Your Network Into
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#using-graspologic-to-embed-networks">
+   Using Graspologic to embed networks
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#adjacency-spectral-embedding">
+     Adjacency Spectral Embedding
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#laplacian-spectral-embedding">
+     Laplacian Spectral Embedding
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#when-should-you-use-ase-and-when-should-you-use-lse">
+   When should you use ASE and when should you use LSE?
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="spectral-embedding-methods">
@@ -743,45 +840,7 @@ Take the <span class="math notranslate nohighlight">\(i^{th}\)</span> column of 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_2716</span><span class="o">/</span><span class="mf">1364255984.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">     </span><span class="mi">30</span> <span class="k">with</span> <span class="n">warnings</span><span class="o">.</span><span class="n">catch_warnings</span><span class="p">():</span>
-<span class="g g-Whitespace">     </span><span class="mi">31</span>     <span class="n">warnings</span><span class="o">.</span><span class="n">simplefilter</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
-<span class="ne">---&gt; </span><span class="mi">32</span>     <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">();</span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/matplotlib/pyplot.py</span> in <span class="ni">tight_layout</span><span class="nt">(pad, h_pad, w_pad, rect)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2300</span> <span class="nd">@_copy_docstring_and_deprecators</span><span class="p">(</span><span class="n">Figure</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2301</span> <span class="k">def</span> <span class="nf">tight_layout</span><span class="p">(</span><span class="o">*</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">1.08</span><span class="p">,</span> <span class="n">h_pad</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">w_pad</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">rect</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<span class="ne">-&gt; </span><span class="mi">2302</span>     <span class="k">return</span> <span class="n">gcf</span><span class="p">()</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">pad</span><span class="o">=</span><span class="n">pad</span><span class="p">,</span> <span class="n">h_pad</span><span class="o">=</span><span class="n">h_pad</span><span class="p">,</span> <span class="n">w_pad</span><span class="o">=</span><span class="n">w_pad</span><span class="p">,</span> <span class="n">rect</span><span class="o">=</span><span class="n">rect</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2303</span> 
-<span class="g g-Whitespace">   </span><span class="mi">2304</span> 
-
-<span class="nn">/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/matplotlib/figure.py</span> in <span class="ni">tight_layout</span><span class="nt">(self, pad, h_pad, w_pad, rect)</span>
-<span class="g g-Whitespace">   </span><span class="mi">3181</span>         <span class="kn">from</span> <span class="nn">.tight_layout</span> <span class="kn">import</span> <span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">3182</span>             <span class="n">get_subplotspec_list</span><span class="p">,</span> <span class="n">get_tight_layout_figure</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">3183</span>         <span class="n">subplotspec_list</span> <span class="o">=</span> <span class="n">get_subplotspec_list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">axes</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">3184</span>         <span class="k">if</span> <span class="kc">None</span> <span class="ow">in</span> <span class="n">subplotspec_list</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">3185</span>             <span class="n">_api</span><span class="o">.</span><span class="n">warn_external</span><span class="p">(</span><span class="s2">&quot;This figure includes Axes that are not &quot;</span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/matplotlib/tight_layout.py</span> in <span class="ni">get_subplotspec_list</span><span class="nt">(axes_list, grid_spec)</span>
-<span class="g g-Whitespace">    </span><span class="mi">232</span> 
-<span class="g g-Whitespace">    </span><span class="mi">233</span>         <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">axes_or_locator</span><span class="p">,</span> <span class="s2">&quot;get_subplotspec&quot;</span><span class="p">):</span>
-<span class="ne">--&gt; </span><span class="mi">234</span>             <span class="n">subplotspec</span> <span class="o">=</span> <span class="n">axes_or_locator</span><span class="o">.</span><span class="n">get_subplotspec</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">235</span>             <span class="n">subplotspec</span> <span class="o">=</span> <span class="n">subplotspec</span><span class="o">.</span><span class="n">get_topmost_subplotspec</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">236</span>             <span class="n">gs</span> <span class="o">=</span> <span class="n">subplotspec</span><span class="o">.</span><span class="n">get_gridspec</span><span class="p">()</span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages/matplotlib/colorbar.py</span> in <span class="ni">get_subplotspec</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">281</span>         <span class="n">ss</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cbar</span><span class="o">.</span><span class="n">ax</span><span class="p">,</span> <span class="s1">&#39;get_subplotspec&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">282</span>         <span class="k">if</span> <span class="n">ss</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">283</span>             <span class="n">ss</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_orig_locator</span><span class="o">.</span><span class="n">get_subplotspec</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">284</span>         <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">285</span>             <span class="n">ss</span> <span class="o">=</span> <span class="n">ss</span><span class="p">()</span>
-
-<span class="ne">AttributeError</span>: &#39;NoneType&#39; object has no attribute &#39;get_subplotspec&#39;
-</pre></div>
-</div>
-<img alt="_images/spectral-embedding_31_1.png" src="_images/spectral-embedding_31_1.png" />
+<img alt="_images/spectral-embedding_31_01.png" src="_images/spectral-embedding_31_01.png" />
 </div>
 </div>
 <p>Next up, we’ll estimate the Laplacian by only taking a few of these matrices. You can already kind of see in the figure above that this’ll work - the last two matrices don’t even have anything in them (they’re just 0)!</p>
@@ -806,6 +865,9 @@ Take the <span class="math notranslate nohighlight">\(i^{th}\)</span> column of 
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/spectral-embedding_35_0.png" src="_images/spectral-embedding_35_0.png" />
 </div>
 </div>
 </div>
@@ -850,6 +912,9 @@ Take the <span class="math notranslate nohighlight">\(i^{th}\)</span> column of 
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/spectral-embedding_38_0.png" src="_images/spectral-embedding_38_0.png" />
+</div>
 </div>
 <p>This is where a lot of the power of an SVD comes from: you can approximate extremely complicated (high-rank) matrices with extremely simple (low-rank) matrices.</p>
 </div>
@@ -882,6 +947,9 @@ Take the <span class="math notranslate nohighlight">\(i^{th}\)</span> column of 
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">();</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/spectral-embedding_43_01.png" src="_images/spectral-embedding_43_01.png" />
 </div>
 </div>
 <p>How does what we just talked about help us understand spectral embedding?</p>
@@ -926,6 +994,9 @@ Take the <span class="math notranslate nohighlight">\(i^{th}\)</span> column of 
 <span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Our low-rank matrices contain the same information</span><span class="se">\n</span><span class="s2"> as the columns of the latent position matrix&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">22</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">1.1</span><span class="p">);</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/spectral-embedding_45_0.png" src="_images/spectral-embedding_45_0.png" />
 </div>
 </div>
 <p>In fact, you can express the sum we did earlier - our lower-rank estimation of L - with just our latent position matrix! Remember that <span class="math notranslate nohighlight">\(U_k\)</span> is the first <span class="math notranslate nohighlight">\(k\)</span> eigenvectors of our Laplacian, and <span class="math notranslate nohighlight">\(S_k\)</span> is the diagonal matrix with the first <span class="math notranslate nohighlight">\(k\)</span> eigenvalues (and that we named them <span class="math notranslate nohighlight">\(\sigma_1\)</span> through <span class="math notranslate nohighlight">\(\sigma_k\)</span>).</p>
@@ -981,6 +1052,9 @@ Take the <span class="math notranslate nohighlight">\(i^{th}\)</span> column of 
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/spectral-embedding_47_01.png" src="_images/spectral-embedding_47_01.png" />
+</div>
 </div>
 <p>This helps gives an intuition for why our latent position matrix gives a representation of our network. You can take columns of it, turn those columns into matrices, and sum those matrices, and then estimate the Laplacian for the network. That means the columns of our embedding network contain all of the information necessary to estimate the network!</p>
 </div>
@@ -1031,6 +1105,9 @@ Take the <span class="math notranslate nohighlight">\(i^{th}\)</span> column of 
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/spectral-embedding_53_01.png" src="_images/spectral-embedding_53_01.png" />
+</div>
 </div>
 <p>You’ll notice that there’s a marked area called the “elbow”. This is an area where singular values stop changing in magnitude as much when they get smaller: before the elbow, singular values change rapidly, and after the elbow, singular values barely change at all. (It’s called an elbow because the plot kind of looks like an arm, viewed from the side!)</p>
 <p>The location of this elbow gives you a rough indication for how many “true” dimensions your latent positions have. The singular values after the elbow are quite close to each other and have singular vectors which are largely noise, and don’t tell you very much about your data. It looks from the scree plot that we should be embedding down to two dimensions, and that adding more dimensions would probably just mean adding noise to our embedding.</p>
@@ -1065,6 +1142,9 @@ Take the <span class="math notranslate nohighlight">\(i^{th}\)</span> column of 
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/spectral-embedding_59_0.png" src="_images/spectral-embedding_59_0.png" />
+</div>
 </div>
 </div>
 <div class="section" id="laplacian-spectral-embedding">
@@ -1083,6 +1163,12 @@ Take the <span class="math notranslate nohighlight">\(i^{th}\)</span> column of 
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_latents</span><span class="p">(</span><span class="n">embedding</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Laplacian Spectral Embedding&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:title={&#39;left&#39;:&#39;Laplacian Spectral Embedding&#39;}&gt;
+</pre></div>
+</div>
+<img alt="_images/spectral-embedding_62_1.png" src="_images/spectral-embedding_62_1.png" />
 </div>
 </div>
 </div>
@@ -1123,22 +1209,20 @@ Take the <span class="math notranslate nohighlight">\(i^{th}\)</span> column of 
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Alexander Russell Loftus<br/>
-        
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By Alexander Russell Loftus<br/>
+    
+  </p>
+</footer>
 </main>
 
 

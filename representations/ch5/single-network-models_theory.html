@@ -41,7 +41,7 @@
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"processClass": "tex2jax_process|mathjax_process|math|output_area"}})</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -188,7 +188,7 @@
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -223,7 +223,7 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
@@ -421,7 +421,208 @@
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Single network model theory</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#foundation">
+   Foundation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#equivalence-classes">
+     Equivalence Classes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#independent-edge-random-networks">
+     Independent-Edge Random Networks
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#erdos-renyi-er-random-networks">
+   Erdös-Rényi (ER) Random Networks
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#probability">
+     Probability
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#network-models-for-networks-which-aren-t-simple">
+   Network Models for networks which aren’t simple
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#binary-network-model-which-has-loops-but-is-undirected">
+     Binary network model which has loops, but is undirected
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#binary-network-model-which-is-loopless-but-directed">
+     Binary network model which is loopless, but directed
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#binary-network-model-which-is-has-loops-and-is-directed">
+     Binary network model which is has loops and is directed
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-priori-stochastic-block-model">
+   <em>
+    A Priori
+   </em>
+   Stochastic Block Model
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Probability
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-posteriori-stochastic-block-model">
+   <em>
+    A Posteriori
+   </em>
+   Stochastic Block Model
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     Probability
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#degree-corrected-stochastic-block-model-dcsbm">
+   Degree-Corrected Stochastic Block Model (DCSBM)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-priori-dcsbm">
+     <em>
+      A Priori
+     </em>
+     DCSBM
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id3">
+       Probability
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-posteriori-dcsbm">
+     <em>
+      A Posteriori
+     </em>
+     DCSBM
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#random-dot-product-graph-rdpg">
+   Random Dot Product Graph (RDPG)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-priori-rdpg">
+     <em>
+      A Priori
+     </em>
+     RDPG
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id4">
+       Probability
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-posteriori-rdpg">
+     <em>
+      A Posteriori
+     </em>
+     RDPG
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id5">
+       Probability
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#generalized-random-dot-product-graph-grdpg">
+   Generalized Random Dot Product Graph (GRDPG)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-priori-grdpg">
+     <em>
+      A Priori
+     </em>
+     GRDPG
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-posteriori-grdpg">
+     <em>
+      A Posteriori
+     </em>
+     GRDPG
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#inhomogeneous-erdos-renyi-ier">
+   Inhomogeneous Erdös-Rényi (IER)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id6">
+     Probability
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="single-network-model-theory">
@@ -791,8 +992,8 @@
 \mathbb P_\theta(A) &amp;= \mathbb P_\theta(\mathbf A = A)
 \end{align*}\]</div>
 <p>Next, we use the fact that the probability that <span class="math notranslate nohighlight">\(\mathbf A = A\)</span> is, in fact, the <em>integration</em> (over realizations of <span class="math notranslate nohighlight">\(\vec{\pmb \tau}\)</span>) of the joint <span class="math notranslate nohighlight">\((\mathbf A, \vec{\pmb \tau})\)</span>. In this case, we will let <span class="math notranslate nohighlight">\(\mathcal T = \{1,...,K\}^n\)</span> be the space of all possible realizations that <span class="math notranslate nohighlight">\(\vec{\pmb \tau}\)</span> could take:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-8ac0e71e-9fa0-4134-98a3-94386e82648e">
-<span class="eqno">()<a class="headerlink" href="#equation-8ac0e71e-9fa0-4134-98a3-94386e82648e" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-df36297f-28d4-4f95-a3b4-77a029ddd523">
+<span class="eqno">()<a class="headerlink" href="#equation-df36297f-28d4-4f95-a3b4-77a029ddd523" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \mathbb P_\theta(A)&amp;= \sum_{\vec \tau \in \mathcal T} \mathbb P_\theta(\mathbf A = A, \vec{\pmb \tau} = \vec \tau) 
 \end{align}\]</div>
 <p>Next, remember that by definition of a conditional probability for a random variable <span class="math notranslate nohighlight">\(\mathbf x\)</span> taking value <span class="math notranslate nohighlight">\(x\)</span> conditioned on random variable <span class="math notranslate nohighlight">\(\mathbf y\)</span> taking the value <span class="math notranslate nohighlight">\(y\)</span>, that <span class="math notranslate nohighlight">\(\mathbb P(\mathbf x = x | \mathbf y = y) = \frac{\mathbb P(\mathbf x = x, \mathbf y = y)}{\mathbb P(\mathbf y = y)}\)</span>. Note that by multiplying through by <span class="math notranslate nohighlight">\(\mathbf P(\mathbf y = y)\)</span>, we can see that <span class="math notranslate nohighlight">\(\mathbb P(\mathbf x = x, \mathbf y = y) = \mathbb P(\mathbf x = x| \mathbf y = y)\mathbb P(\mathbf y = y)\)</span>. Using this logic for <span class="math notranslate nohighlight">\(\mathbf A\)</span> and <span class="math notranslate nohighlight">\(\vec{\pmb \tau}\)</span>:</p>
@@ -1237,22 +1438,20 @@
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Alexander Russell Loftus<br/>
-        
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By Alexander Russell Loftus<br/>
+    
+  </p>
+</footer>
 </main>
 
 

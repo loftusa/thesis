@@ -41,7 +41,7 @@
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"processClass": "tex2jax_process|mathjax_process|math|output_area"}})</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -188,7 +188,7 @@
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -223,7 +223,7 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
@@ -326,7 +326,113 @@
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Regularization</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#regularization-of-the-nodes">
+   Regularization of the Nodes
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-largest-connected-component-is-the-largest-subnetwork-of-connected-nodes">
+     The Largest Connected Component is the largest subnetwork of connected nodes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#degree-trimming-removes-nodes-with-low-degree">
+     Degree trimming removes nodes with low degree
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#regularizing-the-edges">
+   Regularizing the Edges
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#symmetrizing-the-network-gives-us-undirectedness">
+     Symmetrizing the network gives us undirectedness
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ignoring-a-triangle-of-the-adjacency-matrix">
+       Ignoring a “triangle” of the adjacency matrix
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#taking-a-function-of-the-two-values">
+       Taking a function of the two values
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#diagonal-augmentation">
+     Diagonal augmentation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#lowering-edge-bias">
+     Lowering edge bias
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#thresholding-converts-weighted-networks-to-binary-networks">
+       Thresholding converts weighted networks to binary networks
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#sparsification-removes-potentially-spurious-low-weight-edges">
+       Sparsification removes potentially spurious low-weight edges
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#edge-weight-normalization">
+       Edge-weight normalization
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#z-scoring-standardizes-edge-weights-using-the-normal-distribution">
+         <span class="math notranslate nohighlight">
+          \(z\)
+         </span>
+         -scoring standardizes edge weights using the normal distribution
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#ranking-edges-preserves-ordinal-relationships">
+         Ranking edges preserves ordinal relationships
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#logging-reduces-magnitudinal-differences-between-edges">
+         Logging reduces magnitudinal differences between edges
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="regularization">
@@ -681,12 +787,10 @@ Number of edges greater than or equal to t: 612
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_2221</span><span class="o">/</span><span class="mf">3934279779.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="n">Input</span> <span class="n">In</span> <span class="p">[</span><span class="mi">14</span><span class="p">],</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">A_friend_thresh</span> <span class="o">=</span> <span class="n">copy</span><span class="p">(</span><span class="n">A_friend_avg_sym</span><span class="p">)</span>  <span class="c1"># copy the network over</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> 
 <span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="c1"># threshold using t</span>
 <span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">A_friend_thresh</span><span class="p">[</span><span class="n">A_friend_thresh</span> <span class="o">&lt;=</span> <span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">A_friend_thresh</span><span class="p">[</span><span class="n">A_friend_thresh</span> <span class="o">&gt;</span> <span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
 
 <span class="ne">NameError</span>: name &#39;copy&#39; is not defined
 </pre></div>
@@ -1092,22 +1196,20 @@ Number of edges greater than or equal to t: 612
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Alexander Russell Loftus<br/>
-        
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By Alexander Russell Loftus<br/>
+    
+  </p>
+</footer>
 </main>
 
 

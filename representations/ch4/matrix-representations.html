@@ -41,7 +41,7 @@
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"processClass": "tex2jax_process|mathjax_process|math|output_area"}})</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -190,7 +190,7 @@
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -225,7 +225,7 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
@@ -248,9 +248,31 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-degree-matrix">
+   The Degree Matrix
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#the-laplacian-matrix">
    The Laplacian Matrix
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-connection-between-the-laplacian-the-adjacency-matrix-and-the-oriented-incidence-matrix">
+     The Connection Between the Laplacian, the Adjacency Matrix, and the Oriented Incidence Matrix
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-symmetric-laplacian">
+     The Symmetric Laplacian
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-random-walk-laplacian">
+     The Random-Walk Laplacian
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -260,7 +282,67 @@
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Matrix Representations Of Networks</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-adjacency-matrix">
+   The Adjacency Matrix
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-incidence-matrix">
+   The Incidence Matrix
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-oriented-incidence-matrix">
+   The Oriented Incidence Matrix
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-degree-matrix">
+   The Degree Matrix
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-laplacian-matrix">
+   The Laplacian Matrix
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-connection-between-the-laplacian-the-adjacency-matrix-and-the-oriented-incidence-matrix">
+     The Connection Between the Laplacian, the Adjacency Matrix, and the Oriented Incidence Matrix
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-symmetric-laplacian">
+     The Symmetric Laplacian
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-random-walk-laplacian">
+     The Random-Walk Laplacian
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="matrix-representations-of-networks">
@@ -276,7 +358,6 @@
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
 <span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">()</span>
 <span class="n">G</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s2">&quot;0&quot;</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
@@ -293,9 +374,6 @@
                 <span class="n">font_size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">font_color</span><span class="o">=</span><span class="s2">&quot;whitesmoke&quot;</span><span class="p">,</span> <span class="n">arrows</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">edge_color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span>
                 <span class="n">width</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">to_numpy_matrix</span><span class="p">(</span><span class="n">G</span><span class="p">))</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">figtext</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Figure 1.1&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;A Three-Node Network&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">24</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">1.05</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -313,7 +391,7 @@
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 
 <span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
-<span class="n">ax1</span> <span class="o">=</span> <span class="n">heatmap</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">linewidths</span><span class="o">=</span><span class="mf">.1</span><span class="p">,</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Adjacency matrix&quot;</span><span class="p">,</span> 
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">heatmap</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">linewidths</span><span class="o">=</span><span class="mf">.1</span><span class="p">,</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Adjacency matrix $A$&quot;</span><span class="p">,</span> 
                <span class="n">xticklabels</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">yticklabels</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">labelrotation</span><span class="o">=</span><span class="mi">360</span><span class="p">)</span>
 
@@ -338,17 +416,11 @@
 <span class="n">ax2</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">.8</span><span class="p">,</span> <span class="mf">.2</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="s2">&quot;Nodes 2 and 1 </span><span class="se">\n</span><span class="s2">aren&#39;t connected&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=-</span><span class="mi">63</span><span class="p">)</span>
 <span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Layout plot&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax2</span><span class="p">,</span> <span class="n">left</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">figtext</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Figure 1.2&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Adjacency Matrix and Layout Plot&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">24</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">1.05</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.05, &#39;Adjacency Matrix and Layout Plot&#39;)
-</pre></div>
-</div>
-<img alt="../../_images/matrix-representations_6_1.png" src="../../_images/matrix-representations_6_1.png" />
+<img alt="../../_images/matrix-representations_6_0.png" src="../../_images/matrix-representations_6_0.png" />
 </div>
 </div>
 <p>Although the adjacency matrix is straightforward and easy to understand, it isn’t the only way to represent networks.</p>
@@ -381,16 +453,11 @@
 <span class="n">ax2</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">.45</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="s2">&quot;Edge 0&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span>
 <span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Layout plot&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax2</span><span class="p">,</span> <span class="n">left</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figtext</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Figure 1.3&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Incidence Matrix and Layout Plot&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">24</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">1.05</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.05, &#39;Incidence Matrix and Layout Plot&#39;)
-</pre></div>
-</div>
-<img alt="../../_images/matrix-representations_10_1.png" src="../../_images/matrix-representations_10_1.png" />
+<img alt="../../_images/matrix-representations_10_0.png" src="../../_images/matrix-representations_10_0.png" />
 </div>
 </div>
 <p>When networks are large, incidence matrices tend to be extremely sparse – meaning, their values are mostly 0’s. This is because each column must have exactly two nonzero values along its rows: one value for the first node its edge is connected to, and another for the second. Because of this, incidence matrices are usually represented in Python computationally as scipy’s <em>sparse matrices</em> rather than as numpy arrays, since this data type is much better-suited for matrices which contain mostly zeroes.</p>
@@ -398,21 +465,21 @@
 </div>
 <div class="section" id="the-oriented-incidence-matrix">
 <h2>The Oriented Incidence Matrix<a class="headerlink" href="#the-oriented-incidence-matrix" title="Permalink to this headline">¶</a></h2>
-<p>The oriented incidence matrix is extremely similar to the normal incidence matrix, except that you assign a direction or orientation to each edge: you define one of its nodes as being the head node, and the other as being the tail. For undirected networks, you can assign directionality arbitrarily. Then, for the column in the incidence matrix corresponding to a given edge, the tail node has a value of <span class="math notranslate nohighlight">\(-1\)</span>, and the head node has a value of <span class="math notranslate nohighlight">\(0\)</span>. Nodes who aren’t a member of a particular edge are still assigned values of <span class="math notranslate nohighlight">\(0\)</span>.</p>
+<p>The oriented incidence matrix is extremely similar to the normal incidence matrix, except that you assign a direction or orientation to each edge: you define one of its nodes as being the head node, and the other as being the tail. For undirected networks, you can assign directionality arbitrarily. Then, for the column in the incidence matrix corresponding to a given edge, the tail node has a value of <span class="math notranslate nohighlight">\(-1\)</span>, and the head node has a value of <span class="math notranslate nohighlight">\(0\)</span>. Nodes who aren’t a member of a particular edge are still assigned values of <span class="math notranslate nohighlight">\(0\)</span>. Although it doesn’t have a gold-standard letter assigned to it as a name, we’ll call it <span class="math notranslate nohighlight">\(N\)</span>.</p>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">networkx.linalg.graphmatrix</span> <span class="kn">import</span> <span class="n">incidence_matrix</span>
 <span class="n">cmap</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">(</span><span class="s2">&quot;Purples&quot;</span><span class="p">,</span> <span class="n">n_colors</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 
-<span class="n">OI</span> <span class="o">=</span> <span class="n">incidence_matrix</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">(</span><span class="n">A</span><span class="p">),</span> <span class="n">oriented</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">toarray</span><span class="p">()</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">N</span> <span class="o">=</span> <span class="n">incidence_matrix</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">(</span><span class="n">A</span><span class="p">),</span> <span class="n">oriented</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">toarray</span><span class="p">()</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
 
 <span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
 
-<span class="n">plot</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">OI</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">linewidths</span><span class="o">=</span><span class="mf">.1</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span>
+<span class="n">plot</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">linewidths</span><span class="o">=</span><span class="mf">.1</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span>
                    <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">xticklabels</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">yticklabels</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
 <span class="n">plot</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Edges&quot;</span><span class="p">)</span>
 <span class="n">plot</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Nodes&quot;</span><span class="p">)</span>
-<span class="n">plot</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Oriented Incidence matrix&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+<span class="n">plot</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Oriented Incidence matrix $N$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
 <span class="n">plot</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s2">&quot;Tail Node&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mf">.05</span><span class="p">,</span> <span class="mf">.95</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span>
 <span class="n">plot</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s2">&quot;Head Node&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mf">.05</span><span class="p">,</span> <span class="mf">1.95</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span>
 
@@ -427,32 +494,54 @@
 <span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax2</span><span class="p">,</span> <span class="n">left</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">ax2</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="o">-</span><span class="mf">.1</span><span class="p">,</span> <span class="o">-</span><span class="mf">.05</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="s2">&quot;Tail Node&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span>
 <span class="n">ax2</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">.9</span><span class="p">,</span> <span class="o">-</span><span class="mf">.05</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="s2">&quot;Head Node&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figtext</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Figure 1.4&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Oriented Incidence Matrix and Layout Plot&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">24</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">1.05</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.05, &#39;Oriented Incidence Matrix and Layout Plot&#39;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.9, -0.05, &#39;Head Node&#39;)
 </pre></div>
 </div>
 <img alt="../../_images/matrix-representations_14_1.png" src="../../_images/matrix-representations_14_1.png" />
 </div>
 </div>
-<p>Although we won’t use incidence matrices, oriented or otherwise, in this thesis too much, we introduced them because there’s a deep connection between incidence matrices, adjacency matrices, and a matrix representation that we haven’t introduced yet called the Laplacian.</p>
+<p>Although we won’t use incidence matrices, oriented or otherwise, in this book too much, we introduced them because there’s a deep connection between incidence matrices, adjacency matrices, and a matrix representation that we haven’t introduced yet called the Laplacian. Before we can explore that connection, we’ll discuss one more representation: the degree matrix.</p>
 </div>
-<div class="section" id="the-laplacian-matrix">
-<h2>The Laplacian Matrix<a class="headerlink" href="#the-laplacian-matrix" title="Permalink to this headline">¶</a></h2>
-<p>The Laplacian Matrix <span class="math notranslate nohighlight">\(L\)</span> is created from the adjacency matrix <span class="math notranslate nohighlight">\(A\)</span> and something called the degree matrix <span class="math notranslate nohighlight">\(D\)</span>, which is just a diagonal matrix where the elements on the diagonals correspond to the number of edges each node is connected to. The standard Laplacian is just <span class="math notranslate nohighlight">\(D - A\)</span>: the degree matrix minus the adjacency matrix.</p>
-<p>The figure below shows you what the degree matrix and the Laplacian both look like. Since each node has exactly two edges, the degree matrix is just a diagonal matrix of all twos. The Laplacian looks like the degree matrix, but with -1’s in all the locations where an edge exists between nodes <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span>.</p>
+<div class="section" id="the-degree-matrix">
+<h2>The Degree Matrix<a class="headerlink" href="#the-degree-matrix" title="Permalink to this headline">¶</a></h2>
+<p>The degree matrix isn’t a full representation of our network, because you wouldn’t be able to reconstruct an entire network from a degree matrix. However, it’s fairly straightforward and it pops up relatively often as a step in creating other matrices, so the degree matrix is useful to mention. It’s just a diagonal matrix with the values along the diagonal corresponding to the number of each edges each node has, also known as the degree of each node.</p>
+<p>You can see the degree matrix for our network below. The diagonal element corresponding to node zero has the value of two, since it has two edges; and the rest of the nodes have a value of one, since they each are only connected to the first node.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Build the degree matrix D</span>
 <span class="n">degrees</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">D</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">degrees</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
 
-<span class="c1"># Build the Laplacian matrix L</span>
-<span class="n">L</span> <span class="o">=</span> <span class="n">D</span> <span class="o">-</span> <span class="n">A</span>
+<span class="n">D_ax</span> <span class="o">=</span> <span class="n">heatmap</span><span class="p">(</span><span class="n">D</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">linewidths</span><span class="o">=</span><span class="mf">.1</span><span class="p">,</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Degree matrix $D$&quot;</span><span class="p">,</span> 
+               <span class="n">xticklabels</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">yticklabels</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/matrix-representations_19_0.png" src="../../_images/matrix-representations_19_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="the-laplacian-matrix">
+<h2>The Laplacian Matrix<a class="headerlink" href="#the-laplacian-matrix" title="Permalink to this headline">¶</a></h2>
+<p>The standard, cookie-cutter Laplacian Matrix <span class="math notranslate nohighlight">\(L\)</span> is just the adjacency matrix <span class="math notranslate nohighlight">\(A\)</span> subtracted from the the degree matrix <span class="math notranslate nohighlight">\(D\)</span>.</p>
+<p><span class="math notranslate nohighlight">\(L = D - A\)</span></p>
+<p>Since the only nonzero values of the degree matrix is along its diagonals, and because the diagonals of an adjacency matrix never contain zeroes if its network doesn’t have nodes connected to themselves, the diagonals of the Laplacian are just the degree of each node. The values on the non-diagonals work similarly to the adjacency matrix: they contain a <span class="math notranslate nohighlight">\(-1\)</span> if there is an edge between the two nodes, and a <span class="math notranslate nohighlight">\(0\)</span> if there is no edge.</p>
+<p>The figure below shows you what the Laplacian looks like. Since each node has exactly two edges, the degree matrix is just a diagonal matrix of all twos. The Laplacian looks like the degree matrix, but with -1’s in all the locations where an edge exists between nodes <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">L</span> <span class="o">=</span> <span class="n">D</span> <span class="o">-</span> <span class="n">A</span>
 </pre></div>
 </div>
 </div>
@@ -468,28 +557,30 @@
 
 <span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
 
-<span class="c1"># First axis (Degree)</span>
-<span class="n">heatmap</span><span class="p">(</span><span class="n">D</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Degree Matrix $D$&quot;</span><span class="p">)</span>
+<span class="c1"># First axis (Laplacian)</span>
+<span class="n">heatmap</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Laplacian Matrix $L$&quot;</span><span class="p">)</span>
 
 <span class="c1"># Second axis (-)</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mf">.5</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">.5</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> 
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mf">.5</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">.5</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="s2">&quot;=&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> 
             <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">get_xaxis</span><span class="p">()</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">get_yaxis</span><span class="p">()</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">left</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-<span class="c1"># Third axis (Adjacency matrix)</span>
-<span class="n">heatmap</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Adjacency Matrix $A$&quot;</span><span class="p">)</span>
+<span class="c1"># Third axis (Degree matrix)</span>
+
+<span class="n">heatmap</span><span class="p">(</span><span class="n">D</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Degree Matrix $D$&quot;</span><span class="p">)</span>
 
 <span class="c1"># Third axis (=)</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mf">.5</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">.5</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="s2">&quot;=&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mf">.5</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">.5</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>
             <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">get_xaxis</span><span class="p">()</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">get_yaxis</span><span class="p">()</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">left</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-<span class="c1"># Fourth axis</span>
-<span class="n">heatmap</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Laplacian Matrix $L$&quot;</span><span class="p">)</span>
+<span class="c1"># Fourth axis (Laplacian)</span>
+<span class="n">heatmap</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Adjacency Matrix $A$&quot;</span><span class="p">)</span>
+
 
 <span class="c1"># Colorbar</span>
 <span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">L</span><span class="p">)</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">L</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
@@ -497,16 +588,88 @@
 <span class="n">im</span> <span class="o">=</span> <span class="n">cm</span><span class="o">.</span><span class="n">ScalarMappable</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="n">GraphColormap</span><span class="p">(</span><span class="s2">&quot;sequential&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">color</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">norm</span><span class="p">)</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">,</span> <span class="n">shrink</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="mi">10</span><span class="p">);</span>
 
-<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;The Laplacian is Just a Function of the Adjacency Matrix&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">24</span><span class="p">);</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figtext</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">.1</span><span class="p">,</span> <span class="s2">&quot;Figure 3.3&quot;</span><span class="p">);</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;The Laplacian is just a function of the adjacency matrix&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">24</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/matrix-representations_19_0.png" src="../../_images/matrix-representations_19_0.png" />
+<img alt="../../_images/matrix-representations_23_0.png" src="../../_images/matrix-representations_23_0.png" />
 </div>
 </div>
-<p>We use the Laplacian because it has a number of interesting properties. For instance, the magnitude of its second-smallest eigenvalue, called the Fiedler eigenvalue, tells you how well-connected your network is – and the number of eigenvalues equal to zero is the number of connected components your network has (a connected component is a group of nodes in a network which all have a path to get to each other – think of it as an island of nodes and edges). Laplacians and adjacency matrices will be used throughout this thesis, and details about when and where one or the other will be used are in the spectral embedding chapter.</p>
+<p>We use the Laplacian in practice because it has a number of interesting mathematical properties, which tend to be useful for analysis. For instance, the magnitude of its second-smallest eigenvalue, called the Fiedler eigenvalue, tells you how well-connected your network is – and the number of eigenvalues equal to zero is the number of connected components your network has (a connected component is a group of nodes in a network which all have a path to get to each other – think of it as an island of nodes and edges). Laplacians and adjacency matrices will be used throughout this thesis, and details about when and where one or the other will be used are in the spectral embedding chapter.</p>
+<div class="section" id="the-connection-between-the-laplacian-the-adjacency-matrix-and-the-oriented-incidence-matrix">
+<h3>The Connection Between the Laplacian, the Adjacency Matrix, and the Oriented Incidence Matrix<a class="headerlink" href="#the-connection-between-the-laplacian-the-adjacency-matrix-and-the-oriented-incidence-matrix" title="Permalink to this headline">¶</a></h3>
+<p>We just figured out that you can derive the Laplacian from only the adjacency matrix: since you can find the degree matrix from just the adjacency matrix, the Laplacian and the adjacency matrix have exactly the same information content.</p>
+<p>However, you can also find the Laplacian from the oriented incidence matrix: If your oriented incidence matrix is called <span class="math notranslate nohighlight">\(N\)</span>, then the Laplacian is <span class="math notranslate nohighlight">\(N N^\top\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">N</span> <span class="o">@</span> <span class="n">N</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 2, -1, -1],
+       [-1,  1,  0],
+       [-1,  0,  1]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+
+<span class="c1"># First axis (Laplacian)</span>
+<span class="n">heatmap</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Laplacian Matrix $L$&quot;</span><span class="p">)</span>
+
+<span class="c1"># Second axis (-)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mf">.5</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">.5</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="s2">&quot;=&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> 
+            <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">get_xaxis</span><span class="p">()</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">get_yaxis</span><span class="p">()</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">left</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Third axis (Degree matrix)</span>
+<span class="n">plot</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">linewidths</span><span class="o">=</span><span class="mf">.1</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span>
+                   <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">xticklabels</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">yticklabels</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span>
+<span class="n">plot</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Edges&quot;</span><span class="p">)</span>
+<span class="n">plot</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Nodes&quot;</span><span class="p">)</span>
+<span class="n">plot</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Oriented Incidence </span><span class="se">\n</span><span class="s2">Matrix $N$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+
+<span class="c1"># Fourth axis (Laplacian)</span>
+<span class="c1"># Third axis (Degree matrix)</span>
+<span class="n">plot</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">N</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">linewidths</span><span class="o">=</span><span class="mf">.1</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span>
+                   <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">xticklabels</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">yticklabels</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">3</span><span class="p">]);</span>
+<span class="n">plot</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Nodes&quot;</span><span class="p">)</span>
+<span class="n">plot</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Edges&quot;</span><span class="p">)</span>
+<span class="n">plot</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Transposed Oriented </span><span class="se">\n</span><span class="s2">Incidence Matrix &quot;</span> <span class="o">+</span> <span class="sa">r</span><span class="s2">&quot;$N^\top$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+
+
+<span class="c1"># Colorbar</span>
+<span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">L</span><span class="p">)</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">L</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<span class="n">norm</span> <span class="o">=</span> <span class="n">Normalize</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="n">vmax</span><span class="p">)</span>
+<span class="n">im</span> <span class="o">=</span> <span class="n">cm</span><span class="o">.</span><span class="n">ScalarMappable</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="n">GraphColormap</span><span class="p">(</span><span class="s2">&quot;sequential&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">color</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">norm</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">,</span> <span class="n">shrink</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="mi">10</span><span class="p">);</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;The Laplacian is just a function of the incidence matrix&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">24</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">1.1</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/matrix-representations_28_0.png" src="../../_images/matrix-representations_28_0.png" />
+</div>
+</div>
+<p>As a quick note, it doesn’t matter which orientation you choose for the oriented incidence matrix: <span class="math notranslate nohighlight">\(NN^\top\)</span> will always equal the Laplacian regardless.</p>
+</div>
+<div class="section" id="the-symmetric-laplacian">
+<h3>The Symmetric Laplacian<a class="headerlink" href="#the-symmetric-laplacian" title="Permalink to this headline">¶</a></h3>
+<p>There are a few variations on the standard <span class="math notranslate nohighlight">\(D-A\)</span> version of the Laplacian which are widely used in practice, and which (confusingly) are often also called the Laplacian. They tend to have similar properties, but are often more generalizable. The Symmetric Laplacian is one such variation. The Symmetric Laplacian is defined by</p>
+<p><span class="math notranslate nohighlight">\(L^{sym} = D^{-1/2} L D^{-1/2} = I - D^{-1/2} A D^{-1/2}\)</span>, where <span class="math notranslate nohighlight">\(I\)</span> is the identity matrix (the square matrix with all zeroes except for ones along the diagonal).</p>
+<p>$D^{-1/2} A D^{-1/2}</p>
+</div>
+<div class="section" id="the-random-walk-laplacian">
+<h3>The Random-Walk Laplacian<a class="headerlink" href="#the-random-walk-laplacian" title="Permalink to this headline">¶</a></h3>
+</div>
 </div>
 </div>
 
@@ -532,8 +695,8 @@
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="../../introduction/preface.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -550,18 +713,16 @@
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Alexander Russell Loftus<br/>
-        
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By Alexander Russell Loftus<br/>
+    
+  </p>
+</footer>
 </main>
 
 
